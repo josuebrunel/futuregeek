@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Introduction aux Makefiles</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+                <link href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FutureGeek Atom Feed" />
+                
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+<a href="http://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="./">FutureGeek </a></h1>
+                <nav><ul>
+                                                                                                    <li ><a href="./category/about-me.html">About Me</a></li>
+                                    <li ><a href="./category/linux.html">Linux</a></li>
+                                    <li ><a href="./category/openerp.html">Openerp</a></li>
+                                    <li class="active"><a href="./category/programming.html">Programming</a></li>
+                                    <li ><a href="./category/projects.html">Projects</a></li>
+                                </ul></nav>
+        </header><!-- /#banner -->
+        <section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./introduction-aux-makefiles.html" rel="bookmark"
+           title="Permalink to Introduction aux Makefiles">Introduction aux Makefiles</a></h1>
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </header>
+
+    <div class="entry-content">
+      <footer class="post-info">
+        <abbr class="published" title="2013-02-05T00:00:00">
+                Tue 05 February 2013
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="./author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="./category/programming.html">Programming</a>. </p>
+<p>tags: <a href="./tag/makefile.html">makefile</a><a href="./tag/c.html">c</a><a href="./tag/c.html">c++</a><a href="./tag/.html"></a></p>
+</footer><!-- /.post-info -->      <h3>Makefile</h3>
+<p>Un <strong>makefile</strong> est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type <strong>make</strong> (gmake,...). </p>
+<h4>A quoi sert il ?</h4>
+<p>Il permet de construire automatiquement des <strong><em>executable</em></strong> (tres souvent) , des <strong><em>libraries</em></strong>, des <strong><em>architectures</em></strong> de dossier ou des actions <strong><em>diverses</em></strong> . En gros , enormement de choses .</p>
+<div class="codehilite"><pre>Guillaume&gt; Pourquoi ne pas juste ecrire un script shell, python pour le faire ?
+</pre></div>
+
+
+<p>La principale difference entre une <strong>makefile</strong> et un <strong>script normal</strong> est que les instructions d'un <strong>makefile</strong> ne sont executées que si <strong>necessaires</strong>, c.a.d qu'une action (règle) qui a deja été accomplie, ne sera plus reexecutée.</p>
+<h4>Comment fonctionne t-il ?</h4>
+<p>Il fonctionne tout simplement par verification de statisfactions de dépendances. Je m'explique par l'algorithme qui suit :
+Pour faire mon <strong>tea</strong> (avec l'accent british s'il vous plait!!) j'ai généralement besoin d'une <strong>cup</strong> , de l'eau 
+et un <strong>tea bag</strong> (twisted mind, get away!!!). On supposera qu'on a déja notre tasse.</p>
+<ol>
+<li>
+<p>Ai-je de l'eau chaude ?</p>
+<p>O : on passe a l'étape 2</p>
+<p>N : Sais-je comment me procurer de l'eau ?</p>
+<div class="codehilite"><pre><span class="n">O</span> <span class="o">:</span> <span class="n">Satisfait</span> <span class="o">-&gt;</span> <span class="err">é</span><span class="n">tape</span> <span class="mi">2</span>
+
+<span class="n">N</span> <span class="o">:</span> <span class="n">impossible</span> <span class="n">de</span> <span class="n">creer</span> <span class="n">de</span> <span class="n">l</span><span class="err">&#39;</span><span class="n">eau</span><span class="o">,</span> <span class="n">je</span> <span class="n">renvoie</span> <span class="n">une</span> <span class="n">erreur</span> <span class="n">et</span> <span class="n">je</span> <span class="n">sors</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Ai-je du thé ?</p>
+<p>O : alors  étape 3</p>
+<p>N : Sais-je comment me procurer du thé ?</p>
+<div class="codehilite"><pre><span class="n">O</span> <span class="o">:</span> <span class="n">je</span> <span class="n">me</span> <span class="n">procure</span> <span class="n">du</span> <span class="n">th</span><span class="err">é</span> <span class="n">puis</span> <span class="n">je</span> <span class="n">vais</span> <span class="err">à</span> <span class="n">l</span><span class="err">&#39;é</span><span class="n">tape</span> <span class="n">suivante</span>
+
+<span class="n">N</span> <span class="o">:</span> <span class="n">jre</span> <span class="n">renvoie</span> <span class="n">une</span> <span class="n">erreur</span>
+</pre></div>
+
+
+</li>
+<li>
+<p>Je fais mon thé grace à mon eau et mon sac de thé</p>
+</li>
+</ol>
+<p>A la prochaine execution, on n'aura plus besoin de se procurer de l'eau par exemple, dans le cas ou la dependance
+est toujours satisfaite .</p>
+<h4>Comment ecrire un Makefile ?</h4>
+<p>Context : </p>
+<p><a href="http://www.youtube.com/watch?v=kcsNbQRU5TI">Jimmy Mcmillan</a> veut écrire 2 fonctions d'affichage pour son party. Etant le super programmeur de son party, il se lance :  </p>
+<p>un fichier my_putchar.h</p>
+<div class="codehilite"><pre><span class="cp">#ifndef __my_putchar__</span>
+<span class="cp">#define __my_putchar__</span>
+<span class="kt">void</span>    <span class="nf">my_putchar</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<p>un fichier my_putchar.c</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;my_putchar.h&gt;</span>
+
+<span class="kt">void</span>    <span class="nf">my_putchar</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">){</span>
+    <span class="n">write</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">&amp;</span><span class="n">c</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>un fichier my_putstr.h</p>
+<div class="codehilite"><pre><span class="cp">#ifndef __my_putstr__</span>
+<span class="cp">#define __my_putstr__</span>
+<span class="kt">void</span>    <span class="nf">my_putstr</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">);</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<p>un fichier my_putstr.c</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;my_putchar.h&gt;</span>
+<span class="cp">#include &lt;my_putstr.h&gt;</span>
+
+<span class="kt">void</span>    <span class="nf">my_putstr</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">){</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">){</span>
+        <span class="n">my_putchar</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">);</span>
+        <span class="o">*</span><span class="n">s</span><span class="o">++</span> <span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>un fichier main.c</p>
+<div class="codehilite"><pre><span class="cp">#include&lt;my_putchar.h&gt;</span>
+<span class="cp">#incluce&lt;my_putstr.h&gt;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">){</span>
+    <span class="n">my_putchar</span><span class="p">(</span><span class="sc">&#39;O&#39;</span><span class="p">);</span>
+    <span class="n">my_putchar</span><span class="p">(</span><span class="sc">&#39;m&#39;</span><span class="p">);</span>
+    <span class="n">my_putchar</span><span class="p">(</span><span class="sc">&#39;g&#39;</span><span class="p">);</span>
+    <span class="n">my_putchar</span><span class="p">(</span><span class="sc">&#39;!&#39;</span><span class="p">);</span>
+    <span class="n">my_putchar</span><span class="p">(</span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+
+    <span class="n">my_putstr</span><span class="p">(</span><span class="s">&quot;The Rent Is Damn Too High !!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>complilation separee en ligne de commande</h4>
+<div class="codehilite"><pre><span class="gp">jimmy@mcmillan:~$</span>cc -Wall -c main.c my_putchar.c my_putstr.c
+<span class="gp">jimmy@mcmillan:~$</span>ls *.o <span class="c"># pour lister les .o generes</span>
+<span class="gp">jimmy@mcmillan:~$</span>cc main.o my_putchar.o my_putstr.o -o my_exe <span class="c">#generation de l&#39;executable</span>
+<span class="gp">jimmy@mcmillan:~$</span>./test
+<span class="go">Omg!</span>
+<span class="go">The Rent Is Damn Too High !!!</span>
+<span class="gp">jimmy@mcmillan:~$</span>
+</pre></div>
+
+
+<p>Faut avouer que si son projet a plus de 10 fichiers sources, ça devient tres vite fastidieux de tout taper a la main. 
+Alors pour palier à cela, il decide d'ecrire un makefile bien commenté.</p>
+<p>notre <strong>makefile</strong></p>
+<div class="codehilite"><pre><span class="nv">CC</span> <span class="o">=</span> cc  <span class="c"># le compliteur (e.g: g++, gcc, gccsense,...)</span>
+
+<span class="c">#Les sources ou fichiers cibles</span>
+<span class="nv">SRC</span> <span class="o">=</span> my_putchar.c<span class="se">\</span>
+        my_putstr.c<span class="se">\</span>
+        main.c
+
+<span class="nv">CFLAGS</span> <span class="o">=</span> -Wall -W -I./
+
+<span class="nv">OBJ</span> <span class="o">=</span> <span class="k">$(</span>SRC:.c<span class="o">=</span>.o<span class="k">)</span> <span class="c"># infference, les .o sont generés à partir des .c de manière implicite</span>
+
+<span class="nv">EXE</span> <span class="o">=</span> my_exe
+
+<span class="c">#Les differentes regles</span>
+<span class="c">#La 1ere regles est la premiere appelee, donc il est vivement conseille de definir **all** comme etant la premiere</span>
+
+<span class="nf">all</span><span class="o">:</span><span class="m">$(EXE)</span>
+<span class="c">#On peut definir une regle avec le nom d&#39;une variable</span>
+<span class="k">$(</span>EXE<span class="k">)</span>:<span class="k">$(</span><span class="nv">$OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
+    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>EXE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
+
+clean:
+    rm -rf *.o *~
+
+fclean:clean 
+    rm -rf <span class="k">$(</span>EXE<span class="k">)</span>
+
+re:fclean all
+</pre></div>
+
+
+<p><strong>NB</strong>: Respecter l'<strong>indentation</strong>, sinon make renverra une erreur.</p>
+<div class="codehilite"><pre><span class="gp">jimmy@mcmillan:~$</span>make
+</pre></div>
+
+
+<p>Appelle la regle <strong>all</strong> et genere tous les fichiers de dependances</p>
+<div class="codehilite"><pre><span class="gp">jimmy@mcmillan:~$</span>make my_exe
+<span class="go">make: `my_exe&#39; is up to date.</span>
+</pre></div>
+
+
+<p>Appelle la regle <strong>my_exe</strong> qui dans notre makefile correspond a </p>
+<div class="codehilite"><pre><span class="k">$(</span>EXE<span class="k">)</span>:<span class="k">$(</span><span class="nv">$OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
+    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>EXE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
+</pre></div>
+
+
+<p>Et oui !! Une regle peut avoir nom du contenu d'une variable.
+Vous avez surement remarque le message qui indique que la regle est deja satisfaite (^_~) .</p>
+<p>Pour resumer, mcmillan a les dependances suivantes dans son makefile :</p>
+<ul>
+<li><strong>all</strong> depend de <strong>exe</strong></li>
+<li><strong>exe</strong> depend de <strong>obj</strong></li>
+<li><strong>fclean</strong> depend de <strong>clean</strong></li>
+<li><strong>re</strong> depend de <strong>fclean</strong> puis <strong>all</strong> </li>
+</ul>
+<p>Je vous conseille de lire <a href="http://gl.developpez.com/tutoriel/outil/makefile/">ceci</a> pour vous documenter sur les regles <strong>d'inference</strong> .</p>
+<p>Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.</p>
+    </div><!-- /.entry-content -->
+        <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "introduction-aux-makefiles.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://fgjosue.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+    
+  </article>
+</section>
+        <section id="extras" class="body">
+                        <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                                                    <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                                                    <li><a href="http://python.org">Python.org</a></li>
+                                                    <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                                                </ul>
+                </div><!-- /.blogroll -->
+                                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+                                                    <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                                                    <li><a href="https://github.com/josuebrunel">Github</a></li>
+                                                </ul>
+                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

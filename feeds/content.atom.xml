@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://www.josuebrunel.org/" rel="alternate"></link><link href="http://www.josuebrunel.org/feeds/content.atom.xml" rel="self"></link><id>http://www.josuebrunel.org/</id><updated>2012-11-15T00:00:00+01:00</updated><entry><title>Bowee</title><link href="http://www.josuebrunel.org/bowee.html" rel="alternate"></link><updated>2012-11-15T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-11-15:bowee.html</id><summary type="html">&lt;h2&gt;What's &lt;strong&gt;BoWee&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;BoWee&lt;/em&gt;&lt;/strong&gt; is little python tool which helps people creating an architecture for &lt;strong&gt;bottle&lt;/strong&gt; project.&lt;/p&gt;
+&lt;p&gt;It tries to use the &lt;a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"&gt;MVC&lt;/a&gt; architecture, actually is more &lt;strong&gt;&lt;em&gt;Model View Template&lt;/em&gt;&lt;/strong&gt; like in &lt;a href="http://en.wikipedia.org/wiki/Django_(web_framework)"&gt;Django Framework&lt;/a&gt;.
+&lt;strong&gt;&lt;em&gt;BoWee&lt;/em&gt;&lt;/strong&gt; uses &lt;strong&gt;peewee&lt;/strong&gt; as ORM. &lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;To be able to use &lt;strong&gt;&lt;em&gt;BoWee&lt;/em&gt;&lt;/strong&gt;, it's required to have at least installed:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Peewee &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SQLite  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;sudo pip install bowee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Turorial&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;bowee_admin project &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;tree &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;span class="go"&gt;test/&lt;/span&gt;
+&lt;span class="go"&gt;├── __init__.py&lt;/span&gt;
+&lt;span class="go"&gt;├── models.py&lt;/span&gt;
+&lt;span class="go"&gt;├── static_files&lt;/span&gt;
+&lt;span class="go"&gt;├── templates&lt;/span&gt;
+&lt;span class="go"&gt;└── views.py&lt;/span&gt;
+
+&lt;span class="go"&gt;2 directories, 3 files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category><category term="bottle"></category><category term="peewee"></category><category term="web"></category></entry></feed>

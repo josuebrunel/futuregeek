@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Comprendre *, **, *args, **kwargs</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+                <link href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FutureGeek Atom Feed" />
+                
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+<a href="http://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="./">FutureGeek </a></h1>
+                <nav><ul>
+                                                                                                    <li ><a href="./category/about-me.html">About Me</a></li>
+                                    <li ><a href="./category/linux.html">Linux</a></li>
+                                    <li ><a href="./category/openerp.html">Openerp</a></li>
+                                    <li class="active"><a href="./category/programming.html">Programming</a></li>
+                                    <li ><a href="./category/projects.html">Projects</a></li>
+                                </ul></nav>
+        </header><!-- /#banner -->
+        <section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="./comprendre-args-kwargs.html" rel="bookmark"
+           title="Permalink to Comprendre *, **, *args, **kwargs">Comprendre *, **, *args, **kwargs</a></h1>
+      <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </header>
+
+    <div class="entry-content">
+      <footer class="post-info">
+        <abbr class="published" title="2013-03-26T00:00:00">
+                Tue 26 March 2013
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="./author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="./category/programming.html">Programming</a>. </p>
+<p>tags: <a href="./tag/python.html">python</a></p>
+</footer><!-- /.post-info -->      <p>Hi guys !!!</p>
+<p><strong>unpackers</strong> et <strong>varargs</strong> ? It doesn't ring a bell ? oh come on (redneck accent).</p>
+<p>Je suis sure que vous avez deja vu des instructions du genre :</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">myfunc</span><span class="p">(</span><span class="o">*</span><span class="n">myliste</span><span class="p">)</span> <span class="c"># Appel</span>
+<span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="n">mydict</span><span class="p">)</span> <span class="c"># Appel</span>
+<span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c"># Definition</span>
+      <span class="o">...</span>
+</pre></div>
+
+
+<p>Maintenant vous voyez tres bien de quoi je parle, c'est bien.</p>
+<p><strong>unpackers</strong> : <strong><em>*</em></strong> et <strong><em>**</em></strong></p>
+<p><strong>varargs</strong> : <strong><em>*args</em></strong> et <strong><em>**kwargs</em></strong></p>
+<p>On va faire quelques petites experiences </p>
+<h3>Experience 1 : <strong><em>*</em></strong></h3>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">my_func</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="mi">3</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="n">given</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 2</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">my_func</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="mi">3</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">4</span> <span class="n">given</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>Lors du premier appel <em>Appel 1</em>, le shell nous a renvoye une erreur, ce qui est tout a fait logique.
+On a passe une <strong>liste</strong> a une fonction qui attend 3 parametres.</p>
+<p>Ensuite lors de <em>Appel 2</em>, aucune erreur du shell. Seul difference avec <em>Appel 1</em>, est le <strong><em>*</em></strong> devant notre liste <strong><em>mylist</em></strong> .</p>
+<p>Le <strong><em>*</em></strong> a <strong>deballe</strong> les elements de notre liste et les a envoye a la fonction, c'est a dire que
+ce n'est pas <strong><em>[1,2,4]</em></strong> (une liste) qui a ete envoye mais <strong><em>1,2,3</em></strong>, en gros les elements de la liste.</p>
+<p>On ajoute un nouvel element a la liste puis on rappelle la function ( <em>Appel 3</em> ), cette fois ci <strong>ERREUR</strong>. Tout simplement parce que notre fonction attends 3 parametres et non 4.</p>
+<p>Pour conclure , <strong><em>*</em></strong> sert a deballer les elements d'une <em>liste</em>, d'un <em>tuple</em> ...
+On ne l'utilise que lors d'un appel de foncton ou methode.</p>
+<h3>Experience 2: <strong><em>*args</em></strong></h3>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;x est &quot;</span><span class="p">,</span> <span class="n">x</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;args est &quot;</span><span class="p">,</span> <span class="n">args</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s">&#39;varargs&#39;</span><span class="p">)</span> <span class="c">#Appel 1 bis</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;varargs&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># Appel 2</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 4</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],)</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>On peut remarque que dans les appels <em>Appel 1</em> et <em>Appel 1 bis</em>, <strong>x</strong> est eguale a <strong>1</strong>. Et que les autres parametres sont assignes a <strong>*args</strong>, qui les prend sous forme de tuples peu importe la taille.</p>
+<p>Dans l'appel <em>Appel 2</em>, un seul parametre est passe a la fonction, et ce seul parametre est assigne a
+<strong>x</strong> et vu qu'il n'y a pas d'autres parametres, <strong>*args</strong> recoit un <em>tuple</em> vide.</p>
+<p>Dans l'appel <em>Appel 3</em>, on passe un parametre et une <strong><em>liste deballee</em></strong> (*mylist), les elements de la liste sont donc assignes a <strong>*args</strong> sous forme de tuples.</p>
+<p>Dans l'appel <em>Appel 4</em>, on passe un parametre et une <strong><em>simple liste</em></strong> (mylist), la liste est donc assigne a <strong>*args</strong>, ce qui nous donne un tuple de liste (<em>([])</em>).</p>
+<p>Un <strong>*myvar</strong> dans la <strong>definition</strong> d'une fonction/methode est capable de recevoir n'importe quoi et un nombre non defini de parametre.</p>
+<h3>Petit Use Case:</h3>
+<p>On doit ecrire une fonction qui calcule la somme des nombres qui lui sont passe, sans tenir compte du premier parametre .</p>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">calculer_somme</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">calculer_somme_sans_premier</span><span class="p">(</span><span class="n">premier</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;Premier est &quot;</span><span class="p">,</span> <span class="n">premier</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;args est &quot;</span><span class="p">,</span> <span class="n">args</span>
+<span class="o">...</span>   <span class="n">ma_somme</span> <span class="o">=</span> <span class="n">calculer_somme</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="c">#Pourquoi le &quot;*args&quot; </span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;Ma somme est &quot;</span><span class="p">,</span> <span class="n">ma_somme</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="c">#Appel 2, je fais passer une liste</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">calculer_somme</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s">&#39;int&#39;</span> <span class="ow">and</span> <span class="s">&#39;list&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme_sans_premier</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">Premier</span> <span class="n">est</span>  <span class="mi">10</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ma</span> <span class="n">somme</span> <span class="n">est</span>  <span class="mi">6</span>
+</pre></div>
+
+
+<h4>Explications:</h4>
+<p><strong>calculer_somme</strong> est une simple fonction qui calcule la somme de nombres qui lui sont passes en parametre. (Easy)</p>
+<p><strong>calculer_somme_sans_premier</strong> calcule la somme des nombres qui lui sont passes en paramatres sans tenir compte du premier.</p>
+<p>Dans l'appel <em>Appel 1</em>, je fais passer des nombres, on a le resultat escompte.</p>
+<p>Dans l'appel <em>Appel 2</em>, j'essaie de faire passer une liste, j'ai une <strong>TypeError</strong>, parce que <strong>sum</strong>
+est une fonction <em>builtin</em> qui renvoit la somme d'une sequence de <strong>nombres</strong> qui lui sont passes. Pas une <strong>liste</strong>  ou un <strong>tuple</strong>.</p>
+<p>A la question <em>pourquoi le *args ?</em> dans <strong>calculer_somme_sans_premier</strong> lors de l'appel de <strong>calculer_somme</strong>, la reponse est qu'il faut deballer <strong>*args</strong> puisque <strong>sum</strong> ne gere que des nombres et pas une <strong>liste</strong> ou un <strong>tuple</strong>.
+Dans l'appel <em>Appel 3</em> on remarque bien que <strong>args</strong> est un tuple, or il faut passer des <strong>nombres</strong>, qui ne sont que ses <strong>elements</strong>, d'ou le <strong>deballage</strong>.</p>
+    </div><!-- /.entry-content -->
+        <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "comprendre-args-kwargs.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://fgjosue.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+    
+  </article>
+</section>
+        <section id="extras" class="body">
+                        <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                                                    <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                                                    <li><a href="http://python.org">Python.org</a></li>
+                                                    <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                                                </ul>
+                </div><!-- /.blogroll -->
+                                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+                                                    <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                                                    <li><a href="https://github.com/josuebrunel">Github</a></li>
+                                                </ul>
+                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

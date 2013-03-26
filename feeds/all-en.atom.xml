@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://www.josuebrunel.org/" rel="alternate"></link><link href="http://www.josuebrunel.org/feeds/all-en.atom.xml" rel="self"></link><id>http://www.josuebrunel.org/</id><updated>2013-02-05T00:00:00+01:00</updated><entry><title>Introduction aux Makefiles</title><link href="http://www.josuebrunel.org/introduction-aux-makefiles.html" rel="alternate"></link><updated>2013-02-05T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-02-05:introduction-aux-makefiles.html</id><summary type="html">&lt;h3&gt;Makefile&lt;/h3&gt;
+&lt;p&gt;Un &lt;strong&gt;makefile&lt;/strong&gt; est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type &lt;strong&gt;make&lt;/strong&gt; (gmake,...). &lt;/p&gt;
+&lt;h4&gt;A quoi sert il ?&lt;/h4&gt;
+&lt;p&gt;Il permet de construire automatiquement des &lt;strong&gt;&lt;em&gt;executable&lt;/em&gt;&lt;/strong&gt; (tres souvent) , des &lt;strong&gt;&lt;em&gt;libraries&lt;/em&gt;&lt;/strong&gt;, des &lt;strong&gt;&lt;em&gt;architectures&lt;/em&gt;&lt;/strong&gt; de dossier ou des actions &lt;strong&gt;&lt;em&gt;diverses&lt;/em&gt;&lt;/strong&gt; . En gros , enormement de choses .&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;Guillaume&amp;gt; Pourquoi ne pas juste ecrire un script shell, python pour le faire ?
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;La principale difference entre une &lt;strong&gt;makefile&lt;/strong&gt; et un &lt;strong&gt;script normal&lt;/strong&gt; est que les instructions d'un &lt;strong&gt;makefile&lt;/strong&gt; ne sont executées que si &lt;strong&gt;necessaires&lt;/strong&gt;, c.a.d qu'une action (règle) qui a deja été accomplie, ne sera plus reexecutée.&lt;/p&gt;
+&lt;h4&gt;Comment fonctionne t-il ?&lt;/h4&gt;
+&lt;p&gt;Il fonctionne tout simplement par verification de statisfactions de dépendances. Je m'explique par l'algorithme qui suit :
+Pour faire mon &lt;strong&gt;tea&lt;/strong&gt; (avec l'accent british s'il vous plait!!) j'ai généralement besoin d'une &lt;strong&gt;cup&lt;/strong&gt; , de l'eau 
+et un &lt;strong&gt;tea bag&lt;/strong&gt; (twisted mind, get away!!!). On supposera qu'on a déja notre tasse.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je de l'eau chaude ?&lt;/p&gt;
+&lt;p&gt;O : on passe a l'étape 2&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer de l'eau ?&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Satisfait&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;impossible&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;creer&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;eau&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;sors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je du thé ?&lt;/p&gt;
+&lt;p&gt;O : alors  étape 3&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer du thé ?&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;me&lt;/span&gt; &lt;span class="n"&gt;procure&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="n"&gt;th&lt;/span&gt;&lt;span class="err"&gt;é&lt;/span&gt; &lt;span class="n"&gt;puis&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;vais&lt;/span&gt; &lt;span class="err"&gt;à&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="n"&gt;suivante&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;jre&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Je fais mon thé grace à mon eau et mon sac de thé&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A la prochaine execution, on n'aura plus besoin de se procurer de l'eau par exemple, dans le cas ou la dependance
+est toujours satisfaite .&lt;/p&gt;
+&lt;h4&gt;Comment ecrire un Makefile ?&lt;/h4&gt;
+&lt;p&gt;Context : &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.youtube.com/watch?v=kcsNbQRU5TI"&gt;Jimmy Mcmillan&lt;/a&gt; veut écrire 2 fonctions d'affichage pour son party. Etant le super programmeur de son party, il se lance :  &lt;/p&gt;
+&lt;p&gt;un fichier my_putchar.h&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putchar__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putchar__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putchar.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.h&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putstr__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putstr__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include &amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier main.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include&amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#incluce&amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;The Rent Is Damn Too High !!!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;complilation separee en ligne de commande&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc -Wall -c main.c my_putchar.c my_putstr.c
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;ls *.o &lt;span class="c"&gt;# pour lister les .o generes&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc main.o my_putchar.o my_putstr.o -o my_exe &lt;span class="c"&gt;#generation de l&amp;#39;executable&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;./test
+&lt;span class="go"&gt;Omg!&lt;/span&gt;
+&lt;span class="go"&gt;The Rent Is Damn Too High !!!&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Faut avouer que si son projet a plus de 10 fichiers sources, ça devient tres vite fastidieux de tout taper a la main. 
+Alors pour palier à cela, il decide d'ecrire un makefile bien commenté.&lt;/p&gt;
+&lt;p&gt;notre &lt;strong&gt;makefile&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cc  &lt;span class="c"&gt;# le compliteur (e.g: g++, gcc, gccsense,...)&lt;/span&gt;
+
+&lt;span class="c"&gt;#Les sources ou fichiers cibles&lt;/span&gt;
+&lt;span class="nv"&gt;SRC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_putchar.c&lt;span class="se"&gt;\&lt;/span&gt;
+        my_putstr.c&lt;span class="se"&gt;\&lt;/span&gt;
+        main.c
+
+&lt;span class="nv"&gt;CFLAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; -Wall -W -I./
+
+&lt;span class="nv"&gt;OBJ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;SRC:.c&lt;span class="o"&gt;=&lt;/span&gt;.o&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# infference, les .o sont generés à partir des .c de manière implicite&lt;/span&gt;
+
+&lt;span class="nv"&gt;EXE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_exe
+
+&lt;span class="c"&gt;#Les differentes regles&lt;/span&gt;
+&lt;span class="c"&gt;#La 1ere regles est la premiere appelee, donc il est vivement conseille de definir **all** comme etant la premiere&lt;/span&gt;
+
+&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;$(EXE)&lt;/span&gt;
+&lt;span class="c"&gt;#On peut definir une regle avec le nom d&amp;#39;une variable&lt;/span&gt;
+&lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;$OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+
+clean:
+    rm -rf *.o *~
+
+fclean:clean 
+    rm -rf &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;
+
+re:fclean all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt;: Respecter l'&lt;strong&gt;indentation&lt;/strong&gt;, sinon make renverra une erreur.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;all&lt;/strong&gt; et genere tous les fichiers de dependances&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make my_exe
+&lt;span class="go"&gt;make: `my_exe&amp;#39; is up to date.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;my_exe&lt;/strong&gt; qui dans notre makefile correspond a &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;$OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Et oui !! Une regle peut avoir nom du contenu d'une variable.
+Vous avez surement remarque le message qui indique que la regle est deja satisfaite (^_~) .&lt;/p&gt;
+&lt;p&gt;Pour resumer, mcmillan a les dependances suivantes dans son makefile :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;all&lt;/strong&gt; depend de &lt;strong&gt;exe&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;exe&lt;/strong&gt; depend de &lt;strong&gt;obj&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fclean&lt;/strong&gt; depend de &lt;strong&gt;clean&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;re&lt;/strong&gt; depend de &lt;strong&gt;fclean&lt;/strong&gt; puis &lt;strong&gt;all&lt;/strong&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Je vous conseille de lire &lt;a href="http://gl.developpez.com/tutoriel/outil/makefile/"&gt;ceci&lt;/a&gt; pour vous documenter sur les regles &lt;strong&gt;d'inference&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.&lt;/p&gt;</summary><category term="makefile"></category><category term="c"></category><category term="c++"></category><category term=""></category></entry><entry><title>Migration base de donnee Openerp production a developpement</title><link href="http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html" rel="alternate"></link><updated>2013-02-04T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-02-04:migration-base-de-donnee-openerp-production-a-developpement.html</id><summary type="html">&lt;p&gt;Salut !!!!
+Etant un petit programmeur &lt;em&gt;openerp&lt;/em&gt; , il m'arrive tres souvent de vouloir travailler avec un environement 
+de production. Chose assez simple a realiser , par rapport a openerp, car il suffit d'exporter la base de 
+donnees de &lt;strong&gt;production&lt;/strong&gt; et  l'importer en &lt;strong&gt;developpement&lt;/strong&gt; .
+Oui oui !!! je n'utilise pas d'outils GUI comme &lt;em&gt;pgAdmin&lt;/em&gt; ^_^ .&lt;/p&gt;
+&lt;p&gt;Prérequis :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Connaissances basiques en administration linux/unix&lt;/li&gt;
+&lt;li&gt;Connaissances basiques SQL et administration PostgreSQL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Context :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;serveur de bdd production : 192.168.1.2  # HOSTNAME = prod&lt;/li&gt;
+&lt;li&gt;serveur de  bdd developpement : 192.168.1.3 # HOSTNAME = preprod&lt;/li&gt;
+&lt;li&gt;Le nom de notre base de données est &lt;strong&gt;pikachu&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Production&lt;/h3&gt;
+&lt;p&gt;Se connecter au serveur de base de données&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;ssh root@192.168.1.2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se connecter en tant qu'utilisateur &lt;strong&gt;postgres&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;#&lt;/span&gt;su postgres
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Exporter la base de données&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@prod:/root/backup$&lt;/span&gt; pg_dump pikachu -U postgres &amp;gt; ./backup/db_backup
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;db_backup&lt;/strong&gt; est le nom du fichier contenant la base de données exportée&lt;/p&gt;
+&lt;h3&gt;Developpement&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;prod:~#&lt;/span&gt;ssh root@192.168.1.3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copier la base de données de production sur le serveur de développement&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt; scp root@192.168.1.2:/root/backup/db_backup ./backups/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Stopper les services Openerp et Apache(Web, si necéssaire)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/openerp stop &lt;span class="c"&gt;#Arret du serveur openerp de developpement&lt;/span&gt;
+&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/apache2 stop &lt;span class="c"&gt;#Arret du serveur web de developpement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Connecter vous en tant qu'utilisqteur &lt;strong&gt;postgres&lt;/strong&gt; (on est sur le serveur de developpement cette fois-ci)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;su postgres
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Créer une base de données temporaire&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root$&lt;/span&gt;psql
+&lt;span class="go"&gt;postgres=# create database pikachu_prod with owner=openerp template=template0 encoding=&amp;#39;UTF-8&amp;#39; ;&lt;/span&gt;
+&lt;span class="go"&gt;postgres=#\q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Charger le fichier de base de données recuperé en production vers la base de données de développement&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root/backups$&lt;/span&gt; cat db_backup | psql pikachu_prod
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Vous pouvez vérifier qu'on a deux bases ( pikachu , pikachu_prod) avec la commande:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;postgres=#\l&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Supprimer la base de développement et renommer la base de production avec le nom de celle de développement&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root/backups$&lt;/span&gt; psql
+&lt;span class="go"&gt;postgres=# drop database pikachu ;&lt;/span&gt;
+&lt;span class="go"&gt;postgres=# alter DATABASE pikachu_prod RENAME TO pikcachu ;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Relancez les services Openerp et Apache(Web)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/openerp start &lt;span class="c"&gt;#Demarrage du serveur openerp de développement&lt;/span&gt;
+&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/apache2 start &lt;span class="c"&gt;#Demarrage du serveur web de développement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!!&lt;/p&gt;</summary><category term="postgresql"></category><category term="openerp"></category><category term="linux"></category><category term="database"></category></entry><entry><title>How to install fonts on linux</title><link href="http://www.josuebrunel.org/how-to-install-fonts-on-linux.html" rel="alternate"></link><updated>2013-01-20T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-01-20:how-to-install-fonts-on-linux.html</id><summary type="html">&lt;p&gt;Hi guys !!!
+I was using a mac lately, and i fell in love with the monaco font. That font is so cool on emacs ^_^.&lt;/p&gt;
+&lt;p&gt;So i started searching on the internet and found how to do so. Here it's:&lt;/p&gt;
+&lt;p&gt;You can get that font &lt;a href="http://jorrel.googlepages.com/Monaco_Linux.ttf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then on your terminal &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mkdir /usr/share/fonts/truetype/custom
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mv Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo &lt;span class="nb"&gt;fc&lt;/span&gt;-cache -f -v
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all. Now you can use &lt;strong&gt;monaco&lt;/strong&gt; font .&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt example" src="./static_files/font/monaco_font.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Isn't it cool !!!&lt;/p&gt;</summary><category term="linux"></category><category term="font"></category><category term=""></category></entry><entry><title>Environement Python</title><link href="http://www.josuebrunel.org/environement-python.html" rel="alternate"></link><updated>2012-10-07T00:00:00+02:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-10-07:environement-python.html</id><summary type="html">&lt;p&gt;Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
+au developpement python .&lt;/p&gt;
+&lt;h3&gt;A- Autocomplention sur le shell python&lt;/h3&gt;
+&lt;p&gt;Vu que vous aurez a enormement utiliser le shell python, ce petit script permettant l'auto-completion vous sera fort utile.
+Dans votre &lt;strong&gt;home directory&lt;/strong&gt; creer un fichier .pythonenv.py avec le contenu suivant&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;rlcompleter&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Loading python env ....&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_and_bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;tab: complete&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Python env loaded . Enjoy autocompletion ^_^ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;:Vous pouvez vous servir du meme fichier pour importer differentes libraries que vous voudriez avoir au lancement de votre shell python (e.g sqlite3, peewee, tweepy, ...)&lt;/p&gt;
+&lt;p&gt;puis ajouter ces deux lignes a votre fichier .bashrc&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#Python Shell Environment&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PYTHONSTARTUP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.pythonenv.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Relancez votre terminal et l'autocompletion sur votre shell python sera active&lt;/p&gt;
+&lt;h3&gt;B- &lt;strong&gt;VirtualEnv&lt;/strong&gt; et &lt;strong&gt;VirtualenvWrapper&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://pypi.python.org/pypi/virtualenv"&gt;&lt;strong&gt;VirtualEnv&lt;/strong&gt;&lt;/a&gt; est un petit outil python permettant de creer des environements isoles dans lequel vous pourrez installer des packages sans interferer avec d'autres environements virtuels ou votre environement systeme .
+Son utilite se fait fortement ressentir losque l'on est amene a travailler sur des versions differentes d'un meme packages ou lorsque l'on veut tester des packages.
+&lt;strong&gt;VirtualEnvWrapper&lt;/strong&gt; est un &lt;strong&gt;wrapper&lt;/strong&gt; comme son nom l'indique, qui expose plusieurs fonctionalites de &lt;strong&gt;virtualenv&lt;/strong&gt; de maniere assez simple.&lt;/p&gt;
+&lt;h4&gt;Installation&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt;pip install virtualenvwrapper
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Utilisation&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt; mkvirtualenv konoha &lt;span class="c"&gt;#creation de nottre environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;New python executable in konoha/bin/python&lt;/span&gt;
+&lt;span class="go"&gt;Installing setuptools............done.&lt;/span&gt;
+&lt;span class="go"&gt;Installing pip...............done.&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/predeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postdeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/preactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/get_env_details&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; pip install peewee &lt;span class="c"&gt;#installation d&amp;#39;un package dans l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;Downloading/unpacking peewee&lt;/span&gt;
+&lt;span class="go"&gt;  Downloading peewee-2.0.7.tar.gz (662kB): 662kB downloaded&lt;/span&gt;
+&lt;span class="go"&gt;  Running setup.py egg_info for package peewee&lt;/span&gt;
+
+&lt;span class="go"&gt;Installing collected packages: peewee&lt;/span&gt;
+&lt;span class="go"&gt;  Running setup.py install for peewee&lt;/span&gt;
+&lt;span class="go"&gt;    changing mode of build/scripts-2.7/pwiz.py from 664 to 775&lt;/span&gt;
+
+&lt;span class="go"&gt;    changing mode of /home/yosuke/.virtualenvs/konoha/bin/pwiz.py to 775&lt;/span&gt;
+&lt;span class="go"&gt;Successfully installed peewee&lt;/span&gt;
+&lt;span class="go"&gt;Cleaning up...&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; deactivate &lt;span class="c"&gt;#sortie de l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!! Vous etes prets (enfin je pense)&lt;/p&gt;</summary><category term="python"></category><category term="shell"></category></entry><entry><title>Openerp Module Development : Partie I</title><link href="http://www.josuebrunel.org/openerp-module-development-partie-i.html" rel="alternate"></link><updated>2012-10-04T00:00:00+02:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-10-04:openerp-module-development-partie-i.html</id><summary type="html">&lt;h3&gt;&lt;strong&gt;Pre-requis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Connaissances en programmation &lt;a href="http://www.python.org/"&gt;python&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OS : Ubuntu 12.04&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python : 2.7&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Openerp : 6.1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Host : localhost&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On supposera que Openerp 6 est deja installe et tourne en &lt;a href="http://localhost:8069"&gt;localhost:8069&lt;/a&gt; &lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Architecture d'un module openerp (&amp;gt;=6)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Un module openerp est généralement composé de fichiers et repertoires suivants. &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt; module_name/&lt;/span&gt;
+&lt;span class="go"&gt;    ├── module_name.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── module_name_view.xml&lt;/span&gt;
+&lt;span class="go"&gt;    ├── __init__.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── __openerp__.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── reports&lt;/span&gt;
+&lt;span class="go"&gt;    ├── wizards&lt;/span&gt;
+&lt;span class="go"&gt;    └── workflows&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;strong&gt;init&lt;/strong&gt;&lt;/em&gt;&lt;/strong&gt; : Indique que le dossier est un package&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;module_name.py&lt;/em&gt;&lt;/strong&gt; : Il contient les objects de votre module &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;module_name_view.xml&lt;/em&gt;&lt;/strong&gt; : Gere les donnees via une definition d'interface (view, les menu, les interactions ...)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;strong&gt;openerp&lt;/strong&gt;&lt;/em&gt;&lt;/strong&gt; : Decrit le module (nom , version, auteur, dependances,...)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;reports&lt;/em&gt;&lt;/strong&gt; : Dossier contenant les objest et fichiers lies au reporting &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;wizards&lt;/em&gt;&lt;/strong&gt; : Dossier contenant les objets definissant les interactions client-server (&lt;a href="http://doc.openerp.com/v6.1/developer/04_wizard.html"&gt;voir&lt;/a&gt;) &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;workflow&lt;/em&gt;&lt;/strong&gt; : Dossier contenant la definition d'un workflow (&lt;a href="http://doc.openerp.com/v6.0/developer/3_9_Workflow_Business_Process/index.html"&gt;voir&lt;/a&gt;)&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;A- Un hello world&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Pour notre &lt;strong&gt;hello world&lt;/strong&gt; j'ai pensé à un module nous permettant d'enregistrer une famille et ses membres . &lt;/p&gt;
+&lt;p&gt;A vos terminaux !!!&lt;/p&gt;
+&lt;p&gt;Creer un dossier &lt;strong&gt;family&lt;/strong&gt; dans votre espace de travail avec les fichier suivants :&lt;/p&gt;
+&lt;p&gt;1- &lt;strong&gt;&lt;strong&gt;openerp&lt;/strong&gt;.py&lt;/strong&gt; dont le contenu est le suivant :&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# le nom du module, il apparait dans la liste des modules&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# la version&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# l&amp;#39;auteur&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;website&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;none&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# site web&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Generic Modules/Others&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# category du module&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;depends&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;base&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;# liste des modules de dependances&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Simple module permettant d&amp;#39;enregistrer une famille est ses memebres&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;update_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_view.xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#liste des vue, dans notre cas family_view.xml&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;demo_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;init_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;installable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt; : Tous les modules dependent de &lt;strong&gt;&lt;em&gt;base&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;2- &lt;strong&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/strong&gt; contenant ceci :&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;family&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Simple &lt;em&gt;importation&lt;/em&gt; d'un module python &lt;/p&gt;
+&lt;p&gt;3- &lt;strong&gt;family.py&lt;/strong&gt; &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;osv&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;family_family&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;_columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Family Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;one2many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Members&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;family_family&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;family_member&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.member&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;_columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="c"&gt;# dictionnaire des champs de l&amp;#39;object&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;firstname&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;FirstName&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;lastname&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;LastName&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;many2one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ondelete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cascade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;  &lt;span class="c"&gt;# definition d&amp;#39;un champ de selection&lt;/span&gt;
+            &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;female&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Female&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Gender&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;readonly&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;# default : dictionnaire des valeurs par defaut&lt;/span&gt;
+    &lt;span class="n"&gt;_defaults&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;lastname&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;browse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;gender&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# &amp;quot;male&amp;quot; sera la valeur par defaut du champ &amp;quot;gender&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;family_member&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;#instanciation de la classe , __N&amp;#39;oubliez jamais de le faire__&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ce fichier decrit les objects du modules et leur caracteristiques&lt;/p&gt;
+&lt;p&gt;Documentation sur l'objet &lt;a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/object_attributes.html"&gt;osv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Documentation sur l'objet &lt;a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/field_type.html"&gt;fields&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;explications&lt;/strong&gt; :&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;_defaults['lastname']&lt;/em&gt;, j'ai utilisé une fonction &lt;em&gt;lambda&lt;/em&gt; afin de permettre que le champ &lt;em&gt;lastname&lt;/em&gt; soit automatiquement rempli en se servant du context &lt;em&gt;family_id&lt;/em&gt; definit dans le fichier &lt;em&gt;family_view.xml&lt;/em&gt; au sein de l'objet &lt;em&gt;family&lt;/em&gt;. 
+Mais cela ne se fera que dans la condition ou un &lt;em&gt;membre&lt;/em&gt; sera crée à partir du menu(vue,interface) d'une &lt;em&gt;famille&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;4- &lt;strong&gt;family_view.xml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; ?&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;openerp&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;data&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!--Family--&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_form&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- definition d&amp;#39;une vuew dont l&amp;#39;id est &amp;quot;family_form&amp;quot;--&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- nom de la vue --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- classe sur laquelle on se base pour creer la vue (une des classes de &amp;quot;family.py&amp;quot;, dans notre cas &amp;quot;family.family&amp;quot;)--&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!--type de vue : form/tree/graph --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- declaration d&amp;#39;un formulaire --&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;  &lt;span class="c"&gt;&amp;lt;!-- declaration d&amp;#39;un champ --&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;notebook&lt;/span&gt; &lt;span class="na"&gt;colspan=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;4&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; 
+                    &lt;span class="nt"&gt;&amp;lt;page&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Members&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_ids&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;domain=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;[(&amp;#39;family_id&amp;#39;,&amp;#39;=&amp;#39;,active_id)]&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;context=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{&amp;#39;family_id&amp;#39;:active_id}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- definition d&amp;#39;un context --&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;/page&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/notebook&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_tree&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!--type de vue : tree, correspond a l&amp;#39;affichage en liste d&amp;#39;elements --&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;tree&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- on declare &amp;quot;tree&amp;quot; cette fois ci et non un &amp;quot;form&amp;quot;--&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_ids&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- declaration des champs --&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/tree&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Notez que tous les champs declarés ici sont dans family.py, sinon une erreur sera levée --&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!--Definition d&amp;#39;une action --&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.actions.act_window&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_family&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- le model est bien différent : &amp;quot;ir.actions&amp;quot; et non &amp;quot;ir.ui.view&amp;quot; --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- nom de l&amp;#39;action --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;res_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- model sur lequel se base l&amp;#39;action --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_mode&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree,form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Declaration d&amp;#39;un menu --&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_menu&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;parent=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_family&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="c"&gt;&amp;lt;!--&lt;/span&gt;
+&lt;span class="c"&gt;        id : identifiant du menu&lt;/span&gt;
+&lt;span class="c"&gt;        name : nom du menu&lt;/span&gt;
+&lt;span class="c"&gt;        parent : le menu dont depend celui-ci, il sera donc un sous-menu &lt;/span&gt;
+&lt;span class="c"&gt;        action : action relier au menu&lt;/span&gt;
+&lt;span class="c"&gt;    --&amp;gt;&lt;/span&gt;
+    &lt;span class="c"&gt;&amp;lt;!-- &amp;quot;action_family&amp;quot; correspond à l&amp;#39;id de l&amp;#39;acton déclarée pécedement --&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!--Members--&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_form&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;member.form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Member&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gender&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_id&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_tree&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;member.tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;tree&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Member&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gender&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_id&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/tree&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.actions.act_window&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_member&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;res_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_mode&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree,form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_menu&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Members&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;parent=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_member&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/openerp&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Documentation sur les &lt;a href="http://doc.openerp.com/v6.0/developer/2_6_views_events/views/design_element.html"&gt;vues&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;B- Installation du module&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Pour installer notre module, il nous faut l'ajouter au differents modules de OpenERP afin qu'il soit reconnu .
+Ceci necessite de copier le dossier de notre module (&lt;strong&gt;family&lt;/strong&gt;) dans le dossiers &lt;strong&gt;addons&lt;/strong&gt; du serveur 
+Openerp.
+Par defaut le dossier de addons est le suivant (Voir le context en haut de page, car il peut changer en fonction de la distribution)&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="go"&gt;/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sinon vous pouvez le verifier en regardant votre fichier de configuration de serveur Openerp&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;.openerp_serverrc (dans votre home directory)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/etc/openerp-server.conf (dans /etc/)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais je conseille de faire des lien symboliques &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons$&lt;/span&gt; ln -s ~/workspace/family/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant que nous avons notre module dans le dossier des &lt;strong&gt;&lt;em&gt;addons&lt;/em&gt;&lt;/strong&gt; du serveur, il ne nous reste plus qu'a l'installer .&lt;/p&gt;
+&lt;p&gt;Connexion au serveur &lt;a href="http://localhost:8069"&gt;localhost&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Allez dans Parametres =&amp;gt; Modules&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module" src="./static_files/openerp/module.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Mettre a jour la liste&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt update_list" src="./static_files/openerp/update_list.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module_not_installed" src="./static_files/openerp/module_not_installed.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Vous devriez voir le module &lt;strong&gt;family&lt;/strong&gt; apparaitre sur le menu &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt family" src="./static_files/openerp/family.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt members" src="./static_files/openerp/members.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</summary><category term="openerp"></category><category term="python"></category><category term="xml"></category></entry><entry><title>About Me</title><link href="http://www.josuebrunel.org/about-me.html" rel="alternate"></link><updated>2012-10-02T00:00:00+02:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-10-02:about-me.html</id><summary type="html">&lt;p&gt;&lt;img alt="Alt Me" src="./static_files/fg.jpg" /&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;about_me&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Kouka&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;born_in&amp;quot;&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1989&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;nickname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;The Tiny Black Mushroom&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# This is kickass nickname, isn&amp;#39;t it ?&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;location&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nantes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Paris&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;interests&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Free Software&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Open Source&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Linux/Unix&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;C/C++&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;languages&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;English&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;French&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hi guys !! I'm &lt;strong&gt;&lt;em&gt;Josue Kouka&lt;/em&gt;&lt;/strong&gt; (yeah i know, tough to pronounce), a young congolese free software and open-source enthusiast, fond of programming and thirsty of knowledge.&lt;/p&gt;
+&lt;p&gt;This little blog is about stuff that i like, by that i mean a lot of &lt;strong&gt;Linux and Programming&lt;/strong&gt; (yeah sounds like fun ^_^).
+Articles will be either in English or in French (sometimes both when i can), and to make it fun to read, i will 
+do my best to refer to some &lt;em&gt;memes&lt;/em&gt;. 
+I use &lt;strong&gt;emacs&lt;/strong&gt; as my main text editor/IDE. You can check &lt;a href="https://github.com/gabrielelanaro/emacs-for-python"&gt;emacs for python&lt;/a&gt; out.&lt;/p&gt;
+&lt;p&gt;My dream is to be able ,one day to program on the top of a tree somewhere in &lt;a href="http://en.wikipedia.org/wiki/Pointe-Noire"&gt;Pointe-Noire&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here is my online french &lt;a href="http://www.doyoubuzz.com/josue-kouka/"&gt;resumé&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I think that it's almost all about me , don't hesitate to contact me at &lt;a href="mailto:josuebrunel@gmail.com"&gt;josuebrunel@gmail.com&lt;/a&gt;&lt;/p&gt;</summary><category term="Hello World"></category></entry></feed>

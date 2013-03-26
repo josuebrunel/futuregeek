@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>FutureGeek - openerp</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+                <link href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FutureGeek Atom Feed" />
+                
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie.css"/>
+                <script src="../js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+<a href="http://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="../">FutureGeek </a></h1>
+                <nav><ul>
+                                                                                                    <li ><a href="../category/about-me.html">About Me</a></li>
+                                    <li ><a href="../category/linux.html">Linux</a></li>
+                                    <li ><a href="../category/openerp.html">Openerp</a></li>
+                                    <li ><a href="../category/programming.html">Programming</a></li>
+                                    <li ><a href="../category/projects.html">Projects</a></li>
+                                </ul></nav>
+        </header><!-- /#banner -->
+                
+            
+
+                            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../oeutils.html">oeutils</a></h1> 
+                    <footer class="post-info">
+        <abbr class="published" title="2013-03-23T00:00:00">
+                Sat 23 March 2013
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="../author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="../category/projects.html">Projects</a>. </p>
+<p>tags: <a href="../tag/openerp.html">openerp</a><a href="../tag/python.html">python</a><a href="../tag/xmlrpc.html">xmlrpc</a><a href="../tag/api.html">api</a></p>
+</footer><!-- /.post-info --><h2>OEUTILS</h2>
+<p><strong>oeutils</strong> is a small python wrapper of the xml-rpc API for OpenERP. It is useful when it comes to  manipulate your OpenERP objects.
+It is not as powerful as <strong>erppeek</strong> yet but i hope that with your help one day it will ^_^.
+It's inspired from <a href="https://github.com/florentx/erppeek"><strong>erpeek</strong></a> and we can say thanks to Florent for that.
+It's kind of a personal project and i wanted to be able to do almost the same thing as <strong>erppeek</strong> but the easiest way.
+This tool lacks a lot of thing so far, but i hope that over time i will be able to improve it.
+I'm sure that i'll be laughing in the next 2 years while seeing this.</p>
+<h3>Features</h3>
+<p>With <strong>oeutils</strong> you are able to :</p>
+<ul>
+<li>
+<p>Create objects</p>
+</li>
+<li>
+<p>Read objects</p>
+</li>
+<li>
+<p>Update objects</p>
+</li>
+<li>
+<p>Delete objects</p>
+</li>
+<li>
+<p>Search objects</p>
+</li>
+<li>
+<p>Search models</p>
+</li>
+<li>
+<p>Get models fields</p>
+</li>
+</ul>
+<h3>How to</h3>
+<h4>Connexion</h4>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="kn">from</span> <span class="nn">oeutils</span> <span class="kn">import</span> <span class="n">Openerp</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">o</span> <span class="o">=</span> <span class="n">Openerp</span><span class="p">(</span><span class="n">login</span><span class="p">,</span><span class="n">pwd</span><span class="p">,</span><span class="n">dbname</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">o</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+
+
+<h4>Methods</h4>
+<div class="codehilite"><pre><span class="o">&gt;&gt;&gt;</span><span class="n">m</span> <span class="o">=</span> <span class="s">&#39;family.family&#39;</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">ids</span> <span class="o">=</span> <span class="n">o</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">m</span><span class="p">,[])</span> <span class="c"># or juste o.search(m)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">ids</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">famliy</span> <span class="o">=</span> <span class="p">{</span>
+<span class="o">...</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;kouka&#39;</span><span class="p">,</span>
+<span class="o">...</span> <span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s">&#39;family.family&#39;</span><span class="p">,</span><span class="n">famliy</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">ids</span><span class="p">,[])</span>
+<span class="p">[{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;loking&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;kouka&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="mi">2</span><span class="p">,{</span><span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;koukson&#39;</span><span class="p">})</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">m</span><span class="p">,[]),[])</span>
+<span class="p">[{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;loking&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;koukson&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">m</span><span class="p">,[]),[])</span>
+<span class="p">[{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;loking&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;koukson&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;kim&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">m</span><span class="p">,[]),[])</span>
+<span class="p">[{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;loking&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;koukson&#39;</span><span class="p">,</span> <span class="s">&#39;id&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">models</span><span class="p">(</span><span class="s">&#39;family&#39;</span><span class="p">)</span>      
+<span class="p">[</span><span class="s">&#39;family.family&#39;</span><span class="p">,</span> <span class="s">&#39;family.member&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">o</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="p">[</span><span class="s">&#39;member_ids&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<p>That's all, thanks in advance for your feebacks</p>
+<p>Please check this docstring for more informations ^_~.</p><p>There are <a href="../oeutils.html#disqus_thread">comments</a>.</p>                </article>
+                            </aside><!-- /#featured -->
+                            <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+                                                
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="../migration-base-de-donnee-openerp-production-a-developpement.html" rel="bookmark"
+                           title="Permalink to Migration base de donnee Openerp production a developpement">Migration base de donnee Openerp production a developpement</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2013-02-04T00:00:00">
+                Mon 04 February 2013
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="../author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="../category/openerp.html">Openerp</a>. </p>
+<p>tags: <a href="../tag/postgresql.html">postgresql</a><a href="../tag/openerp.html">openerp</a><a href="../tag/linux.html">linux</a><a href="../tag/database.html">database</a></p>
+</footer><!-- /.post-info -->                Migration de Base de donnees , prod vers preprod
+                <a class="readmore" href="../migration-base-de-donnee-openerp-production-a-developpement.html">read more</a>
+                <p>There are <a href="../migration-base-de-donnee-openerp-production-a-developpement.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            
+
+                 
+                        <li><article class="hentry">    
+                <header>
+                    <h1><a href="../openerp-module-development-partie-i.html" rel="bookmark"
+                           title="Permalink to Openerp Module Development : Partie I">Openerp Module Development : Partie I</a></h1>
+                </header>
+                
+                <div class="entry-content">
+                <footer class="post-info">
+        <abbr class="published" title="2012-10-04T00:00:00">
+                Thu 04 October 2012
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="../author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="../category/openerp.html">Openerp</a>. </p>
+<p>tags: <a href="../tag/openerp.html">openerp</a><a href="../tag/python.html">python</a><a href="../tag/xml.html">xml</a></p>
+</footer><!-- /.post-info -->                Un petit guide sur le developpement de module Openerp
+                <a class="readmore" href="../openerp-module-development-partie-i.html">read more</a>
+                <p>There are <a href="../openerp-module-development-partie-i.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                            </ol><!-- /#posts-list -->
+                            <p class="paginator">
+        Page 1 / 1
+    </p>
+                        </section><!-- /#content -->
+                    <section id="extras" class="body">
+                        <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                                                    <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                                                    <li><a href="http://python.org">Python.org</a></li>
+                                                    <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                                                </ul>
+                </div><!-- /.blogroll -->
+                                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+                                                    <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                                                    <li><a href="https://github.com/josuebrunel">Github</a></li>
+                                                </ul>
+                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

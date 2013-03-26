@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="www.josuebrunel.org/" rel="alternate"></link><link href="www.josuebrunel.org/feeds/Linux.atom.xml" rel="self"></link><id>www.josuebrunel.org/</id><updated>2013-01-20T00:00:00+01:00</updated><entry><title>How to install fonts on linux</title><link href="www.josuebrunel.org/how-to-install-fonts-on-linux.html" rel="alternate"></link><updated>2013-01-20T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-01-20:how-to-install-fonts-on-linux.html</id><summary type="html">&lt;p&gt;Hi guys !!!
+I was using a mac lately, and i fell in love with the monaco font. That font is so cool on emacs ^_^.&lt;/p&gt;
+&lt;p&gt;So i started searching on the internet and found how to do so. Here it's:&lt;/p&gt;
+&lt;p&gt;You can get that font &lt;a href="http://jorrel.googlepages.com/Monaco_Linux.ttf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then on your terminal &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mkdir /usr/share/fonts/truetype/custom
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mv Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo &lt;span class="nb"&gt;fc&lt;/span&gt;-cache -f -v
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all. Now you can use &lt;strong&gt;monaco&lt;/strong&gt; font .&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt example" src="./static_files/font/monaco_font.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Isn't it cool !!!&lt;/p&gt;</summary><category term="linux"></category><category term="font"></category><category term=""></category></entry><entry><title>ssh sans mot de passe</title><link href="www.josuebrunel.org/ssh-sans-mot-de-passe.html" rel="alternate"></link><updated>2012-12-20T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-12-20:ssh-sans-mot-de-passe.html</id><summary type="html">&lt;p&gt;Hi guys !!!!&lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué d'entrer votre mot de passe sur les differents serveurs sur lesquels vous travaillez tous les jours ?&lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué de rechercher vos credentials ssh dans les différentes fiches techniques afin de vous connecter ? &lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué de ....&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;loking&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Yo&lt;/span&gt; &lt;span class="n"&gt;Joe&lt;/span&gt;&lt;span class="o"&gt;!!!&lt;/span&gt; &lt;span class="n"&gt;Stop&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="o"&gt;!!!&lt;/span&gt;
+&lt;span class="n"&gt;loking&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;ain&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;commercial&lt;/span&gt; &lt;span class="n"&gt;speaker&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; 
+&lt;span class="n"&gt;josue&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Nope&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ain&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;loking&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Then&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="o"&gt;!!!&lt;/span&gt;
+&lt;span class="n"&gt;loking&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Besides&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;suck&lt;/span&gt; &lt;span class="o"&gt;!!!!&lt;/span&gt;
+&lt;span class="n"&gt;josue&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;was&lt;/span&gt; &lt;span class="n"&gt;mean&lt;/span&gt; &lt;span class="n"&gt;bro&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Petit guide sur comment faire pour eviter d'en avoir marre.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt;ssh -t keygen rsa
+&lt;span class="go"&gt;Generating public/private rsa key pair.&lt;/span&gt;
+&lt;span class="go"&gt;Enter file in which to save the key (/home/huey/.ssh/id_rsa): &lt;/span&gt;
+&lt;span class="go"&gt;Created directory &amp;#39;/home/huey/.ssh&amp;#39;.&lt;/span&gt;
+&lt;span class="go"&gt;Enter passphrase (empty for no passphrase): &lt;/span&gt;
+&lt;span class="go"&gt;Enter same passphrase again: &lt;/span&gt;
+&lt;span class="go"&gt;Your identification has been saved in /home/huey/.ssh/id_rsa.&lt;/span&gt;
+&lt;span class="go"&gt;Your public key has been saved in /home/huey/.ssh/id_rsa.pub.&lt;/span&gt;
+&lt;span class="go"&gt;The key fingerprint is:&lt;/span&gt;
+&lt;span class="go"&gt;3e:4f:05:79:3a:9f:96:7c:3b:ad:e9:58:37:bc:37:e4 huey@freeman&lt;/span&gt;
+
+&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt; ls .ssh/
+&lt;span class="go"&gt;id_rsa  id_rsa.pub  known_hosts&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NB&lt;/em&gt;&lt;/strong&gt;: N'entrez pas de &lt;strong&gt;&lt;em&gt;passphrase&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;On se connecte sur le serveur &lt;em&gt;ruckus&lt;/em&gt;
+On cree un repertoire &lt;strong&gt;&lt;em&gt;.ssh&lt;/em&gt;&lt;/strong&gt; s'il n'existe pas.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;uncle@ruckus:~$&lt;/span&gt;mkdir .ssh/
+&lt;span class="gp"&gt;uncle@ruckus:~$&lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De retour sur huey, entrez la commande suivante et votre mot de passe &lt;em&gt;pour la derniere fois&lt;/em&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt;cat .ssh/id_rsa.pub | ssh uncle@ruckus &lt;span class="s1"&gt;&amp;#39;cat &amp;gt;&amp;gt; .ssh/authorized_keys&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;uncle@ruckus&amp;#39;s password:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant, huey peut se connecter avec le compte &lt;em&gt;uncle&lt;/em&gt; sur &lt;em&gt;ruckus&lt;/em&gt; sans mot de passe.&lt;/p&gt;
+&lt;p&gt;Et moi je peux aller &lt;a href="http://www.youtube.com/watch?v=b3F0B4hAsmI"&gt;poser ma question à Ronalda&lt;/a&gt;&lt;/p&gt;</summary><category term="linux"></category><category term="ssh"></category><category term="server"></category></entry></feed>

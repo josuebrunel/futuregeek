@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="www.josuebrunel.org/" rel="alternate"></link><link href="www.josuebrunel.org/feeds/Programming.atom.xml" rel="self"></link><id>www.josuebrunel.org/</id><updated>2013-03-26T00:00:00+01:00</updated><entry><title>Comprendre *, **, *args, **kwargs</title><link href="www.josuebrunel.org/comprendre-args-kwargs.html" rel="alternate"></link><updated>2013-03-26T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-03-26:comprendre-args-kwargs.html</id><summary type="html">&lt;p&gt;Hi guys !!!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unpackers&lt;/strong&gt; et &lt;strong&gt;varargs&lt;/strong&gt; ? It doesn't ring a bell ? oh come on (redneck accent).&lt;/p&gt;
+&lt;p&gt;Je suis sure que vous avez deja vu des instructions du genre :&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;myliste&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="c"&gt;# Definition&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant vous voyez tres bien de quoi je parle, c'est bien.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unpackers&lt;/strong&gt; : &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; et &lt;strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;varargs&lt;/strong&gt; : &lt;strong&gt;&lt;em&gt;*args&lt;/em&gt;&lt;/strong&gt; et &lt;strong&gt;&lt;em&gt;**kwargs&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On va faire quelques petites experiences &lt;/p&gt;
+&lt;h3&gt;Experience 1 : &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 2&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lors du premier appel &lt;em&gt;Appel 1&lt;/em&gt;, le shell nous a renvoye une erreur, ce qui est tout a fait logique.
+On a passe une &lt;strong&gt;liste&lt;/strong&gt; a une fonction qui attend 3 parametres.&lt;/p&gt;
+&lt;p&gt;Ensuite lors de &lt;em&gt;Appel 2&lt;/em&gt;, aucune erreur du shell. Seul difference avec &lt;em&gt;Appel 1&lt;/em&gt;, est le &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; devant notre liste &lt;strong&gt;&lt;em&gt;mylist&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;Le &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; a &lt;strong&gt;deballe&lt;/strong&gt; les elements de notre liste et les a envoye a la fonction, c'est a dire que
+ce n'est pas &lt;strong&gt;&lt;em&gt;[1,2,4]&lt;/em&gt;&lt;/strong&gt; (une liste) qui a ete envoye mais &lt;strong&gt;&lt;em&gt;1,2,3&lt;/em&gt;&lt;/strong&gt;, en gros les elements de la liste.&lt;/p&gt;
+&lt;p&gt;On ajoute un nouvel element a la liste puis on rappelle la function ( &lt;em&gt;Appel 3&lt;/em&gt; ), cette fois ci &lt;strong&gt;ERREUR&lt;/strong&gt;. Tout simplement parce que notre fonction attends 3 parametres et non 4.&lt;/p&gt;
+&lt;p&gt;Pour conclure , &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; sert a deballer les elements d'une &lt;em&gt;liste&lt;/em&gt;, d'un &lt;em&gt;tuple&lt;/em&gt; ...
+On ne l'utilise que lors d'un appel de foncton ou methode.&lt;/p&gt;
+&lt;h3&gt;Experience 2: &lt;strong&gt;&lt;em&gt;*args&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;x est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;args est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;varargs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1 bis&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;varargs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel 2&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 4&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On peut remarque que dans les appels &lt;em&gt;Appel 1&lt;/em&gt; et &lt;em&gt;Appel 1 bis&lt;/em&gt;, &lt;strong&gt;x&lt;/strong&gt; est eguale a &lt;strong&gt;1&lt;/strong&gt;. Et que les autres parametres sont assignes a &lt;strong&gt;*args&lt;/strong&gt;, qui les prend sous forme de tuples peu importe la taille.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 2&lt;/em&gt;, un seul parametre est passe a la fonction, et ce seul parametre est assigne a
+&lt;strong&gt;x&lt;/strong&gt; et vu qu'il n'y a pas d'autres parametres, &lt;strong&gt;*args&lt;/strong&gt; recoit un &lt;em&gt;tuple&lt;/em&gt; vide.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt;, on passe un parametre et une &lt;strong&gt;&lt;em&gt;liste deballee&lt;/em&gt;&lt;/strong&gt; (*mylist), les elements de la liste sont donc assignes a &lt;strong&gt;*args&lt;/strong&gt; sous forme de tuples.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 4&lt;/em&gt;, on passe un parametre et une &lt;strong&gt;&lt;em&gt;simple liste&lt;/em&gt;&lt;/strong&gt; (mylist), la liste est donc assigne a &lt;strong&gt;*args&lt;/strong&gt;, ce qui nous donne un tuple de liste (&lt;em&gt;([])&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Un &lt;strong&gt;*myvar&lt;/strong&gt; dans la &lt;strong&gt;definition&lt;/strong&gt; d'une fonction/methode est capable de recevoir n'importe quoi et un nombre non defini de parametre.&lt;/p&gt;
+&lt;h3&gt;Petit Use Case:&lt;/h3&gt;
+&lt;p&gt;On doit ecrire une fonction qui calcule la somme des nombres qui lui sont passe, sans tenir compte du premier parametre .&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;calculer_somme_sans_premier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;premier&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Premier est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;premier&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;args est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="n"&gt;ma_somme&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Pourquoi le &amp;quot;*args&amp;quot; &lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ma somme est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ma_somme&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c"&gt;#Appel 2, je fais passer une liste&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;unsupported&lt;/span&gt; &lt;span class="n"&gt;operand&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;int&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;list&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme_sans_premier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;Premier&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Ma&lt;/span&gt; &lt;span class="n"&gt;somme&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Explications:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;calculer_somme&lt;/strong&gt; est une simple fonction qui calcule la somme de nombres qui lui sont passes en parametre. (Easy)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;calculer_somme_sans_premier&lt;/strong&gt; calcule la somme des nombres qui lui sont passes en paramatres sans tenir compte du premier.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 1&lt;/em&gt;, je fais passer des nombres, on a le resultat escompte.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 2&lt;/em&gt;, j'essaie de faire passer une liste, j'ai une &lt;strong&gt;TypeError&lt;/strong&gt;, parce que &lt;strong&gt;sum&lt;/strong&gt;
+est une fonction &lt;em&gt;builtin&lt;/em&gt; qui renvoit la somme d'une sequence de &lt;strong&gt;nombres&lt;/strong&gt; qui lui sont passes. Pas une &lt;strong&gt;liste&lt;/strong&gt;  ou un &lt;strong&gt;tuple&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;A la question &lt;em&gt;pourquoi le *args ?&lt;/em&gt; dans &lt;strong&gt;calculer_somme_sans_premier&lt;/strong&gt; lors de l'appel de &lt;strong&gt;calculer_somme&lt;/strong&gt;, la reponse est qu'il faut deballer &lt;strong&gt;*args&lt;/strong&gt; puisque &lt;strong&gt;sum&lt;/strong&gt; ne gere que des nombres et pas une &lt;strong&gt;liste&lt;/strong&gt; ou un &lt;strong&gt;tuple&lt;/strong&gt;.
+Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt; on remarque bien que &lt;strong&gt;args&lt;/strong&gt; est un tuple, or il faut passer des &lt;strong&gt;nombres&lt;/strong&gt;, qui ne sont que ses &lt;strong&gt;elements&lt;/strong&gt;, d'ou le &lt;strong&gt;deballage&lt;/strong&gt;.&lt;/p&gt;</summary><category term="python"></category></entry><entry><title>Introduction aux Makefiles</title><link href="www.josuebrunel.org/introduction-aux-makefiles.html" rel="alternate"></link><updated>2013-02-05T00:00:00+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2013-02-05:introduction-aux-makefiles.html</id><summary type="html">&lt;h3&gt;Makefile&lt;/h3&gt;
+&lt;p&gt;Un &lt;strong&gt;makefile&lt;/strong&gt; est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type &lt;strong&gt;make&lt;/strong&gt; (gmake,...). &lt;/p&gt;
+&lt;h4&gt;A quoi sert il ?&lt;/h4&gt;
+&lt;p&gt;Il permet de construire automatiquement des &lt;strong&gt;&lt;em&gt;executable&lt;/em&gt;&lt;/strong&gt; (tres souvent) , des &lt;strong&gt;&lt;em&gt;libraries&lt;/em&gt;&lt;/strong&gt;, des &lt;strong&gt;&lt;em&gt;architectures&lt;/em&gt;&lt;/strong&gt; de dossier ou des actions &lt;strong&gt;&lt;em&gt;diverses&lt;/em&gt;&lt;/strong&gt; . En gros , enormement de choses .&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;Guillaume&amp;gt; Pourquoi ne pas juste ecrire un script shell, python pour le faire ?
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;La principale difference entre une &lt;strong&gt;makefile&lt;/strong&gt; et un &lt;strong&gt;script normal&lt;/strong&gt; est que les instructions d'un &lt;strong&gt;makefile&lt;/strong&gt; ne sont executées que si &lt;strong&gt;necessaires&lt;/strong&gt;, c.a.d qu'une action (règle) qui a deja été accomplie, ne sera plus reexecutée.&lt;/p&gt;
+&lt;h4&gt;Comment fonctionne t-il ?&lt;/h4&gt;
+&lt;p&gt;Il fonctionne tout simplement par verification de statisfactions de dépendances. Je m'explique par l'algorithme qui suit :
+Pour faire mon &lt;strong&gt;tea&lt;/strong&gt; (avec l'accent british s'il vous plait!!) j'ai généralement besoin d'une &lt;strong&gt;cup&lt;/strong&gt; , de l'eau 
+et un &lt;strong&gt;tea bag&lt;/strong&gt; (twisted mind, get away!!!). On supposera qu'on a déja notre tasse.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je de l'eau chaude ?&lt;/p&gt;
+&lt;p&gt;O : on passe a l'étape 2&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer de l'eau ?&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Satisfait&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;impossible&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;creer&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;eau&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;sors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je du thé ?&lt;/p&gt;
+&lt;p&gt;O : alors  étape 3&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer du thé ?&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;me&lt;/span&gt; &lt;span class="n"&gt;procure&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="n"&gt;th&lt;/span&gt;&lt;span class="err"&gt;é&lt;/span&gt; &lt;span class="n"&gt;puis&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;vais&lt;/span&gt; &lt;span class="err"&gt;à&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="n"&gt;suivante&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;jre&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Je fais mon thé grace à mon eau et mon sac de thé&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A la prochaine execution, on n'aura plus besoin de se procurer de l'eau par exemple, dans le cas ou la dependance
+est toujours satisfaite .&lt;/p&gt;
+&lt;h4&gt;Comment ecrire un Makefile ?&lt;/h4&gt;
+&lt;p&gt;Context : &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.youtube.com/watch?v=kcsNbQRU5TI"&gt;Jimmy Mcmillan&lt;/a&gt; veut écrire 2 fonctions d'affichage pour son party. Etant le super programmeur de son party, il se lance :  &lt;/p&gt;
+&lt;p&gt;un fichier my_putchar.h&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putchar__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putchar__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putchar.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.h&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putstr__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putstr__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include &amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier main.c&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include&amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#incluce&amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;The Rent Is Damn Too High !!!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;complilation separee en ligne de commande&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc -Wall -c main.c my_putchar.c my_putstr.c
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;ls *.o &lt;span class="c"&gt;# pour lister les .o generes&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc main.o my_putchar.o my_putstr.o -o my_exe &lt;span class="c"&gt;#generation de l&amp;#39;executable&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;./test
+&lt;span class="go"&gt;Omg!&lt;/span&gt;
+&lt;span class="go"&gt;The Rent Is Damn Too High !!!&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Faut avouer que si son projet a plus de 10 fichiers sources, ça devient tres vite fastidieux de tout taper a la main. 
+Alors pour palier à cela, il decide d'ecrire un makefile bien commenté.&lt;/p&gt;
+&lt;p&gt;notre &lt;strong&gt;makefile&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cc  &lt;span class="c"&gt;# le compliteur (e.g: g++, gcc, gccsense,...)&lt;/span&gt;
+
+&lt;span class="c"&gt;#Les sources ou fichiers cibles&lt;/span&gt;
+&lt;span class="nv"&gt;SRC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_putchar.c&lt;span class="se"&gt;\&lt;/span&gt;
+        my_putstr.c&lt;span class="se"&gt;\&lt;/span&gt;
+        main.c
+
+&lt;span class="nv"&gt;CFLAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; -Wall -W -I./
+
+&lt;span class="nv"&gt;OBJ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;SRC:.c&lt;span class="o"&gt;=&lt;/span&gt;.o&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# infference, les .o sont generés à partir des .c de manière implicite&lt;/span&gt;
+
+&lt;span class="nv"&gt;EXE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_exe
+
+&lt;span class="c"&gt;#Les differentes regles&lt;/span&gt;
+&lt;span class="c"&gt;#La 1ere regles est la premiere appelee, donc il est vivement conseille de definir **all** comme etant la premiere&lt;/span&gt;
+
+&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;$(EXE)&lt;/span&gt;
+&lt;span class="c"&gt;#On peut definir une regle avec le nom d&amp;#39;une variable&lt;/span&gt;
+&lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;$OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+
+clean:
+    rm -rf *.o *~
+
+fclean:clean 
+    rm -rf &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;
+
+re:fclean all
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt;: Respecter l'&lt;strong&gt;indentation&lt;/strong&gt;, sinon make renverra une erreur.&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;all&lt;/strong&gt; et genere tous les fichiers de dependances&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make my_exe
+&lt;span class="go"&gt;make: `my_exe&amp;#39; is up to date.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;my_exe&lt;/strong&gt; qui dans notre makefile correspond a &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;:&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;$OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Et oui !! Une regle peut avoir nom du contenu d'une variable.
+Vous avez surement remarque le message qui indique que la regle est deja satisfaite (^_~) .&lt;/p&gt;
+&lt;p&gt;Pour resumer, mcmillan a les dependances suivantes dans son makefile :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;all&lt;/strong&gt; depend de &lt;strong&gt;exe&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;exe&lt;/strong&gt; depend de &lt;strong&gt;obj&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fclean&lt;/strong&gt; depend de &lt;strong&gt;clean&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;re&lt;/strong&gt; depend de &lt;strong&gt;fclean&lt;/strong&gt; puis &lt;strong&gt;all&lt;/strong&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Je vous conseille de lire &lt;a href="http://gl.developpez.com/tutoriel/outil/makefile/"&gt;ceci&lt;/a&gt; pour vous documenter sur les regles &lt;strong&gt;d'inference&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.&lt;/p&gt;</summary><category term="makefile"></category><category term="c"></category><category term="c++"></category><category term=""></category></entry><entry><title>Environement Python</title><link href="www.josuebrunel.org/environement-python.html" rel="alternate"></link><updated>2012-10-07T00:00:00+02:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2012-10-07:environement-python.html</id><summary type="html">&lt;p&gt;Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
+au developpement python .&lt;/p&gt;
+&lt;h3&gt;A- Autocomplention sur le shell python&lt;/h3&gt;
+&lt;p&gt;Vu que vous aurez a enormement utiliser le shell python, ce petit script permettant l'auto-completion vous sera fort utile.
+Dans votre &lt;strong&gt;home directory&lt;/strong&gt; creer un fichier .pythonenv.py avec le contenu suivant&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;rlcompleter&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Loading python env ....&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_and_bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;tab: complete&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Python env loaded . Enjoy autocompletion ^_^ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;:Vous pouvez vous servir du meme fichier pour importer differentes libraries que vous voudriez avoir au lancement de votre shell python (e.g sqlite3, peewee, tweepy, ...)&lt;/p&gt;
+&lt;p&gt;puis ajouter ces deux lignes a votre fichier .bashrc&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="c"&gt;#Python Shell Environment&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PYTHONSTARTUP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.pythonenv.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Relancez votre terminal et l'autocompletion sur votre shell python sera active&lt;/p&gt;
+&lt;h3&gt;B- &lt;strong&gt;VirtualEnv&lt;/strong&gt; et &lt;strong&gt;VirtualenvWrapper&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://pypi.python.org/pypi/virtualenv"&gt;&lt;strong&gt;VirtualEnv&lt;/strong&gt;&lt;/a&gt; est un petit outil python permettant de creer des environements isoles dans lequel vous pourrez installer des packages sans interferer avec d'autres environements virtuels ou votre environement systeme .
+Son utilite se fait fortement ressentir losque l'on est amene a travailler sur des versions differentes d'un meme packages ou lorsque l'on veut tester des packages.
+&lt;strong&gt;VirtualEnvWrapper&lt;/strong&gt; est un &lt;strong&gt;wrapper&lt;/strong&gt; comme son nom l'indique, qui expose plusieurs fonctionalites de &lt;strong&gt;virtualenv&lt;/strong&gt; de maniere assez simple.&lt;/p&gt;
+&lt;h4&gt;Installation&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt;pip install virtualenvwrapper
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Utilisation&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt; mkvirtualenv konoha &lt;span class="c"&gt;#creation de nottre environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;New python executable in konoha/bin/python&lt;/span&gt;
+&lt;span class="go"&gt;Installing setuptools............done.&lt;/span&gt;
+&lt;span class="go"&gt;Installing pip...............done.&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/predeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postdeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/preactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/get_env_details&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; pip install peewee &lt;span class="c"&gt;#installation d&amp;#39;un package dans l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;Downloading/unpacking peewee&lt;/span&gt;
+&lt;span class="go"&gt;  Downloading peewee-2.0.7.tar.gz (662kB): 662kB downloaded&lt;/span&gt;
+&lt;span class="go"&gt;  Running setup.py egg_info for package peewee&lt;/span&gt;
+
+&lt;span class="go"&gt;Installing collected packages: peewee&lt;/span&gt;
+&lt;span class="go"&gt;  Running setup.py install for peewee&lt;/span&gt;
+&lt;span class="go"&gt;    changing mode of build/scripts-2.7/pwiz.py from 664 to 775&lt;/span&gt;
+
+&lt;span class="go"&gt;    changing mode of /home/yosuke/.virtualenvs/konoha/bin/pwiz.py to 775&lt;/span&gt;
+&lt;span class="go"&gt;Successfully installed peewee&lt;/span&gt;
+&lt;span class="go"&gt;Cleaning up...&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; deactivate &lt;span class="c"&gt;#sortie de l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!! Vous etes prets (enfin je pense)&lt;/p&gt;</summary><category term="python"></category><category term="shell"></category></entry></feed>

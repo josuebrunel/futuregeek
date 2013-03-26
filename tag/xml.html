@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>FutureGeek - xml</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+                <link href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="FutureGeek Atom Feed" />
+                
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie.css"/>
+                <script src="../js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+<a href="http://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="../">FutureGeek </a></h1>
+                <nav><ul>
+                                                                                                    <li ><a href="../category/about-me.html">About Me</a></li>
+                                    <li ><a href="../category/linux.html">Linux</a></li>
+                                    <li ><a href="../category/openerp.html">Openerp</a></li>
+                                    <li ><a href="../category/programming.html">Programming</a></li>
+                                    <li ><a href="../category/projects.html">Projects</a></li>
+                                </ul></nav>
+        </header><!-- /#banner -->
+                
+            
+
+                            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../openerp-module-development-partie-i.html">Openerp Module Development : Partie I</a></h1> 
+                    <footer class="post-info">
+        <abbr class="published" title="2012-10-04T00:00:00">
+                Thu 04 October 2012
+        </abbr>
+
+                <address class="vcard author">
+                By <a class="url fn" href="../author/josue-kouka.html">Josue Kouka</a>
+        </address>
+        <p>In <a href="../category/openerp.html">Openerp</a>. </p>
+<p>tags: <a href="../tag/openerp.html">openerp</a><a href="../tag/python.html">python</a><a href="../tag/xml.html">xml</a></p>
+</footer><!-- /.post-info --><h3><strong>Pre-requis</strong></h3>
+<p>Connaissances en programmation <a href="http://www.python.org/">python</a></p>
+<h3><strong>Context</strong></h3>
+<ul>
+<li>
+<p>OS : Ubuntu 12.04</p>
+</li>
+<li>
+<p>Python : 2.7</p>
+</li>
+<li>
+<p>Openerp : 6.1</p>
+</li>
+<li>
+<p>Host : localhost</p>
+</li>
+</ul>
+<p>On supposera que Openerp 6 est deja installe et tourne en <a href="http://localhost:8069">localhost:8069</a> </p>
+<h3><strong>Architecture d'un module openerp (&gt;=6)</strong></h3>
+<p>Un module openerp est généralement composé de fichiers et repertoires suivants. </p>
+<div class="codehilite"><pre><span class="go"> module_name/</span>
+<span class="go">    ├── module_name.py</span>
+<span class="go">    ├── module_name_view.xml</span>
+<span class="go">    ├── __init__.py</span>
+<span class="go">    ├── __openerp__.py</span>
+<span class="go">    ├── reports</span>
+<span class="go">    ├── wizards</span>
+<span class="go">    └── workflows</span>
+</pre></div>
+
+
+<p><strong><em><strong>init</strong></em></strong> : Indique que le dossier est un package</p>
+<p><strong><em>module_name.py</em></strong> : Il contient les objects de votre module </p>
+<p><strong><em>module_name_view.xml</em></strong> : Gere les donnees via une definition d'interface (view, les menu, les interactions ...)</p>
+<p><strong><em><strong>openerp</strong></em></strong> : Decrit le module (nom , version, auteur, dependances,...)</p>
+<p><strong><em>reports</em></strong> : Dossier contenant les objest et fichiers lies au reporting </p>
+<p><strong><em>wizards</em></strong> : Dossier contenant les objets definissant les interactions client-server (<a href="http://doc.openerp.com/v6.1/developer/04_wizard.html">voir</a>) </p>
+<p><strong><em>workflow</em></strong> : Dossier contenant la definition d'un workflow (<a href="http://doc.openerp.com/v6.0/developer/3_9_Workflow_Business_Process/index.html">voir</a>)</p>
+<h3><strong>A- Un hello world</strong></h3>
+<p>Pour notre <strong>hello world</strong> j'ai pensé à un module nous permettant d'enregistrer une famille et ses membres . </p>
+<p>A vos terminaux !!!</p>
+<p>Creer un dossier <strong>family</strong> dans votre espace de travail avec les fichier suivants :</p>
+<p>1- <strong><strong>openerp</strong>.py</strong> dont le contenu est le suivant :</p>
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;family&quot;</span><span class="p">,</span> <span class="c"># le nom du module, il apparait dans la liste des modules</span>
+    <span class="s">&quot;version&quot;</span><span class="p">:</span><span class="s">&quot;1.0&quot;</span><span class="p">,</span> <span class="c"># la version</span>
+    <span class="s">&quot;author&quot;</span><span class="p">:</span><span class="s">&quot;Josue&quot;</span><span class="p">,</span> <span class="c"># l&#39;auteur</span>
+    <span class="s">&quot;website&quot;</span><span class="p">:</span><span class="s">&quot;none&quot;</span><span class="p">,</span> <span class="c"># site web</span>
+    <span class="s">&quot;category&quot;</span><span class="p">:</span><span class="s">&quot;Generic Modules/Others&quot;</span><span class="p">,</span> <span class="c"># category du module</span>
+    <span class="s">&quot;depends&quot;</span><span class="p">:[</span><span class="s">&quot;base&quot;</span><span class="p">],</span> <span class="c"># liste des modules de dependances</span>
+    <span class="s">&quot;description&quot;</span><span class="p">:</span><span class="s">&quot;Simple module permettant d&#39;enregistrer une famille est ses memebres&quot;</span><span class="p">,</span>
+    <span class="s">&quot;update_xml&quot;</span><span class="p">:[</span><span class="s">&quot;family_view.xml&quot;</span><span class="p">],</span> <span class="c">#liste des vue, dans notre cas family_view.xml</span>
+    <span class="s">&quot;demo_xml&quot;</span><span class="p">:[],</span>
+    <span class="s">&quot;init_xml&quot;</span><span class="p">:[],</span>
+    <span class="s">&quot;active&quot;</span><span class="p">:</span><span class="bp">False</span><span class="p">,</span>
+    <span class="s">&quot;installable&quot;</span><span class="p">:</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><strong>NB</strong> : Tous les modules dependent de <strong><em>base</em></strong> .</p>
+<p>2- <strong><strong>init</strong>.py</strong> contenant ceci :</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">family</span>
+</pre></div>
+
+
+<p>Simple <em>importation</em> d'un module python </p>
+<p>3- <strong>family.py</strong> </p>
+<div class="codehilite"><pre><span class="kn">from</span> <span class="nn">osv</span> <span class="kn">import</span> <span class="n">osv</span><span class="p">,</span> <span class="n">fields</span>
+
+<span class="k">class</span> <span class="nc">family_family</span><span class="p">(</span><span class="n">osv</span><span class="o">.</span><span class="n">osv</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s">&#39;family.family&#39;</span>
+    <span class="n">_columns</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">char</span><span class="p">(</span><span class="s">&#39;Family Name&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span>
+        <span class="s">&#39;member_ids&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">one2many</span><span class="p">(</span><span class="s">&#39;family.member&#39;</span><span class="p">,</span><span class="s">&#39;family_id&#39;</span><span class="p">,</span><span class="s">&#39;Members&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+<span class="n">family_family</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">family_member</span><span class="p">(</span><span class="n">osv</span><span class="o">.</span><span class="n">osv</span><span class="p">):</span>
+    <span class="n">_name</span> <span class="o">=</span> <span class="s">&#39;family.member&#39;</span>
+    <span class="n">_columns</span> <span class="o">=</span> <span class="p">{</span> <span class="c"># dictionnaire des champs de l&#39;object</span>
+        <span class="s">&#39;firstname&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">char</span><span class="p">(</span><span class="s">&#39;FirstName&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span>
+        <span class="s">&#39;lastname&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">char</span><span class="p">(</span><span class="s">&#39;LastName&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span>
+        <span class="s">&#39;family_id&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">many2one</span><span class="p">(</span><span class="s">&#39;family.family&#39;</span><span class="p">,</span><span class="s">&#39;Family&#39;</span><span class="p">,</span><span class="n">ondelete</span><span class="o">=</span><span class="s">&#39;cascade&#39;</span><span class="p">),</span>
+        <span class="s">&#39;gender&#39;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">selection</span><span class="p">(</span>  <span class="c"># definition d&#39;un champ de selection</span>
+            <span class="p">[(</span><span class="s">&#39;male&#39;</span><span class="p">,</span><span class="s">&#39;Male&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s">&#39;female&#39;</span><span class="p">,</span><span class="s">&#39;Female&#39;</span><span class="p">),</span>
+            <span class="p">],</span><span class="s">&#39;Gender&#39;</span><span class="p">,</span><span class="n">readonly</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span><span class="n">select</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="c"># default : dictionnaire des valeurs par defaut</span>
+    <span class="n">_defaults</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;lastname&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">context</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;family.family&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="n">context</span><span class="p">[</span><span class="s">&#39;family_id&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">context</span> <span class="ow">and</span> <span class="s">&#39;family_id&#39;</span> <span class="ow">in</span> <span class="n">context</span> <span class="k">else</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="s">&#39;gender&#39;</span> <span class="p">:</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">a</span><span class="p">:</span> <span class="s">&#39;male&#39;</span><span class="p">,</span> <span class="c"># &quot;male&quot; sera la valeur par defaut du champ &quot;gender&quot;</span>
+    <span class="p">}</span>
+
+<span class="n">family_member</span><span class="p">()</span> <span class="c">#instanciation de la classe , __N&#39;oubliez jamais de le faire__</span>
+</pre></div>
+
+
+<p>Ce fichier decrit les objects du modules et leur caracteristiques</p>
+<p>Documentation sur l'objet <a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/object_attributes.html">osv</a></p>
+<p>Documentation sur l'objet <a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/field_type.html">fields</a></p>
+<h4><strong>explications</strong> :</h4>
+<p><em>_defaults['lastname']</em>, j'ai utilisé une fonction <em>lambda</em> afin de permettre que le champ <em>lastname</em> soit automatiquement rempli en se servant du context <em>family_id</em> definit dans le fichier <em>family_view.xml</em> au sein de l'objet <em>family</em>. 
+Mais cela ne se fera que dans la condition ou un <em>membre</em> sera crée à partir du menu(vue,interface) d'une <em>famille</em>. </p>
+<p>4- <strong>family_view.xml</strong></p>
+<div class="codehilite"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+
+<span class="nt">&lt;openerp&gt;</span>
+        <span class="nt">&lt;data&gt;</span>
+
+    <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">&quot;family&quot;</span> <span class="na">name=</span><span class="s">&quot;Family&quot;</span> <span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!--Family--&gt;</span>
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span> <span class="na">id=</span><span class="s">&quot;family_form&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- definition d&#39;une vuew dont l&#39;id est &quot;family_form&quot;--&gt;</span> 
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>family.form<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!-- nom de la vue --&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>family.family<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!-- classe sur laquelle on se base pour creer la vue (une des classes de &quot;family.py&quot;, dans notre cas &quot;family.family&quot;)--&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>form<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!--type de vue : form/tree/graph --&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">string=</span><span class="s">&quot;Family&quot;</span> <span class="nt">&gt;</span> <span class="c">&lt;!-- declaration d&#39;un formulaire --&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>  <span class="c">&lt;!-- declaration d&#39;un champ --&gt;</span>
+                <span class="nt">&lt;notebook</span> <span class="na">colspan=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span> 
+                    <span class="nt">&lt;page</span> <span class="na">string=</span><span class="s">&quot;Members&quot;</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;member_ids&quot;</span> <span class="na">domain=</span><span class="s">&quot;[(&#39;family_id&#39;,&#39;=&#39;,active_id)]&quot;</span> <span class="na">context=</span><span class="s">&quot;{&#39;family_id&#39;:active_id}&quot;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- definition d&#39;un context --&gt;</span>
+                    <span class="nt">&lt;/page&gt;</span>
+                <span class="nt">&lt;/notebook&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span> <span class="na">id=</span><span class="s">&quot;family_tree&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>family.tree<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>family.family<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>tree<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!--type de vue : tree, correspond a l&#39;affichage en liste d&#39;elements --&gt;</span> 
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;tree</span> <span class="na">string=</span><span class="s">&quot;Family&quot;</span> <span class="nt">&gt;</span> <span class="c">&lt;!-- on declare &quot;tree&quot; cette fois ci et non un &quot;form&quot;--&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;member_ids&quot;</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- declaration des champs --&gt;</span>
+            <span class="nt">&lt;/tree&gt;</span>
+        <span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="c">&lt;!-- Notez que tous les champs declarés ici sont dans family.py, sinon une erreur sera levée --&gt;</span>
+
+    <span class="c">&lt;!--Definition d&#39;une action --&gt;</span>
+
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span> <span class="na">id=</span><span class="s">&quot;action_family&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- le model est bien différent : &quot;ir.actions&quot; et non &quot;ir.ui.view&quot; --&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Family<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!-- nom de l&#39;action --&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;res_model&quot;</span><span class="nt">&gt;</span>family.family<span class="nt">&lt;/field&gt;</span> <span class="c">&lt;!-- model sur lequel se base l&#39;action --&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_type&quot;</span><span class="nt">&gt;</span>form<span class="nt">&lt;/field&gt;</span> 
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_mode&quot;</span><span class="nt">&gt;</span>tree,form<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="c">&lt;!-- Declaration d&#39;un menu --&gt;</span>
+    <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">&quot;family_menu&quot;</span> <span class="na">name=</span><span class="s">&quot;Family&quot;</span> <span class="na">parent=</span><span class="s">&quot;family&quot;</span> <span class="na">action=</span><span class="s">&quot;action_family&quot;</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!--</span>
+<span class="c">        id : identifiant du menu</span>
+<span class="c">        name : nom du menu</span>
+<span class="c">        parent : le menu dont depend celui-ci, il sera donc un sous-menu </span>
+<span class="c">        action : action relier au menu</span>
+<span class="c">    --&gt;</span>
+    <span class="c">&lt;!-- &quot;action_family&quot; correspond à l&#39;id de l&#39;acton déclarée pécedement --&gt;</span>
+
+    <span class="c">&lt;!--Members--&gt;</span>
+
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span> <span class="na">id=</span><span class="s">&quot;member_form&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>member.form<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>family.member<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>form<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;form</span> <span class="na">string=</span><span class="s">&quot;Member&quot;</span> <span class="nt">&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;firstname&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;lastname&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;family_id&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/form&gt;</span>
+        <span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.ui.view&quot;</span> <span class="na">id=</span><span class="s">&quot;member_tree&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>member.tree<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="nt">&gt;</span>family.member<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="nt">&gt;</span>tree<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;arch&quot;</span> <span class="na">type=</span><span class="s">&quot;xml&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;tree</span> <span class="na">string=</span><span class="s">&quot;Member&quot;</span> <span class="nt">&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;firstname&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;lastname&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;gender&quot;</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;family_id&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/tree&gt;</span>
+        <span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="nt">&lt;record</span> <span class="na">model=</span><span class="s">&quot;ir.actions.act_window&quot;</span> <span class="na">id=</span><span class="s">&quot;action_member&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>Member<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;res_model&quot;</span><span class="nt">&gt;</span>family.member<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_type&quot;</span><span class="nt">&gt;</span>form<span class="nt">&lt;/field&gt;</span>
+        <span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;view_mode&quot;</span><span class="nt">&gt;</span>tree,form<span class="nt">&lt;/field&gt;</span>
+    <span class="nt">&lt;/record&gt;</span>
+
+    <span class="nt">&lt;menuitem</span> <span class="na">id=</span><span class="s">&quot;member_menu&quot;</span> <span class="na">name=</span><span class="s">&quot;Members&quot;</span> <span class="na">parent=</span><span class="s">&quot;family&quot;</span> <span class="na">action=</span><span class="s">&quot;action_member&quot;</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/openerp&gt;</span>
+</pre></div>
+
+
+<p>Documentation sur les <a href="http://doc.openerp.com/v6.0/developer/2_6_views_events/views/design_element.html">vues</a></p>
+<h3><strong>B- Installation du module</strong></h3>
+<p>Pour installer notre module, il nous faut l'ajouter au differents modules de OpenERP afin qu'il soit reconnu .
+Ceci necessite de copier le dossier de notre module (<strong>family</strong>) dans le dossiers <strong>addons</strong> du serveur 
+Openerp.
+Par defaut le dossier de addons est le suivant (Voir le context en haut de page, car il peut changer en fonction de la distribution)</p>
+<div class="codehilite"><pre><span class="go">/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons</span>
+</pre></div>
+
+
+<p>Sinon vous pouvez le verifier en regardant votre fichier de configuration de serveur Openerp</p>
+<ul>
+<li>
+<p>.openerp_serverrc (dans votre home directory)</p>
+</li>
+<li>
+<p>/etc/openerp-server.conf (dans /etc/)</p>
+</li>
+</ul>
+<p>Mais je conseille de faire des lien symboliques </p>
+<div class="codehilite"><pre><span class="gp">yosuke@loking:/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons$</span> ln -s ~/workspace/family/
+</pre></div>
+
+
+<p>Maintenant que nous avons notre module dans le dossier des <strong><em>addons</em></strong> du serveur, il ne nous reste plus qu'a l'installer .</p>
+<p>Connexion au serveur <a href="http://localhost:8069">localhost</a></p>
+<p>Allez dans Parametres =&gt; Modules</p>
+<p><img alt="Alt module" src="./static_files/openerp/module.png" /></p>
+<p>Mettre a jour la liste</p>
+<p><img alt="Alt update_list" src="./static_files/openerp/update_list.png" /></p>
+<p><img alt="Alt module_not_installed" src="./static_files/openerp/module_not_installed.png" /></p>
+<p>Vous devriez voir le module <strong>family</strong> apparaitre sur le menu </p>
+<p><img alt="Alt family" src="./static_files/openerp/family.png" /></p>
+<p><img alt="Alt members" src="./static_files/openerp/members.png" /></p>
+<p>Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du <a href="http://fr.wikipedia.org/wiki/7_familles">jeu des 7 familles</a> . </p><p>There are <a href="../openerp-module-development-partie-i.html#disqus_thread">comments</a>.</p>                </article>
+                                    <p class="paginator">
+        Page 1 / 1
+    </p>
+                            </aside><!-- /#featured -->
+                                                </ol><!-- /#posts-list -->
+                        </section><!-- /#content -->
+                    <section id="extras" class="body">
+                        <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                                                    <li><a href="http://docs.notmyidea.org/alexis/pelican/">Pelican</a></li>
+                                                    <li><a href="http://python.org">Python.org</a></li>
+                                                    <li><a href="http://jinja.pocoo.org">Jinja2</a></li>
+                                                </ul>
+                </div><!-- /.blogroll -->
+                                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="www.josuebrunel.org/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+                            
+                                                    <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                                                    <li><a href="https://github.com/josuebrunel">Github</a></li>
+                                                </ul>
+                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

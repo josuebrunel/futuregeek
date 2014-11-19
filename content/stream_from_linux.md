@@ -1,4 +1,5 @@
 Title: Stream video from Linux
+Slug: stream-video-from-linux
 Author: Josue Kouka
 Date: 2014-02-02
 Tags: linux, media, video, streaming
@@ -21,7 +22,7 @@ How to install it ?
 
 The only thing which is required to set up is below:
 
-![Alt ps3mediaserver](../pictures/stream_from_linux/ps3mediaserver.png)
+![Alt ps3mediaserver](./images/stream_from_linux/ps3mediaserver.png)
 
 Then all you need to do, is the install any ***UPNP*** client on the device on which you want to watch/listen your media. Most consoles games such as Ps3 and Xbox have already those kind of player pre-installed.
 

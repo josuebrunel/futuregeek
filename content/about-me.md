@@ -1,11 +1,12 @@
 Title: About Me
+Slug: about-me
 Date: 2012-10-02
 Tags: Hello World
 Category: About Me
 Author: Josue Kouka
 Summary: All about me 
 
-![Alt Me](./static_files/fg.jpg)
+![Alt Me](./images/fg.jpg)
 
     :::python
     

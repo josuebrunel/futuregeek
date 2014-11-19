@@ -16,7 +16,7 @@ I've tried &lt;a href="https://wiki.archlinux.org/index.php/Rygel"&gt;rygel&lt;/
 
 
 &lt;p&gt;The only thing which is required to set up is below:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt ps3mediaserver" src="../pictures/stream_from_linux/ps3mediaserver.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt ps3mediaserver" src="./images/stream_from_linux/ps3mediaserver.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Then all you need to do, is the install any &lt;strong&gt;&lt;em&gt;UPNP&lt;/em&gt;&lt;/strong&gt; client on the device on which you want to watch/listen your media. Most consoles games such as Ps3 and Xbox have already those kind of player pre-installed.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 02 Feb 2014 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2014-02-02:stream-video-from-linux.html</guid><category>linux</category><category>media</category><category>video</category><category>streaming</category></item><item><title>Backing up your wireless networks data on linux</title><link>http://www.josuebrunel.org/backing-up-your-wireless-networks-data-on-linux.html</link><description>&lt;p&gt;Hey guys.
 I'm sure that almost all of us, one day, have wondered how we could backup our Wireless Networks Settings
 on Linux to be able to use it for another linux freshly installed. There's a really easy and natural way to do so.&lt;/p&gt;
@@ -754,7 +754,7 @@ Actually is more &lt;strong&gt;&lt;em&gt;Model View Template&lt;/em&gt;&lt;/stro
 
 
 &lt;h2&gt;Download&lt;/h2&gt;
-&lt;p&gt;You can directly download &lt;strong&gt;bowee&lt;/strong&gt; &lt;a href="./static_files/bowee/bowee-1.1.tar.gz"&gt;here&lt;/a&gt; or check the &lt;a href="https://github.com/josuebrunel/bowee"&gt;github repository&lt;/a&gt; to see the last updates.&lt;/p&gt;
+&lt;p&gt;You can directly download &lt;strong&gt;bowee&lt;/strong&gt; &lt;a href="./images/bowee/bowee-1.1.tar.gz"&gt;here&lt;/a&gt; or check the &lt;a href="https://github.com/josuebrunel/bowee"&gt;github repository&lt;/a&gt; to see the last updates.&lt;/p&gt;
 &lt;h2&gt;Installation&lt;/h2&gt;
 &lt;h4&gt;Via the tar.gz&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;(bottle)yosuke@loking:~$&lt;/span&gt; tar xvzf bowee-1.1.tar.gz 
@@ -1183,14 +1183,14 @@ Par defaut le dossier de addons est le suivant (Voir le context en haut de page,
 &lt;p&gt;Maintenant que nous avons notre module dans le dossier des &lt;strong&gt;&lt;em&gt;addons&lt;/em&gt;&lt;/strong&gt; du serveur, il ne nous reste plus qu'a l'installer .&lt;/p&gt;
 &lt;p&gt;Connexion au serveur &lt;a href="http://localhost:8069"&gt;localhost&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Allez dans Parametres =&amp;gt; Modules&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt module" src="./static_files/openerp/module.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module" src="./images/openerp/module.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Mettre a jour la liste&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt update_list" src="./static_files/openerp/update_list.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt module_not_installed" src="./static_files/openerp/module_not_installed.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt update_list" src="./images/openerp/update_list.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module_not_installed" src="./images/openerp/module_not_installed.png" /&gt;&lt;/p&gt;
 &lt;p&gt;Vous devriez voir le module &lt;strong&gt;family&lt;/strong&gt; apparaitre sur le menu &lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt family" src="./static_files/openerp/family.png" /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Alt members" src="./static_files/openerp/members.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 04 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-04:openerp-module-development-partie-i.html</guid><category>openerp</category><category>python</category><category>xml</category></item><item><title>About Me</title><link>http://www.josuebrunel.org/about-me.html</link><description>&lt;p&gt;&lt;img alt="Alt Me" src="./static_files/fg.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt family" src="./images/openerp/family.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt members" src="./images/openerp/members.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 04 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-04:openerp-module-development-partie-i.html</guid><category>openerp</category><category>python</category><category>xml</category></item><item><title>About Me</title><link>http://www.josuebrunel.org/about-me.html</link><description>&lt;p&gt;&lt;img alt="Alt Me" src="./images/fg.jpg" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;about_me&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Kouka&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;

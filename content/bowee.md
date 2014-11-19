@@ -1,4 +1,5 @@
 Title: Bowee
+Slug: bowee
 Date: 2013-01-15
 Author: Josue Kouka
 Tags: python, bottle, peewee, web
@@ -31,7 +32,7 @@ Those packages can be installed like this:
 
 ##Download
 
-You can directly download **bowee** [here](./static_files/bowee/bowee-1.1.tar.gz) or check the [github repository](https://github.com/josuebrunel/bowee) to see the last updates.
+You can directly download **bowee** [here](./images/bowee/bowee-1.1.tar.gz) or check the [github repository](https://github.com/josuebrunel/bowee) to see the last updates.
 
 
 ##Installation

@@ -1,4 +1,5 @@
 Title: Openerp Module Development : Partie I
+Slug: openerp-module-development-partie-i
 Date: 2012-10-04
 Tags: openerp, python, xml
 Category: Openerp
@@ -264,20 +265,20 @@ Connexion au serveur [localhost](http://localhost:8069)
 
 Allez dans Parametres => Modules
 
-![Alt module](./static_files/openerp/module.png)
+![Alt module](./images/openerp/module.png)
 
 Mettre a jour la liste
 
-![Alt update_list](./static_files/openerp/update_list.png)
+![Alt update_list](./images/openerp/update_list.png)
 
-![Alt module_not_installed](./static_files/openerp/module_not_installed.png)
+![Alt module_not_installed](./images/openerp/module_not_installed.png)
 
 
 Vous devriez voir le module __family__ apparaitre sur le menu 
 
-![Alt family](./static_files/openerp/family.png)
+![Alt family](./images/openerp/family.png)
 
-![Alt members](./static_files/openerp/members.png)
+![Alt members](./images/openerp/members.png)
 
 
 Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du [jeu des 7 familles](http://fr.wikipedia.org/wiki/7_familles) . 

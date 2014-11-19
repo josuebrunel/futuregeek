@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FutureGeek</title><link>http://www.josuebrunel.org/</link><description></description><atom:link href="http://www.josuebrunel.org/feeds/josue-kouka.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 19 Nov 2014 20:12:06 +0100</lastBuildDate><item><title>Virtualenv avec une autre version de python</title><link>http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html</link><description>&lt;p&gt;Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un &lt;em&gt;environment virtual python&lt;/em&gt; 
+utilisant une version de python differente de celle par defaut. 
+De plus, generalement plus d'une version de &lt;em&gt;python&lt;/em&gt; sont installés sur nos OS. Alors pour pouvoir créer un environement virtual python avec la version de python que vous voulez, voici la commande à entrer dans votre terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv -p /usr/bin/python2.6 &amp;lt;path/to/new/virtualenv/&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 19 Nov 2014 20:12:06 +0100</pubDate><guid>tag:www.josuebrunel.org,2014-11-19:virtualenv-avec-une-autre-version-de-python.html</guid><category>virtualenv</category><category>python</category><category></category></item><item><title>Stream video from Linux</title><link>http://www.josuebrunel.org/stream-video-from-linux.html</link><description>&lt;p&gt;Hey guys !!!&lt;/p&gt;
+&lt;p&gt;As always, the story of grandpa Joe. Like a lot of people, i like watching movies and documentaries. And i used to sleep in bed with my computer because
+i was too tired to seat on the desk before sleeping. Having my laptop in my bed next to me wasn't that comfy.
+So i decided to look for an app which will stream my movies and documentary
+from my &lt;strong&gt;&lt;em&gt;Pear OS&lt;/em&gt;&lt;/strong&gt; (which doesn't exist anymore) to any devices connected
+to the same network (Other computers, smartphones and tablets or consoles games).
+I've tried &lt;a href="https://wiki.archlinux.org/index.php/Rygel"&gt;rygel&lt;/a&gt;. Butit wasn't working that well. I kept digging, and i finally found &lt;em&gt;&lt;em&gt;Ps3 Media Server&lt;/em&gt;&lt;/em&gt;, which has been a lifesaver.&lt;/p&gt;
+&lt;p&gt;How to install it ?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;sudo aptitude install ps3mediaserver
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The only thing which is required to set up is below:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt ps3mediaserver" src="../pictures/stream_from_linux/ps3mediaserver.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Then all you need to do, is the install any &lt;strong&gt;&lt;em&gt;UPNP&lt;/em&gt;&lt;/strong&gt; client on the device on which you want to watch/listen your media. Most consoles games such as Ps3 and Xbox have already those kind of player pre-installed.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 02 Feb 2014 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2014-02-02:stream-video-from-linux.html</guid><category>linux</category><category>media</category><category>video</category><category>streaming</category></item><item><title>Backing up your wireless networks data on linux</title><link>http://www.josuebrunel.org/backing-up-your-wireless-networks-data-on-linux.html</link><description>&lt;p&gt;Hey guys.
+I'm sure that almost all of us, one day, have wondered how we could backup our Wireless Networks Settings
+on Linux to be able to use it for another linux freshly installed. There's a really easy and natural way to do so.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; /etc/NetworkManager/
+&lt;span class="gp"&gt;yosuke@loking:/etc/NetworkManager$&lt;/span&gt; sudo tar czvf WirelessNetworksBackup.tar.gz system-connections/
+&lt;span class="go"&gt;system-connections/&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/eth0&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/ALICE_SANDRA_68&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/FreeWifi&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Freebox-ACF055&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/anafree&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/FBX_QUERNEL&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Cheval de Troie&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Bbox-00F72CC0&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/freebox&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/elchero&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/HPC410a.FCBFE6&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Molaka&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Bbox_min&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/Freebox-4883FA&lt;/span&gt;
+&lt;span class="go"&gt;system-connections/SFR WiFi Public&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:/etc/NetworkManager$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You've noticed the interesting folder here is &lt;strong&gt;&lt;em&gt;system-connections&lt;/em&gt;&lt;/strong&gt; . This directory contains the description of each
+network you connected to or you've tried to connect to. You can open each one of them and see the password (if there's one) in &lt;strong&gt;plain text&lt;/strong&gt; of network.&lt;/p&gt;
+&lt;p&gt;To restore those data on a freshly installed or another computer, just untar the archive into &lt;strong&gt;&lt;em&gt;/etc/NetworkManager/&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;That's all. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 17 Oct 2013 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2013-10-17:backing-up-your-wireless-networks-data-on-linux.html</guid><category>linux</category><category>wifi</category></item><item><title>html to markdown</title><link>http://www.josuebrunel.org/html-to-markdown-.html</link><description>&lt;p&gt;Hi guys ^_^ !! .&lt;/p&gt;
+&lt;p&gt;Yeah i know, ya'll happy to read me again, just like friends happy to see a friends they haven't seen in a very very long time ^_^.
+Don't worry i missed you too even though i don't KNOW you. Maybe you a creeper or something (No just kidding ). &lt;/p&gt;
+&lt;p&gt;A couple weeks ago a lost all my markdown files, by the way i write my articles using markdown. Since last week i wanted to be back on rails with the 
+blog, i decided to to find a way (seriously, above all the time) to retrieve my markdown files. 
+I've found 2 very convevial tools to do so. But i'm just going to talk about one of them : &lt;strong&gt;&lt;em&gt;html2markdown&lt;/em&gt;&lt;/strong&gt; . The other one being &lt;strong&gt;&lt;em&gt;pandoc&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;p&gt;On your terminal guys &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt; sudo aptitude install html2markdown
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;How to&lt;/h3&gt;
+&lt;hr /&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt; html2markdown myfile.html &amp;gt;&amp;gt; myfile.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You might be in a situation where you have a directory full of html files that you want to convert into markdown. To do so, you can use the script below :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; file in ./*.html
+&lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$file&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+html2markdown --ignore-links --ignore-image &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class="s2"&gt;&amp;quot;`basename &lt;/span&gt;&lt;span class="nv"&gt;$file&lt;/span&gt;&lt;span class="s2"&gt; .html`.md&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Tada !!! Your &lt;em&gt;html&lt;/em&gt; files are now in &lt;em&gt;markdwon&lt;/em&gt;. Check the &lt;strong&gt;help&lt;/strong&gt; to know what &lt;strong&gt;--ignore-inks&lt;/strong&gt; and &lt;strong&gt;--ignore-image&lt;/strong&gt; do .&lt;/p&gt;
+&lt;p&gt;Thanks for reading guys and have a nice day ^_^.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Jul 2013 08:07:14 +0200</pubDate><guid>tag:www.josuebrunel.org,2013-07-07:html-to-markdown-.html</guid><category>linux</category><category>html</category><category>markdwon</category><category>shell</category></item><item><title>Comprendre *, **, *args, **kwargs</title><link>http://www.josuebrunel.org/comprendre-args-kwargs.html</link><description>&lt;p&gt;Hi guys !!!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unpackers&lt;/strong&gt; et &lt;strong&gt;varargs&lt;/strong&gt; ? It doesn't ring a bell ? oh come on (redneck accent).&lt;/p&gt;
+&lt;p&gt;Je suis sure que vous avez deja vu des instructions du genre :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;myliste&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="c"&gt;# définition&lt;/span&gt;
+      &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant vous voyez tres bien de quoi je parle, c'est bien.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;unpackers&lt;/strong&gt; : &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; et &lt;strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;varargs&lt;/strong&gt; : &lt;strong&gt;&lt;em&gt;*args&lt;/em&gt;&lt;/strong&gt; et &lt;strong&gt;&lt;em&gt;**kwargs&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On va faire quelques petites experiences&lt;/p&gt;
+&lt;h3&gt;Experience 1 : &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 2&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Lors du premier appel &lt;em&gt;Appel 1&lt;/em&gt;, le shell nous a renvoyé une erreur, ce qui
+est tout a fait logique. On a passe une &lt;strong&gt;liste&lt;/strong&gt; a une fonction qui attend 3
+paramètres.&lt;/p&gt;
+&lt;p&gt;Ensuite lors de &lt;em&gt;Appel 2&lt;/em&gt;, aucune erreur du shell. Seul différence avec &lt;em&gt;Appel
+1&lt;/em&gt;, est le _&lt;strong&gt;&lt;em&gt;_ devant notre liste &lt;/em&gt;&lt;/strong&gt;mylist___ .&lt;/p&gt;
+&lt;p&gt;Le &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; a &lt;strong&gt;deballe&lt;/strong&gt; les éléments de notre liste et les a envoyé à la
+fonction, c'est à dire que ce n'est pas **_[1,2,4]&lt;strong&gt;&lt;em&gt;1,2,3&lt;/em&gt;&lt;em&gt; (une liste) qui a été
+envoyée mais &lt;/em&gt;*&lt;/strong&gt;, en gros les éléments de la liste.&lt;/p&gt;
+&lt;p&gt;On ajoute un nouvel élément à la liste puis on rappelle la function ( &lt;em&gt;Appel
+3&lt;/em&gt; ), cette fois ci &lt;strong&gt;ERREUR&lt;/strong&gt;. Tout simplement parce que notre fonction
+attends 3 paramètres et non 4.&lt;/p&gt;
+&lt;p&gt;Pour conclure , &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; sert a deballer les éléments d'une &lt;em&gt;liste&lt;/em&gt;, d'un
+&lt;em&gt;tuple&lt;/em&gt; ... On ne l'utilise que lors d'un appel de foncton ou méthode.&lt;/p&gt;
+&lt;h3&gt;Experience 2: &lt;strong&gt;&lt;em&gt;*args&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;x est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;args est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;varargs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1 bis&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;varargs&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Appel 2&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mylist&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;my_func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;mylist&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 4&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On peut remarquer que dans les appels &lt;em&gt;Appel 1&lt;/em&gt; et &lt;em&gt;Appel 1 bis&lt;/em&gt;, &lt;strong&gt;x&lt;/strong&gt; est
+eguale à &lt;strong&gt;1&lt;/strong&gt;. Et que les autres paramètres sont assignés à &lt;strong&gt;*args&lt;/strong&gt;, qui
+les prend sous forme de tuples peu importe leur taille.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 2&lt;/em&gt;, un seul paramètre est passé à la fonction, et ce seul
+paramètre est assigne a &lt;strong&gt;x&lt;/strong&gt; et vu qu'il n'y a pas d'autres paramètres,
+&lt;strong&gt;*args&lt;/strong&gt; recoit un &lt;em&gt;tuple&lt;/em&gt; vide.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt;, on passe un paramètre et une &lt;strong&gt;&lt;em&gt;liste deballee&lt;/em&gt;&lt;/strong&gt;
+(*mylist), les éléments de la liste sont donc assignés à &lt;strong&gt;*args&lt;/strong&gt; sous forme
+de tuples.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 4&lt;/em&gt;, on passe un paramètre et une &lt;strong&gt;&lt;em&gt;simple liste&lt;/em&gt;&lt;/strong&gt;
+(mylist), la liste est donc assignée à &lt;strong&gt;&lt;em&gt;args&lt;/em&gt;*&lt;/strong&gt;, ce qui nous donne un tuple
+de liste (&lt;em&gt;([])&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;Un &lt;strong&gt;&lt;em&gt;myvar&lt;/em&gt;* dans la &lt;/strong&gt;définition** d'une fonction/méthode est capable de
+recevoir n'importe quoi et un nombre non defini de paramètre.&lt;/p&gt;
+&lt;h3&gt;Petit Use Case:&lt;/h3&gt;
+&lt;p&gt;On doit écrire une fonction qui calcule la somme des nombres qui lui sont
+passés, sans tenir compte du premier paramètre .&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;calculer_somme_sans_premier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;premier&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Premier est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;premier&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;args est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="n"&gt;ma_somme&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Pourquoi le &amp;quot;*args&amp;quot; &lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ma somme est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ma_somme&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 1&lt;/span&gt;
+&lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c"&gt;#Appel 2, je fais passer une liste&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;calculer_somme&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;unsupported&lt;/span&gt; &lt;span class="n"&gt;operand&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;int&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;list&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;calculer_somme_sans_premier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#Appel 3&lt;/span&gt;
+&lt;span class="n"&gt;Premier&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="n"&gt;args&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Ma&lt;/span&gt; &lt;span class="n"&gt;somme&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Explications:&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;calculer_somme&lt;/strong&gt; est une simple fonction qui calcule la somme des nombres d'un iterable qui lui est passé en paramètre. (Easy)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;calculer_somme_sans_premier&lt;/strong&gt; calcule la somme des nombres qui lui sont passés en paramètres sans tenir compte du premier.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 1&lt;/em&gt;, je fais passer des nombres, on a le resultat escompté
+car les paramètres sont transformés en un &lt;em&gt;tuple&lt;/em&gt; (un iterable) à cause du
+&lt;strong&gt;&lt;em&gt;args&lt;/em&gt;* ensuite traités par &lt;/strong&gt;&lt;em&gt;sum&lt;/em&gt;**.&lt;/p&gt;
+&lt;p&gt;Dans l'appel &lt;em&gt;Appel 2&lt;/em&gt;, j'essaie de faire passer une liste, j'ai une
+&lt;strong&gt;TypeError&lt;/strong&gt;, parce que &lt;strong&gt;sum&lt;/strong&gt; est une fonction &lt;em&gt;builtin&lt;/em&gt; qui renvoit la
+somme des &lt;strong&gt;nombres&lt;/strong&gt; d'un &lt;em&gt;iterable&lt;/em&gt;. Or en passant &lt;em&gt;([1,2,3])&lt;/em&gt;, &lt;strong&gt;*args&lt;/strong&gt; =
+([1,2,3],) qui est un tuple de liste.&lt;/p&gt;
+&lt;p&gt;A la question _pourquoi le &lt;em&gt;args ?_ dans &lt;strong&gt;calculer_somme_sans_premier&lt;/strong&gt; lors
+de l'appel de &lt;strong&gt;calculer_somme&lt;/strong&gt;, la réponse est qu'il faut deballer &lt;strong&gt;&lt;em&gt;(1,2,3)&lt;/em&gt; a &lt;em&gt;args&lt;/em&gt;*
+sinon on passerait &lt;/strong&gt;calculer_somme&lt;strong&gt;. Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt; on
+remarque bien que &lt;/strong&gt;args&lt;strong&gt; est un tuple, or il faut passer des &lt;/strong&gt;nombres&lt;strong&gt;,
+qui ne sont que ses &lt;/strong&gt;éléments&lt;strong&gt;, d'ou le &lt;/strong&gt;deballage&lt;/em&gt;*.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Experience 3:&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Fonction toute simple à laquelle on fait passer des nombres et nous les
+affichent.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mydict&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On crée un dictionnaire dont les &lt;em&gt;keys&lt;/em&gt; sont &lt;strong&gt;'b'&lt;/strong&gt; et &lt;strong&gt;'c'&lt;/strong&gt; et les
+valeurs, respectivement, &lt;strong&gt;5&lt;/strong&gt; et &lt;strong&gt;6&lt;/strong&gt;. On fait passer ce dictionnaire à la
+fonction en utilisant &lt;strong&gt;*&lt;/strong&gt;*, le dictionnaire affiche correctement les
+valeurs.&lt;/p&gt;
+&lt;p&gt;Le &lt;em&gt;unpackers&lt;/em&gt; &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;* a déballé les valeurs du dictionnaire en fonction des
+différentes &lt;/strong&gt;clés&lt;strong&gt;. Euh oui les &lt;/strong&gt;clé&lt;strong&gt;, remarquez qu'elles portent les
+memes noms que nos paramètres lors de la définition de notre fonction ,
+rappelez vous du : &lt;/strong&gt;&lt;em&gt;def myfunc(a, b, c):&lt;/em&gt;**...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;got&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;unexpected&lt;/span&gt; &lt;span class="n"&gt;keyword&lt;/span&gt; &lt;span class="n"&gt;argument&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On decide d'ajouter un élément a notre dictionnaire (keys+value). On essaie de
+déballer le dictionnaire lors de l'appel, un &lt;strong&gt;TypeError&lt;/strong&gt;. La &lt;strong&gt;clé&lt;/strong&gt; &lt;strong&gt;'d'&lt;/strong&gt;
+est inattendue. Normal, pas definie lors de la declaration de la fonction.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;7&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mydict&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;myfunc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;mydict&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On supprime le couple &lt;strong&gt;'d':7&lt;/strong&gt;, on appelle la fonction avec un seul &lt;strong&gt;*&lt;/strong&gt;, et
+les différentes clés du dictionnaire apparaissent.&lt;/p&gt;
+&lt;p&gt;Pour conclure, &lt;strong&gt;&lt;em&gt;dictionnaire&lt;/em&gt;. Il
+n'est utilisé que lors des appels de fonction, tout comme &lt;em&gt;*&lt;/em&gt;* permet de deballer les éléments d'un &lt;/strong&gt;***.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Experience 4:&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;**kwargs&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Redefinisson notre fonction &lt;em&gt;fun&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Cette fonction n'a qu'un seul paramètre formel, &lt;strong&gt;'a'&lt;/strong&gt;. Avec &lt;strong&gt;**kwargs&lt;/strong&gt;
+elle peut prendre autant de mot clés en argumants, mots clés ,qui seront
+ajoutés à la liste des paramètres formels de la fonction temporairement.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;*kwargs&lt;/em&gt;* dans cette fonction, on recoit un &lt;/strong&gt;&lt;em&gt;dictionnaire&lt;/em&gt;** contenant des &lt;em&gt;arguments mot clés&lt;/em&gt;. Et oui ! &lt;em&gt;kwargs&lt;/em&gt; sera un dictionnaire, mais on ne passe pas de dictionnaire à la fonction. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;a est &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;On attends kwargs[b] et kwargs[z]&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;kwargs[b] &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;kwargs[z] &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;36&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;26&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;On&lt;/span&gt; &lt;span class="n"&gt;attends&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="mi"&gt;26&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On peut definir tous les mots clés que l'on veut, à l'exception de &lt;strong&gt;'a'&lt;/strong&gt;
+parce que il apprtient deja à un paramètre formel. &lt;strong&gt;c = 36&lt;/strong&gt; n'apparait pas
+parce qu'on a decidé de ne pas l'afficher. Les nouveaux paramètres sont
+considérés comme les couples &lt;strong&gt;(key,value)&lt;/strong&gt; d'un dictionnaire normal.&lt;/p&gt;
+&lt;p&gt;Déclarons un dictionnaire et éssayons de le passer à la fonction.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hello maman&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;je suis z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;je suis z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;f&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;hello maman&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;TypeError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="n"&gt;takes&lt;/span&gt; &lt;span class="n"&gt;exactly&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="n"&gt;argument&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;given&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Oui oui !!! &lt;strong&gt;ERROR&lt;/strong&gt;. La fonction prends des éléments du type &lt;strong&gt;(key,value)&lt;/strong&gt;
+et non un &lt;strong&gt;dictionnaire&lt;/strong&gt;. Ces éléments sont transformés en dictionnaire
+après, pas avant leur passage.&lt;/p&gt;
+&lt;p&gt;Si l'on déballe les éléments du dictionnaire :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;On&lt;/span&gt; &lt;span class="n"&gt;attends&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;suis&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;z&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;26&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;est&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;On&lt;/span&gt; &lt;span class="n"&gt;attends&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="mi"&gt;10&lt;/span&gt;
+&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;z&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="mi"&gt;26&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;En utilisant &lt;strong&gt;*&lt;/strong&gt;* on a débalé les éléments de notre dictionnaire.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;*kwargs&lt;/em&gt;* est tout simplement un dictionnaire vide a qui l'on dit : voila une &lt;/strong&gt;clé&lt;strong&gt; et sa &lt;/strong&gt;valeur**, considere les comme un de tes éléments.&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Quand faut il les utiliser ?&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Brièvement, je dirai toutes les fois que l'on &lt;strong&gt;hérite&lt;/strong&gt; d'une &lt;em&gt;classe&lt;/em&gt; ou que
+l'on &lt;strong&gt;surcharge&lt;/strong&gt; l'une des méthodes de la classes heritée.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Papa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; 
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;insert&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;       &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Impossible de faire un insert et un update au meme moment&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;update&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;       &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ligne mise a jour&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;insert&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;       &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Nouvelle ligne creee&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On a crée une classe &lt;em&gt;Papa&lt;/em&gt;, dont les objets peuvent etre enregistrés dans une
+base de données grace à la méthode &lt;strong&gt;save()&lt;/strong&gt;. En fonction de l'argument, on
+met à jour un enregistrement ou on en ajoute un.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Filston&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Papa&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="c"&gt;# 1&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;josue&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;       &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Filston&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c"&gt;# 2 &lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;       &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ensuite on definit une class &lt;em&gt;Filston&lt;/em&gt; héritant de &lt;em&gt;Papa&lt;/em&gt; permettant de créer
+ou mettre a jour des enregistrements sous une condition. Or nous savons que la
+manipulation des enregistrements se fait grace à la méthode &lt;strong&gt;save()&lt;/strong&gt;, alors
+il faut appeler la méthode &lt;strong&gt;save()&lt;/strong&gt; de la classe &lt;strong&gt;Papa&lt;/strong&gt;. En plus,
+&lt;strong&gt;save()&lt;/strong&gt; de &lt;strong&gt;Filston&lt;/strong&gt; doit etre capable tous les arguments que &lt;strong&gt;save()&lt;/strong&gt;
+de &lt;strong&gt;Papa&lt;/strong&gt; peut recevoir et les faire passer a cette derniere. D'ou
+l'utilisation de &lt;strong&gt;&lt;em&gt;args&lt;/em&gt;_ et de &lt;/strong&gt;_&lt;em&gt;kwargs&lt;strong&gt; dans &lt;/strong&gt;save()&lt;strong&gt; de &lt;/strong&gt;Filstion&lt;/em&gt;*.&lt;/p&gt;
+&lt;h4&gt;Execution&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Filston&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;josue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Nouvelle&lt;/span&gt; &lt;span class="n"&gt;ligne&lt;/span&gt; &lt;span class="n"&gt;creee&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Ligne&lt;/span&gt; &lt;span class="n"&gt;mise&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;jour&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Explications&lt;/h4&gt;
+&lt;p&gt;On crée une instance de &lt;strong&gt;Filston&lt;/strong&gt; et on appelle sa méthode &lt;strong&gt;save()&lt;/strong&gt;. On
+invoque un &lt;em&gt;save(insert=True)&lt;/em&gt; ,couple &lt;strong&gt;clé&lt;/strong&gt; et &lt;strong&gt;valeur&lt;/strong&gt;, donc
+&lt;strong&gt;kwargs['insert']=True&lt;/strong&gt; (kwargs est devenu un dictionnaire) #1. Ensuite en
+passe &lt;strong&gt;kwargs&lt;/strong&gt; en le deballant grace a &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;*. ce qui fait a ce que le
+deuxieme appel de &lt;/strong&gt;save()&lt;strong&gt; soit &lt;/strong&gt;&lt;em&gt;super(Fislton, self).save(insert=True)&lt;/em&gt;**&lt;/p&gt;
+&lt;h1&gt;2, ce qui correspond a notre définition dans la classe &lt;strong&gt;Papa&lt;/strong&gt;.&lt;/h1&gt;
+&lt;p&gt;Voila, c'est fini, j'espère que vous avez une meilleur comprehension des
+&lt;strong&gt;unpackers&lt;/strong&gt; et des &lt;strong&gt;varargs&lt;/strong&gt; en python.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 26 Mar 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-03-26:comprendre-args-kwargs.html</guid><category>python</category></item><item><title>oeutils</title><link>http://www.josuebrunel.org/oeutils.html</link><description>&lt;h2&gt;OEUTILS&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;oeutils&lt;/strong&gt; is a small python wrapper of the xml-rpc API for OpenERP. It is useful when it comes to  manipulate your OpenERP objects.
+It is not as powerful as &lt;strong&gt;erppeek&lt;/strong&gt; yet but i hope that with your help one day it will ^_^.
+It's inspired from &lt;a href="https://github.com/florentx/erppeek"&gt;&lt;strong&gt;erpeek&lt;/strong&gt;&lt;/a&gt; and we can say thanks to Florent for that.
+It's kind of a personal project and i wanted to be able to do almost the same thing as &lt;strong&gt;erppeek&lt;/strong&gt; but the easiest way.
+This tool lacks a lot of thing so far, but i hope that over time i will be able to improve it.
+I'm sure that i'll be laughing in the next 2 years while seeing this.&lt;/p&gt;
+&lt;h3&gt;Features&lt;/h3&gt;
+&lt;p&gt;With &lt;strong&gt;oeutils&lt;/strong&gt; you are able to :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Create objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Read objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Update objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Search objects&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Search models&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Get models fields&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;How to&lt;/h3&gt;
+&lt;h4&gt;Connexion&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;oeutils&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Openerp&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Openerp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;login&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;pwd&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;dbname&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Methods&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,[])&lt;/span&gt; &lt;span class="c"&gt;# or juste o.search(m)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;famliy&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;kouka&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;famliy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ids&lt;/span&gt;&lt;span class="p"&gt;,[])&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;loking&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;kouka&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;edit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;koukson&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,[]),[])&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;loking&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;koukson&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,[]),[])&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;loking&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;koukson&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;kim&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delete&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;,[]),[])&lt;/span&gt;
+&lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;loking&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;koukson&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;}]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;    
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all, thanks in advance for your feebacks&lt;/p&gt;
+&lt;p&gt;Please check this docstring for more informations ^_~.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sat, 23 Mar 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-03-23:oeutils.html</guid><category>openerp</category><category>python</category><category>xmlrpc</category><category>api</category></item><item><title>Introduction aux Makefiles</title><link>http://www.josuebrunel.org/introduction-aux-makefiles.html</link><description>&lt;h3&gt;Makefile&lt;/h3&gt;
+&lt;p&gt;Un &lt;strong&gt;makefile&lt;/strong&gt; est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type &lt;strong&gt;make&lt;/strong&gt; (gmake,...). &lt;/p&gt;
+&lt;h4&gt;A quoi sert il ?&lt;/h4&gt;
+&lt;p&gt;Il permet de construire automatiquement des &lt;strong&gt;&lt;em&gt;executable&lt;/em&gt;&lt;/strong&gt; (tres souvent) , des &lt;strong&gt;&lt;em&gt;libraries&lt;/em&gt;&lt;/strong&gt;, des &lt;strong&gt;&lt;em&gt;architectures&lt;/em&gt;&lt;/strong&gt; de dossier ou des actions &lt;strong&gt;&lt;em&gt;diverses&lt;/em&gt;&lt;/strong&gt; . En gros , enormement de choses .&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Guillaume&amp;gt; Pourquoi ne pas juste ecrire un script shell, python pour le faire ?
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;La principale difference entre une &lt;strong&gt;makefile&lt;/strong&gt; et un &lt;strong&gt;script normal&lt;/strong&gt; est que les instructions d'un &lt;strong&gt;makefile&lt;/strong&gt; ne sont executées que si &lt;strong&gt;necessaires&lt;/strong&gt;, c.a.d qu'une action (règle) qui a deja été accomplie, ne sera plus reexecutée.&lt;/p&gt;
+&lt;h4&gt;Comment fonctionne t-il ?&lt;/h4&gt;
+&lt;p&gt;Il fonctionne tout simplement par verification de statisfactions de dépendances. Je m'explique par l'algorithme qui suit :
+Pour faire mon &lt;strong&gt;tea&lt;/strong&gt; (avec l'accent british s'il vous plait!!) j'ai généralement besoin d'une &lt;strong&gt;cup&lt;/strong&gt; , de l'eau 
+et un &lt;strong&gt;tea bag&lt;/strong&gt; (twisted mind, get away!!!). On supposera qu'on a déja notre tasse.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je de l'eau chaude ?&lt;/p&gt;
+&lt;p&gt;O : on passe a l'étape 2&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer de l'eau ?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Satisfait&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;impossible&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;creer&lt;/span&gt; &lt;span class="n"&gt;de&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;eau&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt; &lt;span class="n"&gt;et&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;sors&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ai-je du thé ?&lt;/p&gt;
+&lt;p&gt;O : alors  étape 3&lt;/p&gt;
+&lt;p&gt;N : Sais-je comment me procurer du thé ?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;O&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;me&lt;/span&gt; &lt;span class="n"&gt;procure&lt;/span&gt; &lt;span class="n"&gt;du&lt;/span&gt; &lt;span class="n"&gt;th&lt;/span&gt;&lt;span class="err"&gt;é&lt;/span&gt; &lt;span class="n"&gt;puis&lt;/span&gt; &lt;span class="n"&gt;je&lt;/span&gt; &lt;span class="n"&gt;vais&lt;/span&gt; &lt;span class="err"&gt;à&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;é&lt;/span&gt;&lt;span class="n"&gt;tape&lt;/span&gt; &lt;span class="n"&gt;suivante&lt;/span&gt;
+
+&lt;span class="n"&gt;N&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;jre&lt;/span&gt; &lt;span class="n"&gt;renvoie&lt;/span&gt; &lt;span class="n"&gt;une&lt;/span&gt; &lt;span class="n"&gt;erreur&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Je fais mon thé grace à mon eau et mon sac de thé&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A la prochaine execution, on n'aura plus besoin de se procurer de l'eau par exemple, dans le cas ou la dependance
+est toujours satisfaite .&lt;/p&gt;
+&lt;h4&gt;Comment ecrire un Makefile ?&lt;/h4&gt;
+&lt;p&gt;Context : &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.youtube.com/watch?v=kcsNbQRU5TI"&gt;Jimmy Mcmillan&lt;/a&gt; veut écrire 2 fonctions d'affichage pour son party. Etant le super programmeur de son party, il se lance :  &lt;/p&gt;
+&lt;p&gt;un fichier my_putchar.h&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putchar__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putchar__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putchar.c&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.h&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#ifndef __my_putstr__&lt;/span&gt;
+&lt;span class="cp"&gt;#define __my_putstr__&lt;/span&gt;
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier my_putstr.c&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include &amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include &amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt;    &lt;span class="nf"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;un fichier main.c&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#include&amp;lt;my_putchar.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#incluce&amp;lt;my_putstr.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;O&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;m&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;g&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;my_putchar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;\n&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;my_putstr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;The Rent Is Damn Too High !!!&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;complilation separee en ligne de commande&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc -Wall -c main.c my_putchar.c my_putstr.c
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;ls *.o &lt;span class="c"&gt;# pour lister les .o generes&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;cc main.o my_putchar.o my_putstr.o -o my_exe &lt;span class="c"&gt;#generation de l&amp;#39;executable&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;./test
+&lt;span class="go"&gt;Omg!&lt;/span&gt;
+&lt;span class="go"&gt;The Rent Is Damn Too High !!!&lt;/span&gt;
+&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Faut avouer que si son projet a plus de 10 fichiers sources, ça devient tres vite fastidieux de tout taper a la main. 
+Alors pour palier à cela, il decide d'ecrire un makefile bien commenté.&lt;/p&gt;
+&lt;p&gt;notre &lt;strong&gt;makefile&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;CC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; cc  &lt;span class="c"&gt;# le compliteur (e.g: g++, gcc, gccsense,...)&lt;/span&gt;
+
+&lt;span class="c"&gt;#Les sources ou fichiers cibles&lt;/span&gt;
+&lt;span class="nv"&gt;SRC&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_putchar.c&lt;span class="se"&gt;\&lt;/span&gt;
+        my_putstr.c&lt;span class="se"&gt;\&lt;/span&gt;
+        main.c
+
+&lt;span class="nv"&gt;CFLAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; -Wall -W -I./
+
+&lt;span class="nv"&gt;OBJ&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;SRC:.c&lt;span class="o"&gt;=&lt;/span&gt;.o&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# infference, les .o sont generés à partir des .c de manière implicite&lt;/span&gt;
+
+&lt;span class="nv"&gt;EXE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; my_exe
+
+&lt;span class="c"&gt;#Les differentes regles&lt;/span&gt;
+&lt;span class="c"&gt;#La 1ere regles est la premiere appelee, donc il est vivement conseille de definir **all** comme etant la premiere&lt;/span&gt;
+
+&lt;span class="nf"&gt;all&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;&lt;span class="nv"&gt;EXE&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;#On peut definir une regle avec le nom d&amp;#39;une variable&lt;/span&gt;
+&lt;span class="nf"&gt;$(EXE)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="nf"&gt;clean&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+    rm -rf *.o *~
+
+&lt;span class="nf"&gt;fclean&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;clean&lt;/span&gt; 
+    rm -rf &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt;
+
+&lt;span class="nf"&gt;re&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;fclean&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt;: Respecter l'&lt;strong&gt;indentation&lt;/strong&gt;, sinon make renverra une erreur.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;all&lt;/strong&gt; et genere tous les fichiers de dependances&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;jimmy@mcmillan:~$&lt;/span&gt;make my_exe
+&lt;span class="go"&gt;make: `my_exe&amp;#39; is up to date.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Appelle la regle &lt;strong&gt;my_exe&lt;/strong&gt; qui dans notre makefile correspond a &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;$(EXE)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="k"&gt;$($&lt;/span&gt;&lt;span class="nv"&gt;OBJ&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="c"&gt;#la regle $(EXE) depend de ($OBJ)&lt;/span&gt;
+    &lt;span class="k"&gt;$(&lt;/span&gt;CC&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;OBJ&lt;span class="k"&gt;)&lt;/span&gt; -o &lt;span class="k"&gt;$(&lt;/span&gt;EXE&lt;span class="k"&gt;)&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;CFLAGS&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Et oui !! Une regle peut avoir nom du contenu d'une variable.
+Vous avez surement remarque le message qui indique que la regle est deja satisfaite (^_~) .&lt;/p&gt;
+&lt;p&gt;Pour resumer, mcmillan a les dependances suivantes dans son makefile :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;all&lt;/strong&gt; depend de &lt;strong&gt;exe&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;exe&lt;/strong&gt; depend de &lt;strong&gt;obj&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;fclean&lt;/strong&gt; depend de &lt;strong&gt;clean&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;re&lt;/strong&gt; depend de &lt;strong&gt;fclean&lt;/strong&gt; puis &lt;strong&gt;all&lt;/strong&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Je vous conseille de lire &lt;a href="http://gl.developpez.com/tutoriel/outil/makefile/"&gt;ceci&lt;/a&gt; pour vous documenter sur les regles &lt;strong&gt;d'inference&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 05 Feb 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-02-05:introduction-aux-makefiles.html</guid><category>makefile</category><category>c</category><category>c++</category><category></category></item><item><title>Migration base de donnee Openerp production a developpement</title><link>http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html</link><description>&lt;p&gt;Salut !!!!
+Etant un petit programmeur &lt;em&gt;openerp&lt;/em&gt; , il m'arrive tres souvent de vouloir travailler avec un environement 
+de production. Chose assez simple a realiser , par rapport a openerp, car il suffit d'exporter la base de 
+donnees de &lt;strong&gt;production&lt;/strong&gt; et  l'importer en &lt;strong&gt;developpement&lt;/strong&gt; .
+Oui oui !!! je n'utilise pas d'outils GUI comme &lt;em&gt;pgAdmin&lt;/em&gt; ^_^ .&lt;/p&gt;
+&lt;p&gt;Prérequis :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Connaissances basiques en administration linux/unix&lt;/li&gt;
+&lt;li&gt;Connaissances basiques SQL et administration PostgreSQL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Context :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;serveur de bdd production : 192.168.1.2  # HOSTNAME = prod&lt;/li&gt;
+&lt;li&gt;serveur de  bdd developpement : 192.168.1.3 # HOSTNAME = preprod&lt;/li&gt;
+&lt;li&gt;Le nom de notre base de données est &lt;strong&gt;pikachu&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Production&lt;/h3&gt;
+&lt;p&gt;Se connecter au serveur de base de données&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt;ssh root@192.168.1.2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Se connecter en tant qu'utilisateur &lt;strong&gt;postgres&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;#&lt;/span&gt;su postgres
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Exporter la base de données&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@prod:/root/backup$&lt;/span&gt; pg_dump pikachu -U postgres &amp;gt; ./backup/db_backup
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;db_backup&lt;/strong&gt; est le nom du fichier contenant la base de données exportée&lt;/p&gt;
+&lt;h3&gt;Developpement&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;prod:~#&lt;/span&gt;ssh root@192.168.1.3
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Copier la base de données de production sur le serveur de développement&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt; scp root@192.168.1.2:/root/backup/db_backup ./backups/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Stopper les services Openerp et Apache(Web, si necéssaire)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/openerp stop &lt;span class="c"&gt;#Arret du serveur openerp de developpement&lt;/span&gt;
+&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/apache2 stop &lt;span class="c"&gt;#Arret du serveur web de developpement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Connecter vous en tant qu'utilisqteur &lt;strong&gt;postgres&lt;/strong&gt; (on est sur le serveur de developpement cette fois-ci)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;su postgres
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Créer une base de données temporaire&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root$&lt;/span&gt;psql
+&lt;span class="go"&gt;postgres=# create database pikachu_prod with owner=openerp template=template0 encoding=&amp;#39;UTF-8&amp;#39; ;&lt;/span&gt;
+&lt;span class="go"&gt;postgres=#\q&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Charger le fichier de base de données recuperé en production vers la base de données de développement&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root/backups$&lt;/span&gt; cat db_backup &lt;span class="p"&gt;|&lt;/span&gt; psql pikachu_prod
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Vous pouvez vérifier qu'on a deux bases ( pikachu , pikachu_prod) avec la commande:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt;postgres=#\l&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Supprimer la base de développement et renommer la base de production avec le nom de celle de développement&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;postgres@preprod:/root/backups$&lt;/span&gt; psql
+&lt;span class="go"&gt;postgres=# drop database pikachu ;&lt;/span&gt;
+&lt;span class="go"&gt;postgres=# alter DATABASE pikachu_prod RENAME TO pikcachu ;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Relancez les services Openerp et Apache(Web)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/openerp start &lt;span class="c"&gt;#Demarrage du serveur openerp de développement&lt;/span&gt;
+&lt;span class="gp"&gt;preprod:~#&lt;/span&gt;/etc/init.d/apache2 start &lt;span class="c"&gt;#Demarrage du serveur web de développement&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Mon, 04 Feb 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-02-04:migration-base-de-donnee-openerp-production-a-developpement.html</guid><category>postgresql</category><category>openerp</category><category>linux</category><category>database</category></item><item><title>How to install fonts on linux</title><link>http://www.josuebrunel.org/how-to-install-fonts-on-linux.html</link><description>&lt;p&gt;Hi guys !!!
+I was using a mac lately, and i fell in love with the monaco font. That font is so cool on emacs ^_^.&lt;/p&gt;
+&lt;p&gt;So i started searching on the internet and found how to do so. Here it's:&lt;/p&gt;
+&lt;p&gt;You can get that font &lt;a href="http://jorrel.googlepages.com/Monaco_Linux.ttf"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then on your terminal &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mkdir /usr/share/fonts/truetype/custom
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo mv Monaco_Linux.ttf /usr/share/fonts/truetype/custom/
+&lt;span class="gp"&gt;yosuke@loking:$&lt;/span&gt;sudo &lt;span class="nb"&gt;fc&lt;/span&gt;-cache -f -v
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's all. Now you can use &lt;strong&gt;monaco&lt;/strong&gt; font .&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt example" src="./static_files/font/monaco_font.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Isn't it cool !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 20 Jan 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-01-20:how-to-install-fonts-on-linux.html</guid><category>linux</category><category>font</category><category></category></item><item><title>Bowee</title><link>http://www.josuebrunel.org/bowee.html</link><description>&lt;h2&gt;What's &lt;strong&gt;BoWee&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;BoWee&lt;/strong&gt; is a &lt;strong&gt;bottle&lt;/strong&gt; project builder. It generates an project architecture and useful files for &lt;strong&gt;bottle&lt;/strong&gt; projects.
+It was previously name &lt;em&gt;TinyCocktail&lt;/em&gt; , but it has been changed. &lt;/p&gt;
+&lt;p&gt;It uses the &lt;a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"&gt;MVC&lt;/a&gt; architecture. 
+Actually is more &lt;strong&gt;&lt;em&gt;Model View Template&lt;/em&gt;&lt;/strong&gt; architecture like in the &lt;a href="http://en.wikipedia.org/wiki/Django_(web_framework)"&gt;Django Framework&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It's currently in development but it's quite usable, i advise you to use a &lt;strong&gt;&lt;em&gt;virtual environment&lt;/em&gt;&lt;/strong&gt; though. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BoWee&lt;/strong&gt; uses &lt;strong&gt;peewee&lt;/strong&gt; as ORM and obviously &lt;strong&gt;bottle&lt;/strong&gt; as Web Framework. &lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;To be able to use &lt;em&gt;BoWee&lt;/em&gt;, it's required to :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Know and have installed Peewee&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Know and have installed Bottle&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Those packages can be installed like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;sudo pip install bottle peewee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Download&lt;/h2&gt;
+&lt;p&gt;You can directly download &lt;strong&gt;bowee&lt;/strong&gt; &lt;a href="./static_files/bowee/bowee-1.1.tar.gz"&gt;here&lt;/a&gt; or check the &lt;a href="https://github.com/josuebrunel/bowee"&gt;github repository&lt;/a&gt; to see the last updates.&lt;/p&gt;
+&lt;h2&gt;Installation&lt;/h2&gt;
+&lt;h4&gt;Via the tar.gz&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;(bottle)yosuke@loking:~$&lt;/span&gt; tar xvzf bowee-1.1.tar.gz 
+&lt;span class="go"&gt;bowee-1.1/&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/bowee/&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/bowee/bowee.py&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/bowee/__init__.py&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/bowee_admin.py&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/PKG-INFO&lt;/span&gt;
+&lt;span class="go"&gt;bowee-1.1/setup.py&lt;/span&gt;
+&lt;span class="gp"&gt;(bottle)yosuke@loking:~$&lt;/span&gt; &lt;span class="nb"&gt;cd &lt;/span&gt;bowee-1.1/
+&lt;span class="gp"&gt;(bottle)yosuke@loking:~/bowee-1.1$&lt;/span&gt; ls
+&lt;span class="go"&gt;bowee  bowee_admin.py  PKG-INFO  setup.py&lt;/span&gt;
+&lt;span class="gp"&gt;(bottle)yosuke@loking:~/bowee-1.1$&lt;/span&gt; python setup.py install
+&lt;span class="go"&gt;running install&lt;/span&gt;
+&lt;span class="go"&gt;running build&lt;/span&gt;
+&lt;span class="go"&gt;running build_py&lt;/span&gt;
+&lt;span class="go"&gt;creating build&lt;/span&gt;
+&lt;span class="go"&gt;creating build/lib.linux-i686-2.7&lt;/span&gt;
+&lt;span class="go"&gt;creating build/lib.linux-i686-2.7/bowee&lt;/span&gt;
+&lt;span class="go"&gt;copying bowee/__init__.py -&amp;gt; build/lib.linux-i686-2.7/bowee&lt;/span&gt;
+&lt;span class="go"&gt;copying bowee/bowee.py -&amp;gt; build/lib.linux-i686-2.7/bowee&lt;/span&gt;
+&lt;span class="go"&gt;running build_scripts&lt;/span&gt;
+&lt;span class="go"&gt;creating build/scripts-2.7&lt;/span&gt;
+&lt;span class="go"&gt;copying and adjusting bowee_admin.py -&amp;gt; build/scripts-2.7&lt;/span&gt;
+&lt;span class="go"&gt;changing mode of build/scripts-2.7/bowee_admin.py from 664 to 775&lt;/span&gt;
+&lt;span class="go"&gt;running install_lib&lt;/span&gt;
+&lt;span class="go"&gt;running install_scripts&lt;/span&gt;
+&lt;span class="go"&gt;copying build/scripts-2.7/bowee_admin.py -&amp;gt; /home/yosuke/.virtualenvs/bottle/bin&lt;/span&gt;
+&lt;span class="go"&gt;changing mode of /home/yosuke/.virtualenvs/bottle/bin/bowee_admin.py to 775&lt;/span&gt;
+&lt;span class="go"&gt;running install_egg_info&lt;/span&gt;
+&lt;span class="go"&gt;Removing /home/yosuke/.virtualenvs/bottle/lib/python2.7/site-packages/bowee-1.1-py2.7.egg-info&lt;/span&gt;
+&lt;span class="go"&gt;Writing /home/yosuke/.virtualenvs/bottle/lib/python2.7/site-packages/bowee-1.1-py2.7.egg-info&lt;/span&gt;
+&lt;span class="gp"&gt;(bottle)yosuke@loking:~/bowee-1.1$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Via pip&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;sudo pip install bowee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Turorial&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;bowee_admin project &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt;tree &lt;span class="nb"&gt;test&lt;/span&gt;
+&lt;span class="go"&gt;test/&lt;/span&gt;
+&lt;span class="go"&gt;├── __init__.py&lt;/span&gt;
+&lt;span class="go"&gt;├── models.py&lt;/span&gt;
+&lt;span class="go"&gt;├── static_files&lt;/span&gt;
+&lt;span class="go"&gt;├── templates&lt;/span&gt;
+&lt;span class="go"&gt;└── views.py&lt;/span&gt;
+
+&lt;span class="go"&gt;2 directories, 3 files&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;models.py&lt;/em&gt;&lt;/strong&gt;:   &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+&lt;span class="c"&gt;#import db_driver&lt;/span&gt;
+
+&lt;span class="c"&gt;#Example with Sqlite database&lt;/span&gt;
+&lt;span class="c"&gt;#database = peewee.SqliteDatabase(&amp;#39;sample.db&amp;#39;,check_same_thread=False)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_tables&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;#39;&amp;#39;&amp;#39;code such as : ModelName.create_table()&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseModel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;peewee&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;database&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;database&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;create_tables&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;views.py&lt;/em&gt;&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;redirect&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;peewee&lt;/span&gt;
+
+&lt;span class="c"&gt;#create your views&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/index&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello World !!!&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;templates&lt;/em&gt;&lt;/strong&gt;: Contains all template files (.tpl, .html.tpl)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;static_files&lt;/em&gt;&lt;/strong&gt;: Contains all the static files&lt;/p&gt;
+&lt;p&gt;Now that everything is setup, i wish you a &lt;strong&gt;Happy Coding&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 15 Jan 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-01-15:bowee.html</guid><category>python</category><category>bottle</category><category>peewee</category><category>web</category></item><item><title>ssh sans mot de passe</title><link>http://www.josuebrunel.org/ssh-sans-mot-de-passe.html</link><description>&lt;p&gt;Hi guys !!!!&lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué d'entrer votre mot de passe sur les differents serveurs sur lesquels vous travaillez tous les jours ?&lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué de rechercher vos credentials ssh dans les différentes fiches techniques afin de vous connecter ? &lt;/p&gt;
+&lt;p&gt;Vous êtes fatigué de ....&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;loking&amp;gt; Yo Joe!!! Stop it !!!
+loking&amp;gt; You ain&amp;#39;t a commercial speaker, are you ? 
+josue&amp;gt; Nope, ain&amp;#39;t.
+loking&amp;gt; Then stop !!!
+loking&amp;gt; Besides, you suck !!!!
+josue&amp;gt; that was mean bro :(
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Petit guide sur comment faire pour eviter d'en avoir marre.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt;ssh -t keygen rsa
+&lt;span class="go"&gt;Generating public/private rsa key pair.&lt;/span&gt;
+&lt;span class="go"&gt;Enter file in which to save the key (/home/huey/.ssh/id_rsa): &lt;/span&gt;
+&lt;span class="go"&gt;Created directory &amp;#39;/home/huey/.ssh&amp;#39;.&lt;/span&gt;
+&lt;span class="go"&gt;Enter passphrase (empty for no passphrase): &lt;/span&gt;
+&lt;span class="go"&gt;Enter same passphrase again: &lt;/span&gt;
+&lt;span class="go"&gt;Your identification has been saved in /home/huey/.ssh/id_rsa.&lt;/span&gt;
+&lt;span class="go"&gt;Your public key has been saved in /home/huey/.ssh/id_rsa.pub.&lt;/span&gt;
+&lt;span class="go"&gt;The key fingerprint is:&lt;/span&gt;
+&lt;span class="go"&gt;3e:4f:05:79:3a:9f:96:7c:3b:ad:e9:58:37:bc:37:e4 huey@freeman&lt;/span&gt;
+
+&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt; ls .ssh/
+&lt;span class="go"&gt;id_rsa  id_rsa.pub  known_hosts&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NB&lt;/em&gt;&lt;/strong&gt;: N'entrez pas de &lt;strong&gt;&lt;em&gt;passphrase&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;On se connecte sur le serveur &lt;em&gt;ruckus&lt;/em&gt;
+On cree un repertoire &lt;strong&gt;&lt;em&gt;.ssh&lt;/em&gt;&lt;/strong&gt; s'il n'existe pas.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;uncle@ruckus:~$&lt;/span&gt;mkdir .ssh/
+&lt;span class="gp"&gt;uncle@ruckus:~$&lt;/span&gt;&lt;span class="nb"&gt;exit&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;De retour sur huey, entrez la commande suivante et votre mot de passe &lt;em&gt;pour la derniere fois&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;huey@freeman:~$&lt;/span&gt;cat .ssh/id_rsa.pub &lt;span class="p"&gt;|&lt;/span&gt; ssh uncle@ruckus &lt;span class="s1"&gt;&amp;#39;cat &amp;gt;&amp;gt; .ssh/authorized_keys&amp;#39;&lt;/span&gt;
+&lt;span class="go"&gt;uncle@ruckus&amp;#39;s password:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant, huey peut se connecter avec le compte &lt;em&gt;uncle&lt;/em&gt; sur &lt;em&gt;ruckus&lt;/em&gt; sans mot de passe.&lt;/p&gt;
+&lt;p&gt;Et moi je peux aller &lt;a href="http://www.youtube.com/watch?v=b3F0B4hAsmI"&gt;poser ma question à Ronalda&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 20 Dec 2012 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2012-12-20:ssh-sans-mot-de-passe.html</guid><category>linux</category><category>ssh</category><category>server</category></item><item><title>Environement Python</title><link>http://www.josuebrunel.org/environement-python.html</link><description>&lt;p&gt;Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
+au developpement python .&lt;/p&gt;
+&lt;h3&gt;A- Autocomplention sur le shell python&lt;/h3&gt;
+&lt;p&gt;Vu que vous aurez a enormement utiliser le shell python, ce petit script permettant l'auto-completion vous sera fort utile.
+Dans votre &lt;strong&gt;home directory&lt;/strong&gt; creer un fichier .pythonenv.py avec le contenu suivant&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt;&lt;span class="nn"&gt;rlcompleter&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Loading python env ....&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;readline&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse_and_bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;tab: complete&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Python env loaded . Enjoy autocompletion ^_^ &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt;:Vous pouvez vous servir du meme fichier pour importer differentes libraries que vous voudriez avoir au lancement de votre shell python (e.g sqlite3, peewee, tweepy, ...)&lt;/p&gt;
+&lt;p&gt;puis ajouter ces deux lignes a votre fichier .bashrc&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#Python Shell Environment&lt;/span&gt;
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;PYTHONSTARTUP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.pythonenv.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Relancez votre terminal et l'autocompletion sur votre shell python sera active&lt;/p&gt;
+&lt;h3&gt;B- &lt;strong&gt;VirtualEnv&lt;/strong&gt; et &lt;strong&gt;VirtualenvWrapper&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://pypi.python.org/pypi/virtualenv"&gt;&lt;strong&gt;VirtualEnv&lt;/strong&gt;&lt;/a&gt; est un petit outil python permettant de creer des environements isoles dans lequel vous pourrez installer des packages sans interferer avec d'autres environements virtuels ou votre environement systeme .
+Son utilite se fait fortement ressentir losque l'on est amene a travailler sur des versions differentes d'un meme packages ou lorsque l'on veut tester des packages.
+&lt;strong&gt;VirtualEnvWrapper&lt;/strong&gt; est un &lt;strong&gt;wrapper&lt;/strong&gt; comme son nom l'indique, qui expose plusieurs fonctionalites de &lt;strong&gt;virtualenv&lt;/strong&gt; de maniere assez simple.&lt;/p&gt;
+&lt;h4&gt;Installation&lt;/h4&gt;
+&lt;p&gt;:::console
+  yosuke@loking:~/workspace$pip install virtualenvwrapper&lt;/p&gt;
+&lt;h4&gt;Utilisation&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt; mkvirtualenv konoha &lt;span class="c"&gt;#creation de nottre environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;New python executable in konoha/bin/python&lt;/span&gt;
+&lt;span class="go"&gt;Installing setuptools............done.&lt;/span&gt;
+&lt;span class="go"&gt;Installing pip...............done.&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/predeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postdeactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/preactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postactivate&lt;/span&gt;
+&lt;span class="go"&gt;virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/get_env_details&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; pip install peewee &lt;span class="c"&gt;#installation d&amp;#39;un package dans l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="go"&gt;Downloading/unpacking peewee&lt;/span&gt;
+&lt;span class="go"&gt;Downloading peewee-2.0.7.tar.gz (662kB): 662kB downloaded&lt;/span&gt;
+&lt;span class="go"&gt;Running setup.py egg_info for package peewee&lt;/span&gt;
+
+&lt;span class="go"&gt;Installing collected packages: peewee&lt;/span&gt;
+&lt;span class="go"&gt;Running setup.py install for peewee&lt;/span&gt;
+&lt;span class="go"&gt;changing mode of build/scripts-2.7/pwiz.py from 664 to 775&lt;/span&gt;
+
+&lt;span class="go"&gt;changing mode of /home/yosuke/.virtualenvs/konoha/bin/pwiz.py to 775&lt;/span&gt;
+&lt;span class="go"&gt;Successfully installed peewee&lt;/span&gt;
+&lt;span class="go"&gt;Cleaning up...&lt;/span&gt;
+&lt;span class="gp"&gt;(konoha)yosuke@loking:~/workspace$&lt;/span&gt; deactivate &lt;span class="c"&gt;#sortie de l&amp;#39;environement virtuel&lt;/span&gt;
+&lt;span class="gp"&gt;yosuke@loking:~/workspace$&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!! Vous etes prets (enfin je pense)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-07:environement-python.html</guid><category>python</category><category>shell</category></item><item><title>Openerp Module Development : Partie I</title><link>http://www.josuebrunel.org/openerp-module-development-partie-i.html</link><description>&lt;h3&gt;&lt;strong&gt;Pre-requis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Connaissances en programmation &lt;a href="http://www.python.org/"&gt;python&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OS : Ubuntu 12.04&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Python : 2.7&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Openerp : 6.1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Host : localhost&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On supposera que Openerp 6 est deja installe et tourne en &lt;a href="http://localhost:8069"&gt;localhost:8069&lt;/a&gt; &lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;Architecture d'un module openerp (&amp;gt;=6)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Un module openerp est généralement composé de fichiers et repertoires suivants. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt; module_name/&lt;/span&gt;
+&lt;span class="go"&gt;    ├── module_name.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── module_name_view.xml&lt;/span&gt;
+&lt;span class="go"&gt;    ├── __init__.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── __openerp__.py&lt;/span&gt;
+&lt;span class="go"&gt;    ├── reports&lt;/span&gt;
+&lt;span class="go"&gt;    ├── wizards&lt;/span&gt;
+&lt;span class="go"&gt;    └── workflows&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;strong&gt;init&lt;/strong&gt;&lt;/em&gt;&lt;/strong&gt; : Indique que le dossier est un package&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;module_name.py&lt;/em&gt;&lt;/strong&gt; : Il contient les objects de votre module &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;module_name_view.xml&lt;/em&gt;&lt;/strong&gt; : Gere les donnees via une definition d'interface (view, les menu, les interactions ...)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;strong&gt;openerp&lt;/strong&gt;&lt;/em&gt;&lt;/strong&gt; : Decrit le module (nom , version, auteur, dependances,...)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;reports&lt;/em&gt;&lt;/strong&gt; : Dossier contenant les objest et fichiers lies au reporting &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;wizards&lt;/em&gt;&lt;/strong&gt; : Dossier contenant les objets definissant les interactions client-server (&lt;a href="http://doc.openerp.com/v6.1/developer/04_wizard.html"&gt;voir&lt;/a&gt;) &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;workflow&lt;/em&gt;&lt;/strong&gt; : Dossier contenant la definition d'un workflow (&lt;a href="http://doc.openerp.com/v6.0/developer/3_9_Workflow_Business_Process/index.html"&gt;voir&lt;/a&gt;)&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;A- Un hello world&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Pour notre &lt;strong&gt;hello world&lt;/strong&gt; j'ai pensé à un module nous permettant d'enregistrer une famille et ses membres . &lt;/p&gt;
+&lt;p&gt;A vos terminaux !!!&lt;/p&gt;
+&lt;p&gt;Creer un dossier &lt;strong&gt;family&lt;/strong&gt; dans votre espace de travail avec les fichier suivants :&lt;/p&gt;
+&lt;p&gt;1- &lt;strong&gt;&lt;strong&gt;openerp&lt;/strong&gt;.py&lt;/strong&gt; dont le contenu est le suivant :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# le nom du module, il apparait dans la liste des modules&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1.0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# la version&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# l&amp;#39;auteur&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;website&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;none&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# site web&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;category&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Generic Modules/Others&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# category du module&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;depends&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;base&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;# liste des modules de dependances&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Simple module permettant d&amp;#39;enregistrer une famille est ses memebres&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;update_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_view.xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="c"&gt;#liste des vue, dans notre cas family_view.xml&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;demo_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;init_xml&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:[],&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;installable&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NB&lt;/strong&gt; : Tous les modules dependent de &lt;strong&gt;&lt;em&gt;base&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
+&lt;p&gt;2- &lt;strong&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/strong&gt; contenant ceci :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;family&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Simple &lt;em&gt;importation&lt;/em&gt; d'un module python &lt;/p&gt;
+&lt;p&gt;3- &lt;strong&gt;family.py&lt;/strong&gt; &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;osv&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;family_family&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;_columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Family Name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;member_ids&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;one2many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.member&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Members&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="n"&gt;family_family&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;family_member&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;osv&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family.member&amp;#39;&lt;/span&gt;
+    &lt;span class="n"&gt;_columns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="c"&gt;# dictionnaire des champs de l&amp;#39;object&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;firstname&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;FirstName&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;lastname&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;LastName&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;many2one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;ondelete&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cascade&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;selection&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;  &lt;span class="c"&gt;# definition d&amp;#39;un champ de selection&lt;/span&gt;
+            &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;female&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Female&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+            &lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Gender&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;readonly&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;select&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="c"&gt;# default : dictionnaire des valeurs par defaut&lt;/span&gt;
+    &lt;span class="n"&gt;_defaults&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;lastname&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pool&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family.family&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;browse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;uid&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;family_id&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;context&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;gender&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;male&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# &amp;quot;male&amp;quot; sera la valeur par defaut du champ &amp;quot;gender&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;family_member&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;#instanciation de la classe , __N&amp;#39;oubliez jamais de le faire__&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ce fichier decrit les objects du modules et leur caracteristiques&lt;/p&gt;
+&lt;p&gt;Documentation sur l'objet &lt;a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/object_attributes.html"&gt;osv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Documentation sur l'objet &lt;a href="http://doc.openerp.com/v6.0/developer/2_5_Objects_Fields_Methods/field_type.html"&gt;fields&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;strong&gt;explications&lt;/strong&gt; :&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;_defaults['lastname']&lt;/em&gt;, j'ai utilisé une fonction &lt;em&gt;lambda&lt;/em&gt; afin de permettre que le champ &lt;em&gt;lastname&lt;/em&gt; soit automatiquement rempli en se servant du context &lt;em&gt;family_id&lt;/em&gt; definit dans le fichier &lt;em&gt;family_view.xml&lt;/em&gt; au sein de l'objet &lt;em&gt;family&lt;/em&gt;. 
+Mais cela ne se fera que dans la condition ou un &lt;em&gt;membre&lt;/em&gt; sera crée à partir du menu(vue,interface) d'une &lt;em&gt;famille&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;4- &lt;strong&gt;family_view.xml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; ?&amp;gt;&lt;/span&gt;
+
+&lt;span class="nt"&gt;&amp;lt;openerp&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;data&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!--Family--&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_form&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- definition d&amp;#39;une vuew dont l&amp;#39;id est &amp;quot;family_form&amp;quot;--&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- nom de la vue --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- classe sur laquelle on se base pour creer la vue (une des classes de &amp;quot;family.py&amp;quot;, dans notre cas &amp;quot;family.family&amp;quot;)--&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!--type de vue : form/tree/graph --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- declaration d&amp;#39;un formulaire --&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;  &lt;span class="c"&gt;&amp;lt;!-- declaration d&amp;#39;un champ --&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;notebook&lt;/span&gt; &lt;span class="na"&gt;colspan=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;4&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; 
+                    &lt;span class="nt"&gt;&amp;lt;page&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Members&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_ids&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;domain=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;[(&amp;#39;family_id&amp;#39;,&amp;#39;=&amp;#39;,active_id)]&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;context=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{&amp;#39;family_id&amp;#39;:active_id}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- definition d&amp;#39;un context --&amp;gt;&lt;/span&gt;
+                    &lt;span class="nt"&gt;&amp;lt;/page&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/notebook&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_tree&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!--type de vue : tree, correspond a l&amp;#39;affichage en liste d&amp;#39;elements --&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;tree&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- on declare &amp;quot;tree&amp;quot; cette fois ci et non un &amp;quot;form&amp;quot;--&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_ids&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- declaration des champs --&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/tree&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Notez que tous les champs declarés ici sont dans family.py, sinon une erreur sera levée --&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!--Definition d&amp;#39;une action --&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.actions.act_window&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_family&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- le model est bien différent : &amp;quot;ir.actions&amp;quot; et non &amp;quot;ir.ui.view&amp;quot; --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- nom de l&amp;#39;action --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;res_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.family&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; &lt;span class="c"&gt;&amp;lt;!-- model sur lequel se base l&amp;#39;action --&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt; 
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_mode&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree,form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="c"&gt;&amp;lt;!-- Declaration d&amp;#39;un menu --&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_menu&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;parent=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_family&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="c"&gt;&amp;lt;!--&lt;/span&gt;
+&lt;span class="c"&gt;        id : identifiant du menu&lt;/span&gt;
+&lt;span class="c"&gt;        name : nom du menu&lt;/span&gt;
+&lt;span class="c"&gt;        parent : le menu dont depend celui-ci, il sera donc un sous-menu &lt;/span&gt;
+&lt;span class="c"&gt;        action : action relier au menu&lt;/span&gt;
+&lt;span class="c"&gt;    --&amp;gt;&lt;/span&gt;
+    &lt;span class="c"&gt;&amp;lt;!-- &amp;quot;action_family&amp;quot; correspond à l&amp;#39;id de l&amp;#39;acton déclarée pécedement --&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class="c"&gt;&amp;lt;!--Members--&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_form&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;member.form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Member&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gender&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_id&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.ui.view&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_tree&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;member.tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;arch&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xml&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;tree&lt;/span&gt; &lt;span class="na"&gt;string=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Member&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;gender&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family_id&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;lt;/tree&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;record&lt;/span&gt; &lt;span class="na"&gt;model=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;ir.actions.act_window&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_member&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;res_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;family.member&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_type&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;field&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;view_mode&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;tree,form&lt;span class="nt"&gt;&amp;lt;/field&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/record&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;menuitem&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;member_menu&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Members&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;parent=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;family&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;action_member&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+
+    &lt;span class="nt"&gt;&amp;lt;/data&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/openerp&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Documentation sur les &lt;a href="http://doc.openerp.com/v6.0/developer/2_6_views_events/views/design_element.html"&gt;vues&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;&lt;strong&gt;B- Installation du module&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Pour installer notre module, il nous faut l'ajouter au differents modules de OpenERP afin qu'il soit reconnu .
+Ceci necessite de copier le dossier de notre module (&lt;strong&gt;family&lt;/strong&gt;) dans le dossiers &lt;strong&gt;addons&lt;/strong&gt; du serveur 
+Openerp.
+Par defaut le dossier de addons est le suivant (Voir le context en haut de page, car il peut changer en fonction de la distribution)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="go"&gt;/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Sinon vous pouvez le verifier en regardant votre fichier de configuration de serveur Openerp&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;.openerp_serverrc (dans votre home directory)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;/etc/openerp-server.conf (dans /etc/)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Mais je conseille de faire des lien symboliques &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:/usr/local/lib/python2.7/dist-packages/openerp-6.1_20121021_233212-py2.7.egg/openerp/addons$&lt;/span&gt; ln -s ~/workspace/family/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Maintenant que nous avons notre module dans le dossier des &lt;strong&gt;&lt;em&gt;addons&lt;/em&gt;&lt;/strong&gt; du serveur, il ne nous reste plus qu'a l'installer .&lt;/p&gt;
+&lt;p&gt;Connexion au serveur &lt;a href="http://localhost:8069"&gt;localhost&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Allez dans Parametres =&amp;gt; Modules&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module" src="./static_files/openerp/module.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Mettre a jour la liste&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt update_list" src="./static_files/openerp/update_list.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt module_not_installed" src="./static_files/openerp/module_not_installed.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Vous devriez voir le module &lt;strong&gt;family&lt;/strong&gt; apparaitre sur le menu &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt family" src="./static_files/openerp/family.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alt members" src="./static_files/openerp/members.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 04 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-04:openerp-module-development-partie-i.html</guid><category>openerp</category><category>python</category><category>xml</category></item><item><title>About Me</title><link>http://www.josuebrunel.org/about-me.html</link><description>&lt;p&gt;&lt;img alt="Alt Me" src="./static_files/fg.jpg" /&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;about_me&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Kouka&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;born_in&amp;quot;&lt;/span&gt;      &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;1989&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;nickname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;The Tiny Black Mushroom&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c"&gt;# This is a kickass nickname, isn&amp;#39;t it ?&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;locations&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nantes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Paris&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;interests&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Free Software&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Open Source&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Linux/Unix&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;C/C++&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;languages&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;English&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;French&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hi guys !! I'm &lt;strong&gt;&lt;em&gt;Josue Kouka&lt;/em&gt;&lt;/strong&gt; (yeah i know, tough to pronounce), a young
+free software and open-source enthusiast, fond of programming and thirsty of
+knowledge.&lt;/p&gt;
+&lt;p&gt;This little blog is about stuff that i like, by that i mean a lot of &lt;strong&gt;Linux
+and Programming&lt;/strong&gt; (yeah sounds like fun ^_^). I talk about personal and
+projects in which i'm involved(Not a lot right now).&lt;/p&gt;
+&lt;p&gt;Articles will be either in English or in French (sometimes both when i can),
+and to make it fun to read, i will do my best to refer to some &lt;em&gt;memes&lt;/em&gt;. I use
+&lt;strong&gt;emacs&lt;/strong&gt; as my main text editor/IDE. You can check emacs for python out if
+you interested into programming with emacs.&lt;/p&gt;
+&lt;p&gt;I think that it's almost all you need to know about me , don't hesitate to
+contact me at &lt;a href="mailto:josuebrunel@gmail.com"&gt;josuebrunel@gmail.com&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 02 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-02:about-me.html</guid><category>Hello World</category></item></channel></rss>

@@ -29,15 +29,15 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html">Migration base de donnee Openerp production a developpement</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2013-02-04T00:00:00">
-                Mon 04 February 2013
+        <abbr class="published" title="2013-02-04T00:00:00+01:00">
+                Published: Mon 04 February 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/postgresql.html">postgresql</a><a href="http://www.josuebrunel.org/tag/openerp.html">openerp</a><a href="http://www.josuebrunel.org/tag/linux.html">linux</a><a href="http://www.josuebrunel.org/tag/database.html">database</a></p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/postgresql.html">postgresql</a> <a href="http://www.josuebrunel.org/tag/openerp.html">openerp</a> <a href="http://www.josuebrunel.org/tag/linux.html">linux</a> <a href="http://www.josuebrunel.org/tag/database.html">database</a> </p>
 </footer><!-- /.post-info --><p>Salut !!!!
 Etant un petit programmeur <em>openerp</em> , il m'arrive tres souvent de vouloir travailler avec un environement 
 de production. Chose assez simple a realiser , par rapport a openerp, car il suffit d'exporter la base de 
@@ -100,7 +100,7 @@ Oui oui !!! je n'utilise pas d'outils GUI comme <em>pgAdmin</em> ^_^ .</p>
 
 
 <p>Charger le fichier de base de données recuperé en production vers la base de données de développement</p>
-<div class="highlight"><pre><span class="gp">postgres@preprod:/root/backups$</span> cat db_backup | psql pikachu_prod
+<div class="highlight"><pre><span class="gp">postgres@preprod:/root/backups$</span> cat db_backup <span class="p">|</span> psql pikachu_prod
 </pre></div>
 
 
@@ -137,24 +137,24 @@ Oui oui !!! je n'utilise pas d'outils GUI comme <em>pgAdmin</em> ^_^ .</p>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2012-10-04T00:00:00">
-                Thu 04 October 2012
+        <abbr class="published" title="2012-10-04T00:00:00+02:00">
+                Published: Thu 04 October 2012
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/openerp.html">openerp</a><a href="http://www.josuebrunel.org/tag/python.html">python</a><a href="http://www.josuebrunel.org/tag/xml.html">xml</a></p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/openerp.html">openerp</a> <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/xml.html">xml</a> </p>
 </footer><!-- /.post-info -->                <p>Un petit guide sur le developpement de module Openerp</p>
                 <a class="readmore" href="http://www.josuebrunel.org/openerp-module-development-partie-i.html">read more</a>
 <p>There are <a href="http://www.josuebrunel.org/openerp-module-development-partie-i.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
             </article></li>
-            </ol><!-- /#posts-list -->
+                </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </section><!-- /#content -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
@@ -197,7 +197,7 @@ Oui oui !!! je n'utilise pas d'outils GUI comme <em>pgAdmin</em> ^_^ .</p>
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>

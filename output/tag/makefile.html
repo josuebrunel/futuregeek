@@ -29,15 +29,15 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.josuebrunel.org/introduction-aux-makefiles.html">Introduction aux Makefiles</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2013-02-05T00:00:00">
-                Tue 05 February 2013
+        <abbr class="published" title="2013-02-05T00:00:00+01:00">
+                Published: Tue 05 February 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/makefile.html">makefile</a><a href="http://www.josuebrunel.org/tag/c.html">c</a><a href="http://www.josuebrunel.org/tag/c.html">c++</a><a href="http://www.josuebrunel.org/tag/.html"></a></p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/makefile.html">makefile</a> <a href="http://www.josuebrunel.org/tag/c.html">c</a> <a href="http://www.josuebrunel.org/tag/c.html">c++</a> <a href="http://www.josuebrunel.org/tag/.html"></a> </p>
 </footer><!-- /.post-info --><h3>Makefile</h3>
 <p>Un <strong>makefile</strong> est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type <strong>make</strong> (gmake,...). </p>
 <h4>A quoi sert il ?</h4>
@@ -168,18 +168,18 @@ Alors pour palier à cela, il decide d'ecrire un makefile bien commenté.</p>
 <span class="c">#Les differentes regles</span>
 <span class="c">#La 1ere regles est la premiere appelee, donc il est vivement conseille de definir **all** comme etant la premiere</span>
 
-<span class="nf">all</span><span class="o">:</span><span class="m">$(EXE)</span>
+<span class="nf">all</span><span class="o">:</span><span class="k">$(</span><span class="nv">EXE</span><span class="k">)</span>
 <span class="c">#On peut definir une regle avec le nom d&#39;une variable</span>
-<span class="k">$(</span>EXE<span class="k">)</span>:<span class="k">$(</span><span class="nv">$OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
+<span class="nf">$(EXE)</span><span class="o">:</span><span class="k">$($</span><span class="nv">OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
     <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>EXE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
 
-clean:
+<span class="nf">clean</span><span class="o">:</span>
     rm -rf *.o *~
 
-fclean:clean 
+<span class="nf">fclean</span><span class="o">:</span><span class="n">clean</span> 
     rm -rf <span class="k">$(</span>EXE<span class="k">)</span>
 
-re:fclean all
+<span class="nf">re</span><span class="o">:</span><span class="n">fclean</span> <span class="n">all</span>
 </pre></div>
 
 
@@ -195,7 +195,7 @@ re:fclean all
 
 
 <p>Appelle la regle <strong>my_exe</strong> qui dans notre makefile correspond a </p>
-<div class="highlight"><pre><span class="k">$(</span>EXE<span class="k">)</span>:<span class="k">$(</span><span class="nv">$OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
+<div class="highlight"><pre><span class="nf">$(EXE)</span><span class="o">:</span><span class="k">$($</span><span class="nv">OBJ</span><span class="k">)</span> <span class="c">#la regle $(EXE) depend de ($OBJ)</span>
     <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>OBJ<span class="k">)</span> -o <span class="k">$(</span>EXE<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span>
 </pre></div>
 
@@ -215,8 +215,6 @@ Vous avez surement remarque le message qui indique que la regle est deja satisfa
     Page 1 / 1
 </p>
             </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
@@ -259,7 +257,7 @@ Vous avez surement remarque le message qui indique que la regle est deja satisfa
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>

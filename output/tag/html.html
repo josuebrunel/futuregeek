@@ -29,15 +29,15 @@
                 <article>
                     <h1 class="entry-title"><a href="http://www.josuebrunel.org/html-to-markdown-.html">html to markdown</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2013-07-07T08:07:14">
-                Sun 07 July 2013
+        <abbr class="published" title="2013-07-07T08:07:14+02:00">
+                Published: Sun 07 July 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/linux.html">linux</a><a href="http://www.josuebrunel.org/tag/html.html">html</a><a href="http://www.josuebrunel.org/tag/markdwon.html">markdwon</a><a href="http://www.josuebrunel.org/tag/shell.html">shell</a></p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/linux.html">linux</a> <a href="http://www.josuebrunel.org/tag/html.html">html</a> <a href="http://www.josuebrunel.org/tag/markdwon.html">markdwon</a> <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> </p>
 </footer><!-- /.post-info --><p>Hi guys ^_^ !! .</p>
 <p>Yeah i know, ya'll happy to read me again, just like friends happy to see a friends they haven't seen in a very very long time ^_^.
 Don't worry i missed you too even though i don't KNOW you. Maybe you a creeper or something (No just kidding ). </p>
@@ -58,10 +58,10 @@ I've found 2 very convevial tools to do so. But i'm just going to talk about one
 
 
 <p>You might be in a situation where you have a directory full of html files that you want to convert into markdown. To do so, you can use the script below :</p>
-<div class="highlight"><pre><span class="k">for </span>file in ./*.html
+<div class="highlight"><pre><span class="k">for</span> file in ./*.html
 <span class="k">do</span>
-<span class="k">    </span><span class="nb">echo</span> <span class="nv">$file</span> ;
-html2markdown --ignore-links --ignore-image <span class="s2">&quot;$file&quot;</span> &gt;&gt; <span class="s2">&quot;`basename $file .html`.md&quot;</span>
+    <span class="nb">echo</span> <span class="nv">$file</span> <span class="p">;</span>
+html2markdown --ignore-links --ignore-image <span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span> &gt;&gt; <span class="s2">&quot;`basename </span><span class="nv">$file</span><span class="s2"> .html`.md&quot;</span>
 <span class="k">done</span>
 </pre></div>
 
@@ -72,8 +72,6 @@ html2markdown --ignore-links --ignore-image <span class="s2">&quot;$file&quot;</
     Page 1 / 1
 </p>
             </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
@@ -116,7 +114,7 @@ html2markdown --ignore-links --ignore-image <span class="s2">&quot;$file&quot;</
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>

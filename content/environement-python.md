@@ -1,4 +1,5 @@
 Title: Environement Python
+Slug: environement-python
 Date: 2012-10-07
 Tags: python, shell
 Category: Programming

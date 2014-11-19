@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>FutureGeek - Programming</title>
+        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <nav><ul>
+                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
+                    <li class="active"><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/comprendre-args-kwargs.html">Comprendre *, **, *args, **kwargs</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-03-26T00:00:00">
+                Tue 26 March 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p>Hi guys !!!</p>
+<p><strong>unpackers</strong> et <strong>varargs</strong> ? It doesn't ring a bell ? oh come on (redneck accent).</p>
+<p>Je suis sure que vous avez deja vu des instructions du genre :</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">myfunc</span><span class="p">(</span><span class="o">*</span><span class="n">myliste</span><span class="p">)</span> <span class="c"># Appel</span>
+<span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="n">mydict</span><span class="p">)</span> <span class="c"># Appel</span>
+<span class="o">&gt;&gt;&gt;...</span>
+<span class="o">&gt;&gt;&gt;</span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c"># définition</span>
+      <span class="o">...</span>
+</pre></div>
+
+
+<p>Maintenant vous voyez tres bien de quoi je parle, c'est bien.</p>
+<p><strong>unpackers</strong> : <strong><em>*</em></strong> et <strong><em>**</em></strong></p>
+<p><strong>varargs</strong> : <strong><em>*args</em></strong> et <strong><em>**kwargs</em></strong></p>
+<p>On va faire quelques petites experiences</p>
+<h3>Experience 1 : <strong><em>*</em></strong></h3>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">my_func</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="mi">3</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="n">given</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 2</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">my_func</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="mi">3</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">4</span> <span class="n">given</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>Lors du premier appel <em>Appel 1</em>, le shell nous a renvoyé une erreur, ce qui
+est tout a fait logique. On a passe une <strong>liste</strong> a une fonction qui attend 3
+paramètres.</p>
+<p>Ensuite lors de <em>Appel 2</em>, aucune erreur du shell. Seul différence avec <em>Appel
+1</em>, est le <strong>*</strong> devant notre liste <strong><em>mylist</em></strong> .</p>
+<p>Le <strong><em>*</em></strong> a <strong>deballe</strong> les éléments de notre liste et les a envoyé à la
+fonction, c'est à dire que ce n'est pas <strong><em>[1,2,4]</em></strong> (une liste) qui a été
+envoyée mais <strong><em>1,2,3</em></strong>, en gros les éléments de la liste.</p>
+<p>On ajoute un nouvel élément à la liste puis on rappelle la function ( <em>Appel
+3</em> ), cette fois ci <strong>ERREUR</strong>. Tout simplement parce que notre fonction
+attends 3 paramètres et non 4.</p>
+<p>Pour conclure , <strong><em>*</em></strong> sert a deballer les éléments d'une <em>liste</em>, d'un
+<em>tuple</em> ... On ne l'utilise que lors d'un appel de foncton ou méthode.</p>
+<h3>Experience 2: <strong><em>*args</em></strong></h3>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;x est &quot;</span><span class="p">,</span> <span class="n">x</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;args est &quot;</span><span class="p">,</span> <span class="n">args</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="s">&#39;varargs&#39;</span><span class="p">)</span> <span class="c">#Appel 1 bis</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;varargs&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c"># Appel 2</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mylist</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">mylist</span><span class="p">)</span> <span class="c">#Appel 4</span>
+<span class="n">x</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],)</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>On peut remarquer que dans les appels <em>Appel 1</em> et <em>Appel 1 bis</em>, <strong>x</strong> est
+eguale à <strong>1</strong>. Et que les autres paramètres sont assignés à <strong>*args</strong>, qui
+les prend sous forme de tuples peu importe leur taille.</p>
+<p>Dans l'appel <em>Appel 2</em>, un seul paramètre est passé à la fonction, et ce seul
+paramètre est assigne a <strong>x</strong> et vu qu'il n'y a pas d'autres paramètres,
+<strong>*args</strong> recoit un <em>tuple</em> vide.</p>
+<p>Dans l'appel <em>Appel 3</em>, on passe un paramètre et une <strong><em>liste deballee</em></strong>
+(*mylist), les éléments de la liste sont donc assignés à <strong>*args</strong> sous forme
+de tuples.</p>
+<p>Dans l'appel <em>Appel 4</em>, on passe un paramètre et une <strong><em>simple liste</em></strong>
+(mylist), la liste est donc assignée à <strong><em>args</em>*</strong>, ce qui nous donne un tuple
+de liste (<em>([])</em>).</p>
+<p>Un <strong>*myvar</strong> dans la <strong>définition</strong> d'une fonction/méthode est capable de
+recevoir n'importe quoi et un nombre non defini de paramètre.</p>
+<h3>Petit Use Case:</h3>
+<p>On doit écrire une fonction qui calcule la somme des nombres qui lui sont
+passés, sans tenir compte du premier paramètre .</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">calculer_somme</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">calculer_somme_sans_premier</span><span class="p">(</span><span class="n">premier</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;Premier est &quot;</span><span class="p">,</span> <span class="n">premier</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;args est &quot;</span><span class="p">,</span> <span class="n">args</span>
+<span class="o">...</span>   <span class="n">ma_somme</span> <span class="o">=</span> <span class="n">calculer_somme</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="c">#Pourquoi le &quot;*args&quot; </span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;Ma somme est &quot;</span><span class="p">,</span> <span class="n">ma_somme</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c">#Appel 1</span>
+<span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> <span class="c">#Appel 2, je fais passer une liste</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">calculer_somme</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">unsupported</span> <span class="n">operand</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="o">+</span><span class="p">:</span> <span class="s">&#39;int&#39;</span> <span class="ow">and</span> <span class="s">&#39;list&#39;</span>
+<span class="o">&gt;&gt;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">calculer_somme_sans_premier</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="c">#Appel 3</span>
+<span class="n">Premier</span> <span class="n">est</span>  <span class="mi">10</span>
+<span class="n">args</span> <span class="n">est</span>  <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">Ma</span> <span class="n">somme</span> <span class="n">est</span>  <span class="mi">6</span>
+</pre></div>
+
+
+<h4>Explications:</h4>
+<p><strong>calculer_somme</strong> est une simple fonction qui calcule la somme des nombres d'un iterable qui lui est passé en paramètre. (Easy)</p>
+<p><strong>calculer_somme_sans_premier</strong> calcule la somme des nombres qui lui sont passés en paramètres sans tenir compte du premier.</p>
+<p>Dans l'appel <em>Appel 1</em>, je fais passer des nombres, on a le resultat escompté
+car les paramètres sont transformés en un <em>tuple</em> (un iterable) à cause du
+<strong>*args</strong> ensuite traités par <strong><em>sum</em></strong>.</p>
+<p>Dans l'appel <em>Appel 2</em>, j'essaie de faire passer une liste, j'ai une
+<strong>TypeError</strong>, parce que <strong>sum</strong> est une fonction <em>builtin</em> qui renvoit la
+somme des <strong>nombres</strong> d'un <em>iterable</em>. Or en passant <em>([1,2,3])</em>, <strong>*args</strong> =
+([1,2,3],) qui est un tuple de liste.</p>
+<p>A la question <em>pourquoi le *args ?</em> dans <strong>calculer_somme_sans_premier</strong> lors
+de l'appel de <strong>calculer_somme</strong>, la réponse est qu'il faut deballer <strong>*args</strong>
+sinon on passerait <em>(1,2,3)</em> a <strong>calculer_somme</strong>. Dans l'appel <em>Appel 3</em> on
+remarque bien que <strong>args</strong> est un tuple, or il faut passer des <strong>nombres</strong>,
+qui ne sont que ses <strong>éléments</strong>, d'ou le <strong>deballage</strong>.</p>
+<h3><strong>Experience 3:</strong> <strong><em>**</em></strong></h3>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span>
+</pre></div>
+
+
+<p>Fonction toute simple à laquelle on fait passer des nombres et nous les
+affichent.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;b&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">**</span><span class="n">mydict</span><span class="p">)</span>
+<span class="mi">1</span> <span class="mi">5</span> <span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mydict</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="n">mydict</span><span class="p">)</span>
+<span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>On crée un dictionnaire dont les <em>keys</em> sont <strong>'b'</strong> et <strong>'c'</strong> et les
+valeurs, respectivement, <strong>5</strong> et <strong>6</strong>. On fait passer ce dictionnaire à la
+fonction en utilisant <strong>*</strong>*, le dictionnaire affiche correctement les
+valeurs.</p>
+<p>Le <em>unpackers</em> <strong>*</strong>* a déballé les valeurs du dictionnaire en fonction des
+différentes <strong>clés</strong>. Euh oui les <strong>clé</strong>, remarquez qu'elles portent les
+memes noms que nos paramètres lors de la définition de notre fonction ,
+rappelez vous du : <strong><em>def myfunc(a, b, c):</em></strong>...</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">mydict</span><span class="p">[</span><span class="s">&#39;d&#39;</span><span class="p">]</span><span class="o">=</span><span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="o">**</span><span class="n">mydict</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">myfunc</span><span class="p">()</span> <span class="n">got</span> <span class="n">an</span> <span class="n">unexpected</span> <span class="n">keyword</span> <span class="n">argument</span> <span class="s">&#39;d&#39;</span>
+</pre></div>
+
+
+<p>On decide d'ajouter un élément a notre dictionnaire (keys+value). On essaie de
+déballer le dictionnaire lors de l'appel, un <strong>TypeError</strong>. La <strong>clé</strong> <strong>'d'</strong>
+est inattendue. Normal, pas definie lors de la declaration de la fonction.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">mydict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s">&#39;d&#39;</span><span class="p">)</span>
+<span class="mi">7</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mydict</span>
+<span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">myfunc</span><span class="p">(</span><span class="o">*</span><span class="n">mydict</span><span class="p">)</span>
+<span class="n">a</span> <span class="n">c</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>On supprime le couple <strong>'d':7</strong>, on appelle la fonction avec un seul <strong>*</strong>, et
+les différentes clés du dictionnaire apparaissent.</p>
+<p>Pour conclure, <strong><em>*** permet de deballer les éléments d'un <em>dictionnaire</em>. Il
+n'est utilisé que lors des appels de fonction, tout comme </em></strong>**.</p>
+<h3><strong>Experience 4:</strong> <strong><em>**kwargs</em></strong></h3>
+<p>Redefinisson notre fonction <em>fun</em></p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="n">a</span><span class="p">,</span> <span class="n">kwargs</span>
+<span class="o">...</span>
+</pre></div>
+
+
+<p>Cette fonction n'a qu'un seul paramètre formel, <strong>'a'</strong>. Avec <strong>**kwargs</strong>
+elle peut prendre autant de mot clés en argumants, mots clés ,qui seront
+ajoutés à la liste des paramètres formels de la fonction temporairement.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+<span class="mi">1</span> <span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p><strong>**kwargs</strong> dans cette fonction, on recoit un <strong><em>dictionnaire</em></strong> contenant des <em>arguments mot clés</em>. Et oui ! <em>kwargs</em> sera un dictionnaire, mais on ne passe pas de dictionnaire à la fonction. </p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;a est &quot;</span><span class="p">,</span> <span class="n">a</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;On attends kwargs[b] et kwargs[z]&quot;</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;kwargs[b] &quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;b&#39;</span><span class="p">]</span>
+<span class="o">...</span>   <span class="k">print</span> <span class="s">&quot;kwargs[z] &quot;</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;z&#39;</span><span class="p">]</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+<span class="n">a</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">On</span> <span class="n">attends</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">et</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>  <span class="mi">2</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>  <span class="mi">26</span>
+</pre></div>
+
+
+<p>On peut definir tous les mots clés que l'on veut, à l'exception de <strong>'a'</strong>
+parce que il apprtient deja à un paramètre formel. <strong>c = 36</strong> n'apparait pas
+parce qu'on a decidé de ne pas l'afficher. Les nouveaux paramètres sont
+considérés comme les couples <strong>(key,value)</strong> d'un dictionnaire normal.</p>
+<p>Déclarons un dictionnaire et éssayons de le passer à la fonction.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">:</span><span class="s">&#39;hello maman&#39;</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span><span class="s">&#39;je suis z&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span>
+<span class="p">{</span><span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#39;z&#39;</span><span class="p">:</span> <span class="s">&#39;je suis z&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="s">&#39;hello maman&#39;</span><span class="p">}</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="n">fun</span><span class="p">()</span> <span class="n">takes</span> <span class="n">exactly</span> <span class="mi">1</span> <span class="n">argument</span> <span class="p">(</span><span class="mi">2</span> <span class="n">given</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Oui oui !!! <strong>ERROR</strong>. La fonction prends des éléments du type <strong>(key,value)</strong>
+et non un <strong>dictionnaire</strong>. Ces éléments sont transformés en dictionnaire
+après, pas avant leur passage.</p>
+<p>Si l'on déballe les éléments du dictionnaire :</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">d</span><span class="p">)</span>
+<span class="n">a</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">On</span> <span class="n">attends</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">et</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>  <span class="mi">10</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>  <span class="n">je</span> <span class="n">suis</span> <span class="n">z</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s">&#39;z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">fun</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">d</span><span class="p">)</span>
+<span class="n">a</span> <span class="n">est</span>  <span class="mi">1</span>
+<span class="n">On</span> <span class="n">attends</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="n">et</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>  <span class="mi">10</span>
+<span class="n">kwargs</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>  <span class="mi">26</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>En utilisant <strong>*</strong>* on a débalé les éléments de notre dictionnaire.</p>
+<p><strong>**kwargs</strong> est tout simplement un dictionnaire vide a qui l'on dit : voila une <strong>clé</strong> et sa <strong>valeur</strong>, considere les comme un de tes éléments.</p>
+<h3><strong>Quand faut il les utiliser ?</strong></h3>
+<p>Brièvement, je dirai toutes les fois que l'on <strong>hérite</strong> d'une <em>classe</em> ou que
+l'on <strong>surcharge</strong> l'une des méthodes de la classes heritée.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Papa</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="o">...</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span> 
+<span class="o">...</span>   <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">insert</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">update</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">update</span> <span class="ow">and</span> <span class="n">insert</span> <span class="p">:</span>
+<span class="o">...</span>       <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s">&quot;Impossible de faire un insert et un update au meme moment&quot;</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">update</span> <span class="p">:</span>
+<span class="o">...</span>       <span class="k">print</span> <span class="s">&quot;Ligne mise a jour&quot;</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="n">insert</span> <span class="p">:</span>
+<span class="o">...</span>       <span class="k">print</span> <span class="s">&quot;Nouvelle ligne creee&quot;</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>On a crée une classe <em>Papa</em>, dont les objets peuvent etre enregistrés dans une
+base de données grace à la méthode <strong>save()</strong>. En fonction de l'argument, on
+met à jour un enregistrement ou on en ajoute un.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">class</span> <span class="nc">Filston</span><span class="p">(</span><span class="n">Papa</span><span class="p">):</span>
+<span class="o">...</span>   <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="c"># 1</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;josue&#39;</span> <span class="p">:</span>
+<span class="o">...</span>       <span class="nb">super</span><span class="p">(</span><span class="n">Filston</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="c"># 2 </span>
+<span class="o">...</span>     <span class="k">else</span><span class="p">:</span>
+<span class="o">...</span>       <span class="k">return</span> <span class="bp">None</span>
+<span class="o">...</span> 
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+
+
+<p>Ensuite on definit une class <em>Filston</em> héritant de <em>Papa</em> permettant de créer
+ou mettre a jour des enregistrements sous une condition. Or nous savons que la
+manipulation des enregistrements se fait grace à la méthode <strong>save()</strong>, alors
+il faut appeler la méthode <strong>save()</strong> de la classe <strong>Papa</strong>. En plus,
+<strong>save()</strong> de <strong>Filston</strong> doit etre capable tous les arguments que <strong>save()</strong>
+de <strong>Papa</strong> peut recevoir et les faire passer a cette derniere. D'ou
+l'utilisation de <strong>_args__ et de ___*kwargs</strong> dans <strong>save()</strong> de <strong>Filstion</strong>.</p>
+<h4>Execution</h4>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">Filston</span><span class="p">(</span><span class="s">&#39;josue&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">insert</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">Nouvelle</span> <span class="n">ligne</span> <span class="n">creee</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">Ligne</span> <span class="n">mise</span> <span class="n">a</span> <span class="n">jour</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<h4>Explications</h4>
+<p>On crée une instance de <strong>Filston</strong> et on appelle sa méthode <strong>save()</strong>. On
+invoque un <em>save(insert=True)</em> ,couple <strong>clé</strong> et <strong>valeur</strong>, donc
+<strong>kwargs['insert']=True</strong> (kwargs est devenu un dictionnaire) #1. Ensuite en
+passe <strong>kwargs</strong> en le deballant grace a <strong>*</strong>*. ce qui fait a ce que le
+deuxieme appel de <strong>save()</strong> soit <strong><em>super(Fislton, self).save(insert=True)</em></strong></p>
+<h1>2, ce qui correspond a notre définition dans la classe <strong>Papa</strong>.</h1>
+<p>Voila, c'est fini, j'espère que vous avez une meilleur comprehension des
+<strong>unpackers</strong> et des <strong>varargs</strong> en python.</p><p>There are <a href="http://www.josuebrunel.org/comprendre-args-kwargs.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.josuebrunel.org/introduction-aux-makefiles.html" rel="bookmark"
+                           title="Permalink to Introduction aux Makefiles">Introduction aux Makefiles</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-02-05T00:00:00">
+                Tue 05 February 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/makefile.html">makefile</a><a href="http://www.josuebrunel.org/tag/c.html">c</a><a href="http://www.josuebrunel.org/tag/c.html">c++</a><a href="http://www.josuebrunel.org/tag/.html"></a></p>
+</footer><!-- /.post-info -->                <p>Introduction au Makefile</p>
+                <a class="readmore" href="http://www.josuebrunel.org/introduction-aux-makefiles.html">read more</a>
+<p>There are <a href="http://www.josuebrunel.org/introduction-aux-makefiles.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://www.josuebrunel.org/environement-python.html" rel="bookmark"
+                           title="Permalink to Environement Python">Environement Python</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-07T00:00:00">
+                Sun 07 October 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a><a href="http://www.josuebrunel.org/tag/shell.html">shell</a></p>
+</footer><!-- /.post-info -->                
+                <a class="readmore" href="http://www.josuebrunel.org/environement-python.html">read more</a>
+<p>There are <a href="http://www.josuebrunel.org/environement-python.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                            <li><a href="https://github.com/josuebrunel">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

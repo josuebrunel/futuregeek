@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>Environement Python</title>
+        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <nav><ul>
+                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
+                    <li class="active"><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.josuebrunel.org/environement-python.html" rel="bookmark"
+           title="Permalink to Environement Python">Environement Python</a></h1>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2012-10-07T00:00:00">
+                Sun 07 October 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a><a href="http://www.josuebrunel.org/tag/shell.html">shell</a></p>
+</footer><!-- /.post-info -->      <p>Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
+au developpement python .</p>
+<h3>A- Autocomplention sur le shell python</h3>
+<p>Vu que vous aurez a enormement utiliser le shell python, ce petit script permettant l'auto-completion vous sera fort utile.
+Dans votre <strong>home directory</strong> creer un fichier .pythonenv.py avec le contenu suivant</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">readline</span><span class="o">,</span><span class="nn">rlcompleter</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Loading python env ....&quot;</span><span class="p">)</span>
+<span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&#39;tab: complete&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;Python env loaded . Enjoy autocompletion ^_^ &quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><em>Note</em>:Vous pouvez vous servir du meme fichier pour importer differentes libraries que vous voudriez avoir au lancement de votre shell python (e.g sqlite3, peewee, tweepy, ...)</p>
+<p>puis ajouter ces deux lignes a votre fichier .bashrc</p>
+<div class="highlight"><pre><span class="c">#Python Shell Environment</span>
+<span class="nb">export </span><span class="nv">PYTHONSTARTUP</span><span class="o">=</span><span class="nv">$HOME</span>/.pythonenv.py
+</pre></div>
+
+
+<p>Relancez votre terminal et l'autocompletion sur votre shell python sera active</p>
+<h3>B- <strong>VirtualEnv</strong> et <strong>VirtualenvWrapper</strong></h3>
+<p><a href="http://pypi.python.org/pypi/virtualenv"><strong>VirtualEnv</strong></a> est un petit outil python permettant de creer des environements isoles dans lequel vous pourrez installer des packages sans interferer avec d'autres environements virtuels ou votre environement systeme .
+Son utilite se fait fortement ressentir losque l'on est amene a travailler sur des versions differentes d'un meme packages ou lorsque l'on veut tester des packages.
+<strong>VirtualEnvWrapper</strong> est un <strong>wrapper</strong> comme son nom l'indique, qui expose plusieurs fonctionalites de <strong>virtualenv</strong> de maniere assez simple.</p>
+<h4>Installation</h4>
+<p>:::console
+  yosuke@loking:~/workspace$pip install virtualenvwrapper</p>
+<h4>Utilisation</h4>
+<div class="highlight"><pre><span class="gp">yosuke@loking:~/workspace$</span> mkvirtualenv konoha <span class="c">#creation de nottre environement virtuel</span>
+<span class="go">New python executable in konoha/bin/python</span>
+<span class="go">Installing setuptools............done.</span>
+<span class="go">Installing pip...............done.</span>
+<span class="go">virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/predeactivate</span>
+<span class="go">virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postdeactivate</span>
+<span class="go">virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/preactivate</span>
+<span class="go">virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/postactivate</span>
+<span class="go">virtualenvwrapper.user_scripts creating /home/yosuke/.virtualenvs/konoha/bin/get_env_details</span>
+<span class="gp">(konoha)yosuke@loking:~/workspace$</span> pip install peewee <span class="c">#installation d&#39;un package dans l&#39;environement virtuel</span>
+<span class="go">Downloading/unpacking peewee</span>
+<span class="go">Downloading peewee-2.0.7.tar.gz (662kB): 662kB downloaded</span>
+<span class="go">Running setup.py egg_info for package peewee</span>
+
+<span class="go">Installing collected packages: peewee</span>
+<span class="go">Running setup.py install for peewee</span>
+<span class="go">changing mode of build/scripts-2.7/pwiz.py from 664 to 775</span>
+
+<span class="go">changing mode of /home/yosuke/.virtualenvs/konoha/bin/pwiz.py to 775</span>
+<span class="go">Successfully installed peewee</span>
+<span class="go">Cleaning up...</span>
+<span class="gp">(konoha)yosuke@loking:~/workspace$</span> deactivate <span class="c">#sortie de l&#39;environement virtuel</span>
+<span class="gp">yosuke@loking:~/workspace$</span>
+</pre></div>
+
+
+<p>Voila !!! Vous etes prets (enfin je pense)</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_identifier = "environement-python.html";
+        var disqus_url = "http://www.josuebrunel.org/environement-python.html";
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://fgjosue.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+    </div>
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                            <li><a href="https://github.com/josuebrunel">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

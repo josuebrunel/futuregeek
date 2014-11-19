@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>FutureGeek - postgresql</title>
+        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <nav><ul>
+                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html">Migration base de donnee Openerp production a developpement</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-02-04T00:00:00">
+                Mon 04 February 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/postgresql.html">postgresql</a><a href="http://www.josuebrunel.org/tag/openerp.html">openerp</a><a href="http://www.josuebrunel.org/tag/linux.html">linux</a><a href="http://www.josuebrunel.org/tag/database.html">database</a></p>
+</footer><!-- /.post-info --><p>Salut !!!!
+Etant un petit programmeur <em>openerp</em> , il m'arrive tres souvent de vouloir travailler avec un environement 
+de production. Chose assez simple a realiser , par rapport a openerp, car il suffit d'exporter la base de 
+donnees de <strong>production</strong> et  l'importer en <strong>developpement</strong> .
+Oui oui !!! je n'utilise pas d'outils GUI comme <em>pgAdmin</em> ^_^ .</p>
+<p>Prérequis :</p>
+<ul>
+<li>Connaissances basiques en administration linux/unix</li>
+<li>Connaissances basiques SQL et administration PostgreSQL</li>
+</ul>
+<p>Context :</p>
+<ul>
+<li>serveur de bdd production : 192.168.1.2  # HOSTNAME = prod</li>
+<li>serveur de  bdd developpement : 192.168.1.3 # HOSTNAME = preprod</li>
+<li>Le nom de notre base de données est <strong>pikachu</strong></li>
+</ul>
+<h3>Production</h3>
+<p>Se connecter au serveur de base de données</p>
+<div class="highlight"><pre><span class="go">ssh root@192.168.1.2</span>
+</pre></div>
+
+
+<p>Se connecter en tant qu'utilisateur <strong>postgres</strong></p>
+<div class="highlight"><pre><span class="gp">#</span>su postgres
+</pre></div>
+
+
+<p>Exporter la base de données</p>
+<div class="highlight"><pre><span class="gp">postgres@prod:/root/backup$</span> pg_dump pikachu -U postgres &gt; ./backup/db_backup
+</pre></div>
+
+
+<p><strong>db_backup</strong> est le nom du fichier contenant la base de données exportée</p>
+<h3>Developpement</h3>
+<div class="highlight"><pre><span class="gp">prod:~#</span>ssh root@192.168.1.3
+</pre></div>
+
+
+<p>Copier la base de données de production sur le serveur de développement</p>
+<div class="highlight"><pre><span class="gp">preprod:~#</span> scp root@192.168.1.2:/root/backup/db_backup ./backups/
+</pre></div>
+
+
+<p>Stopper les services Openerp et Apache(Web, si necéssaire)</p>
+<div class="highlight"><pre><span class="gp">preprod:~#</span>/etc/init.d/openerp stop <span class="c">#Arret du serveur openerp de developpement</span>
+<span class="gp">preprod:~#</span>/etc/init.d/apache2 stop <span class="c">#Arret du serveur web de developpement</span>
+</pre></div>
+
+
+<p>Connecter vous en tant qu'utilisqteur <strong>postgres</strong> (on est sur le serveur de developpement cette fois-ci)</p>
+<div class="highlight"><pre><span class="gp">preprod:~#</span>su postgres
+</pre></div>
+
+
+<p>Créer une base de données temporaire</p>
+<div class="highlight"><pre><span class="gp">postgres@preprod:/root$</span>psql
+<span class="go">postgres=# create database pikachu_prod with owner=openerp template=template0 encoding=&#39;UTF-8&#39; ;</span>
+<span class="go">postgres=#\q</span>
+</pre></div>
+
+
+<p>Charger le fichier de base de données recuperé en production vers la base de données de développement</p>
+<div class="highlight"><pre><span class="gp">postgres@preprod:/root/backups$</span> cat db_backup | psql pikachu_prod
+</pre></div>
+
+
+<p>Vous pouvez vérifier qu'on a deux bases ( pikachu , pikachu_prod) avec la commande:</p>
+<div class="highlight"><pre><span class="go">postgres=#\l</span>
+</pre></div>
+
+
+<p>Supprimer la base de développement et renommer la base de production avec le nom de celle de développement</p>
+<div class="highlight"><pre><span class="gp">postgres@preprod:/root/backups$</span> psql
+<span class="go">postgres=# drop database pikachu ;</span>
+<span class="go">postgres=# alter DATABASE pikachu_prod RENAME TO pikcachu ;</span>
+</pre></div>
+
+
+<p>Relancez les services Openerp et Apache(Web)</p>
+<div class="highlight"><pre><span class="gp">preprod:~#</span>/etc/init.d/openerp start <span class="c">#Demarrage du serveur openerp de développement</span>
+<span class="gp">preprod:~#</span>/etc/init.d/apache2 start <span class="c">#Demarrage du serveur web de développement</span>
+</pre></div>
+
+
+<p>Voila !!!</p><p>There are <a href="http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html#disqus_thread">comments</a>.</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                            <li><a href="https://github.com/josuebrunel">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

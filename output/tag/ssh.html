@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta charset="utf-8" />
+        <title>FutureGeek - ssh</title>
+        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+<a href="https://github.com/josuebrunel/">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
+</a>
+        <header id="banner" class="body">
+                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <nav><ul>
+                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
+                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/ssh-sans-mot-de-passe.html">ssh sans mot de passe</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2012-12-20T00:00:00">
+                Thu 20 December 2012
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/linux.html">linux</a><a href="http://www.josuebrunel.org/tag/ssh.html">ssh</a><a href="http://www.josuebrunel.org/tag/server.html">server</a></p>
+</footer><!-- /.post-info --><p>Hi guys !!!!</p>
+<p>Vous êtes fatigué d'entrer votre mot de passe sur les differents serveurs sur lesquels vous travaillez tous les jours ?</p>
+<p>Vous êtes fatigué de rechercher vos credentials ssh dans les différentes fiches techniques afin de vous connecter ? </p>
+<p>Vous êtes fatigué de ....</p>
+<div class="highlight"><pre><span class="n">loking</span><span class="o">&gt;</span> <span class="n">Yo</span> <span class="n">Joe</span><span class="o">!!!</span> <span class="n">Stop</span> <span class="n">it</span> <span class="o">!!!</span>
+<span class="n">loking</span><span class="o">&gt;</span> <span class="n">You</span> <span class="n">ain</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">a</span> <span class="n">commercial</span> <span class="n">speaker</span><span class="p">,</span> <span class="n">are</span> <span class="n">you</span> <span class="o">?</span> 
+<span class="n">josue</span><span class="o">&gt;</span> <span class="n">Nope</span><span class="p">,</span> <span class="n">ain</span><span class="err">&#39;</span><span class="n">t</span><span class="p">.</span>
+<span class="n">loking</span><span class="o">&gt;</span> <span class="n">Then</span> <span class="n">stop</span> <span class="o">!!!</span>
+<span class="n">loking</span><span class="o">&gt;</span> <span class="n">Besides</span><span class="p">,</span> <span class="n">you</span> <span class="n">suck</span> <span class="o">!!!!</span>
+<span class="n">josue</span><span class="o">&gt;</span> <span class="n">that</span> <span class="n">was</span> <span class="n">mean</span> <span class="n">bro</span> <span class="o">:</span><span class="p">(</span>
+</pre></div>
+
+
+<p>Petit guide sur comment faire pour eviter d'en avoir marre.</p>
+<div class="highlight"><pre><span class="gp">huey@freeman:~$</span>ssh -t keygen rsa
+<span class="go">Generating public/private rsa key pair.</span>
+<span class="go">Enter file in which to save the key (/home/huey/.ssh/id_rsa): </span>
+<span class="go">Created directory &#39;/home/huey/.ssh&#39;.</span>
+<span class="go">Enter passphrase (empty for no passphrase): </span>
+<span class="go">Enter same passphrase again: </span>
+<span class="go">Your identification has been saved in /home/huey/.ssh/id_rsa.</span>
+<span class="go">Your public key has been saved in /home/huey/.ssh/id_rsa.pub.</span>
+<span class="go">The key fingerprint is:</span>
+<span class="go">3e:4f:05:79:3a:9f:96:7c:3b:ad:e9:58:37:bc:37:e4 huey@freeman</span>
+
+<span class="gp">huey@freeman:~$</span> ls .ssh/
+<span class="go">id_rsa  id_rsa.pub  known_hosts</span>
+</pre></div>
+
+
+<p><strong><em>NB</em></strong>: N'entrez pas de <strong><em>passphrase</em></strong> </p>
+<p>On se connecte sur le serveur <em>ruckus</em>
+On cree un repertoire <strong><em>.ssh</em></strong> s'il n'existe pas.</p>
+<div class="highlight"><pre><span class="gp">uncle@ruckus:~$</span>mkdir .ssh/
+<span class="gp">uncle@ruckus:~$</span><span class="nb">exit</span>
+</pre></div>
+
+
+<p>De retour sur huey, entrez la commande suivante et votre mot de passe <em>pour la derniere fois</em></p>
+<div class="highlight"><pre><span class="gp">huey@freeman:~$</span>cat .ssh/id_rsa.pub | ssh uncle@ruckus <span class="s1">&#39;cat &gt;&gt; .ssh/authorized_keys&#39;</span>
+<span class="go">uncle@ruckus&#39;s password:</span>
+</pre></div>
+
+
+<p>Maintenant, huey peut se connecter avec le compte <em>uncle</em> sur <em>ruckus</em> sans mot de passe.</p>
+<p>Et moi je peux aller <a href="http://www.youtube.com/watch?v=b3F0B4hAsmI">poser ma question à Ronalda</a></p><p>There are <a href="http://www.josuebrunel.org/ssh-sans-mot-de-passe.html#disqus_thread">comments</a>.</p>                </article>
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="http://twitter.com/josuebrunel">Twitter</a></li>
+                            <li><a href="https://github.com/josuebrunel">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-32441224-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+<script type="text/javascript">
+    var disqus_shortname = 'fgjosue';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+</html>

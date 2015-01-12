@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://www.josuebrunel.org/" rel="alternate"></link><link href="http://www.josuebrunel.org/feeds/josue-kouka.atom.xml" rel="self"></link><id>http://www.josuebrunel.org/</id><updated>2015-01-12T07:58:30+01:00</updated><entry><title>Importer un module depuis un dossier cachee en python</title><link href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html" rel="alternate"></link><updated>2015-01-12T07:58:30+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2015-01-12:importer-un-module-depuis-un-dossier-cachee-en-python.html</id><summary type="html">&lt;p&gt;Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( &lt;em&gt;.myfolder/mymodule&lt;/em&gt;).
-Dans mon cas, je devais charger un fichier &lt;em&gt;settings.py&lt;/em&gt; contenant dans le dossier de config de mon app ( &lt;em&gt;~/.monapp/settings.py&lt;/em&gt;).
-Si vous etes dans la meme situation et vous demandez comment le faire, ce qui suit peut vous etre utile:&lt;/p&gt;
+Dans mon cas, je devais charger un fichier &lt;em&gt;settings.py&lt;/em&gt; contenu dans le dossier de config de mon app ( &lt;em&gt;~/.monapp/settings.py&lt;/em&gt;).
+Si vous etes dans la meme situation et vous vous demandez comment le faire, ce qui suit peut vous etre utile:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;josue@LokingMac:/tmp/tests&lt;span class="nv"&gt;$tree&lt;/span&gt; -a
 .
 ├── .myapp
@@ -45,7 +45,8 @@ josue@LokingMac:/tmp/tests&lt;span class="err"&gt;$&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Le module a retenir est &lt;strong&gt;&lt;em&gt;&lt;a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source"&gt;imp&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;</summary><category term="Python"></category><category term="Programming"></category></entry><entry><title>Virtualenv avec une autre version de python</title><link href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html" rel="alternate"></link><updated>2014-11-19T20:12:06+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2014-11-19:virtualenv-avec-une-autre-version-de-python.html</id><summary type="html">&lt;p&gt;Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un &lt;em&gt;environment virtual python&lt;/em&gt; 
+&lt;p&gt;Le module a retenir est &lt;strong&gt;&lt;em&gt;&lt;a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source"&gt;imp&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NB&lt;/em&gt;&lt;/strong&gt; : &lt;strong&gt;IL MARCHE POUR TOUT&lt;/strong&gt;&lt;/p&gt;</summary><category term="Python"></category><category term="Programming"></category></entry><entry><title>Virtualenv avec une autre version de python</title><link href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html" rel="alternate"></link><updated>2014-11-19T20:12:06+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2014-11-19:virtualenv-avec-une-autre-version-de-python.html</id><summary type="html">&lt;p&gt;Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un &lt;em&gt;environment virtual python&lt;/em&gt; 
 utilisant une version de python differente de celle par defaut. 
 De plus, generalement plus d'une version de &lt;em&gt;python&lt;/em&gt; sont installés sur nos OS. Alors pour pouvoir créer un environement virtual python avec la version de python que vous voulez, voici la commande à entrer dans votre terminal:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv -p /usr/bin/python2.6 &amp;lt;path/to/new/virtualenv/&amp;gt;

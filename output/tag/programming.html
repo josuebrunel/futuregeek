@@ -39,8 +39,8 @@
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
 <p>tags: <a href="http://www.josuebrunel.org/tag/python.html">Python</a> <a href="http://www.josuebrunel.org/tag/programming.html">Programming</a> </p>
 </footer><!-- /.post-info --><p>Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( <em>.myfolder/mymodule</em>).
-Dans mon cas, je devais charger un fichier <em>settings.py</em> contenant dans le dossier de config de mon app ( <em>~/.monapp/settings.py</em>).
-Si vous etes dans la meme situation et vous demandez comment le faire, ce qui suit peut vous etre utile:</p>
+Dans mon cas, je devais charger un fichier <em>settings.py</em> contenu dans le dossier de config de mon app ( <em>~/.monapp/settings.py</em>).
+Si vous etes dans la meme situation et vous vous demandez comment le faire, ce qui suit peut vous etre utile:</p>
 <div class="highlight"><pre>josue@LokingMac:/tmp/tests<span class="nv">$tree</span> -a
 .
 ├── .myapp
@@ -84,7 +84,8 @@ josue@LokingMac:/tmp/tests<span class="err">$</span>
 </pre></div>
 
 
-<p>Le module a retenir est <strong><em><a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source">imp</a></em></strong> </p><p>There are <a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html#disqus_thread">comments</a>.</p>                </article>
+<p>Le module a retenir est <strong><em><a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source">imp</a></em></strong> </p>
+<p><strong><em>NB</em></strong> : <strong>IL MARCHE POUR TOUT</strong></p><p>There are <a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

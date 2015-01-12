@@ -8,8 +8,8 @@ Lang: fr
 Summary: Comment importer un module depuis un dossier cache
 
 Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( _.myfolder/mymodule_).
-Dans mon cas, je devais charger un fichier _settings.py_ contenant dans le dossier de config de mon app ( _~/.monapp/settings.py_).
-Si vous etes dans la meme situation et vous demandez comment le faire, ce qui suit peut vous etre utile:
+Dans mon cas, je devais charger un fichier _settings.py_ contenu dans le dossier de config de mon app ( _~/.monapp/settings.py_).
+Si vous etes dans la meme situation et vous vous demandez comment le faire, ce qui suit peut vous etre utile:
 
 
     :::shell
@@ -55,6 +55,8 @@ Execution
     josue@LokingMac:/tmp/tests$python  run.py
     ('myapp.logs', 1048576)
     josue@LokingMac:/tmp/tests$
-    
+
 
 Le module a retenir est ***[imp](https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source)*** 
+
+***NB*** : **IL MARCHE POUR TOUT**

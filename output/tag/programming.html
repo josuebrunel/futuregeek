@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>FutureGeek - programming</title>
+        <title>FutureGeek - Programming</title>
         <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
 
         <!--[if IE]>
@@ -27,106 +27,64 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/environement-python-exemple-dun-fichier-pythonenv.html">Environement Python : exemple d'un fichier .pythonenv</a></h1>
+                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html">Importer un module depuis un dossier cachee en python</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2014-11-19T21:03:02+01:00">
-                Published: Wed 19 November 2014
+        <abbr class="published" title="2015-01-12T07:58:30+01:00">
+                Published: Mon 12 January 2015
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/programming.html">programming</a> </p>
-</footer><!-- /.post-info --><p>:::python
-  import os
-  import abc
-  import datetime
-  import logging
-  import sqlite3</p>
-<p>import readline, rlcompleter
-  if 'libedit' in readline.<strong>doc</strong>:
-      readline.parse_and_bind("bind ^I rl_complete")
-  else:
-      readline.parse_and_bind("tab: complete")</p>
-<p>def get_real_path(f):
-      """Retuns the realpath of a file
-      """
-      return os.path.realpath(f)</p>
-<p>def get_joined_path(a, b):
-      """Returns joined path of to file
-      """
-      return os.path.join(a,b)</p>
-<p>class Database(object):
-      """Just an usual sqlite class
-      """
-      <strong>metaclass</strong> = abc.ABCMeta</p>
-<div class="highlight"><pre>  def __init__(self,):
-      &quot;&quot;&quot;
-      &quot;&quot;&quot;
-      self.con = None
-      self.cr = None
+<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">Python</a> <a href="http://www.josuebrunel.org/tag/programming.html">Programming</a> </p>
+</footer><!-- /.post-info --><p>Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( <em>.myfolder/mymodule</em>).
+Dans mon cas, je devais charger un fichier <em>settings.py</em> contenant dans le dossier de config de mon app ( <em>~/.monapp/settings.py</em>).
+Si vous etes dans la meme situation et vous demandez comment le faire, ce qui suit peut vous etre utile:</p>
+<div class="highlight"><pre>josue@LokingMac:/tmp/tests<span class="nv">$tree</span> -a
+.
+├── .myapp
+│   ├── settings.py
+│   └── settings.pyc
+└── run.py
 
-  @abc.abstractmethod
-  def connect(self,):
-      &quot;&quot;&quot;Connects to the db
-      &quot;&quot;&quot;
-      return None
+<span class="m">1</span> directory, <span class="m">3</span> files
+josue@LokingMac:/tmp/tests<span class="err">$</span>
+</pre></div>
 
-  def create_table(self, *args, **kwargs):
-      &quot;&quot;&quot;Creates a table
-      &quot;&quot;&quot;
-      query = &quot;CREATE TABLE {} &quot;.format(args[0])
-      print query
 
-  def executeQuery(self, query):
-      &quot;&quot;&quot;Executes a SQL query
-      &quot;&quot;&quot;
-      try:
-          self.cr.execute(query)
-          return self.cr
-      except Exception, e:
-          print(e)
+<p>Notre fichier <em>.myapp/settings.py</em> qui correspond au module a importer</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 
-      return False
+<span class="k">def</span> <span class="nf">get_realpath</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
-  def commit(self,):
-      &quot;&quot;&quot;Commits the  last change
-      &quot;&quot;&quot;
-      try:
-          self.con.commit()
-          self.last_id()
-      except Exception, e:
-          print(e)
 
-  def last_id(self,):
-      &quot;&quot;&quot;Returns the id of the last affected row
-      &quot;&quot;&quot;
-      return self.cr.rowcount
+<span class="n">LOG_FILENAME</span> <span class="o">=</span> <span class="s">&#39;myapp.logs&#39;</span>
+<span class="n">LOG_FILESIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+</pre></div>
 
-class MySqlite(Database):
-  &quot;&quot;&quot;Simple SQlite3 class handler
-  &quot;&quot;&quot;
 
-  def __init__(self, dbfile):
-      &quot;&quot;&quot;
-      &quot;&quot;&quot;
-      super(MySqlite, self).__init__()
+<p>Pour importer ce module depuis un run.py par exemple :</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">imp</span>
 
-      self.dbfile = dbfile
+<span class="n">settings</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">load_source</span><span class="p">(</span><span class="s">&#39;settings&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="s">&#39;.myapp/settings.py&#39;</span><span class="p">))</span>
 
-  def connect(self,):
-      &quot;&quot;&quot;Connects to the db
-      &quot;&quot;&quot;
-      try:
-          self.con = sqlite3.connect(self.dbfile)
-          self.cr = self.con.cursor()
-          return self.con
-      except Exception, e:
-          print(e)
+<span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="n">LOG_FILENAME</span><span class="p">,</span> <span class="n">LOG_FILESIZE</span>
 
-      return None
-</pre></div><p>There are <a href="http://www.josuebrunel.org/environement-python-exemple-dun-fichier-pythonenv.html#disqus_thread">comments</a>.</p>                </article>
+<span class="k">print</span><span class="p">(</span><span class="n">LOG_FILENAME</span><span class="p">,</span> <span class="n">LOG_FILESIZE</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Execution</p>
+<div class="highlight"><pre>josue@LokingMac:/tmp/tests<span class="nv">$python</span>  run.py
+<span class="o">(</span><span class="s1">&#39;myapp.logs&#39;</span>, 1048576<span class="o">)</span>
+josue@LokingMac:/tmp/tests<span class="err">$</span>
+</pre></div>
+
+
+<p>Le module a retenir est <strong><em><a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source">imp</a></em></strong> </p><p>There are <a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html#disqus_thread">comments</a>.</p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>

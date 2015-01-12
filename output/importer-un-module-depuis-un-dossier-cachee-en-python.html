@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>FutureGeek - Programming</title>
+        <title>Importer un module depuis un dossier cachee en python</title>
         <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
 
         <!--[if IE]>
@@ -24,10 +24,16 @@
                     <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html" rel="bookmark"
+           title="Permalink to Importer un module depuis un dossier cachee en python">Importer un module depuis un dossier cachee en python</a></h1>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html">Importer un module depuis un dossier cachee en python</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-01-12T07:58:30+01:00">
                 Published: Mon 12 January 2015
@@ -38,7 +44,7 @@
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
 <p>tags: <a href="http://www.josuebrunel.org/tag/python.html">Python</a> <a href="http://www.josuebrunel.org/tag/programming.html">Programming</a> </p>
-</footer><!-- /.post-info --><p>Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( <em>.myfolder/mymodule</em>).
+</footer><!-- /.post-info -->      <p>Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( <em>.myfolder/mymodule</em>).
 Dans mon cas, je devais charger un fichier <em>settings.py</em> contenant dans le dossier de config de mon app ( <em>~/.monapp/settings.py</em>).
 Si vous etes dans la meme situation et vous demandez comment le faire, ce qui suit peut vous etre utile:</p>
 <div class="highlight"><pre>josue@LokingMac:/tmp/tests<span class="nv">$tree</span> -a
@@ -84,105 +90,26 @@ josue@LokingMac:/tmp/tests<span class="err">$</span>
 </pre></div>
 
 
-<p>Le module a retenir est <strong><em><a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source">imp</a></em></strong> </p><p>There are <a href="http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Le module a retenir est <strong><em><a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source">imp</a></em></strong> </p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'fgjosue';
+        var disqus_identifier = 'importer-un-module-depuis-un-dossier-cachee-en-python.html';
+        var disqus_url = 'http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//fgjosue.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html" rel="bookmark"
-                           title="Permalink to Virtualenv avec une autre version de python">Virtualenv avec une autre version de python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-11-19T20:12:06+01:00">
-                Published: Wed 19 November 2014
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/virtualenv.html">virtualenv</a> <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/.html"></a> </p>
-</footer><!-- /.post-info -->                <p>Comment creer un virtualenv avec un autre version de python</p>
-                <a class="readmore" href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/comprendre-args-kwargs.html" rel="bookmark"
-                           title="Permalink to Comprendre *, **, *args, **kwargs">Comprendre *, **, *args, **kwargs</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-03-26T00:00:00+01:00">
-                Published: Tue 26 March 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> </p>
-</footer><!-- /.post-info -->                <p>Comprendre les deballeurs et les varargs en python</p>
-                <a class="readmore" href="http://www.josuebrunel.org/comprendre-args-kwargs.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/comprendre-args-kwargs.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/introduction-aux-makefiles.html" rel="bookmark"
-                           title="Permalink to Introduction aux Makefiles">Introduction aux Makefiles</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-02-05T00:00:00+01:00">
-                Published: Tue 05 February 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/makefile.html">makefile</a> <a href="http://www.josuebrunel.org/tag/c.html">c</a> <a href="http://www.josuebrunel.org/tag/c.html">c++</a> <a href="http://www.josuebrunel.org/tag/.html"></a> </p>
-</footer><!-- /.post-info -->                <p>Introduction au Makefile</p>
-                <a class="readmore" href="http://www.josuebrunel.org/introduction-aux-makefiles.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/introduction-aux-makefiles.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/environement-python.html" rel="bookmark"
-                           title="Permalink to Environement Python">Environement Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-10-07T00:00:00+02:00">
-                Published: Sun 07 October 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> </p>
-</footer><!-- /.post-info -->                
-                <a class="readmore" href="http://www.josuebrunel.org/environement-python.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/environement-python.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>

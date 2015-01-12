@@ -44,94 +44,98 @@
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
 <p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/programming.html">programming</a> </p>
-</footer><!-- /.post-info -->      <p>:::python
-  import os
-  import abc
-  import datetime
-  import logging
-  import sqlite3</p>
-<p>import readline, rlcompleter
-  if 'libedit' in readline.<strong>doc</strong>:
-      readline.parse_and_bind("bind ^I rl_complete")
-  else:
-      readline.parse_and_bind("tab: complete")</p>
-<p>def get_real_path(f):
-      """Retuns the realpath of a file
-      """
-      return os.path.realpath(f)</p>
-<p>def get_joined_path(a, b):
-      """Returns joined path of to file
-      """
-      return os.path.join(a,b)</p>
-<p>class Database(object):
-      """Just an usual sqlite class
-      """
-      <strong>metaclass</strong> = abc.ABCMeta</p>
-<div class="highlight"><pre>  def __init__(self,):
-      &quot;&quot;&quot;
-      &quot;&quot;&quot;
-      self.con = None
-      self.cr = None
+</footer><!-- /.post-info -->      <div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">abc</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sqlite3</span>
 
-  @abc.abstractmethod
-  def connect(self,):
-      &quot;&quot;&quot;Connects to the db
-      &quot;&quot;&quot;
-      return None
+<span class="kn">import</span> <span class="nn">readline</span><span class="o">,</span> <span class="nn">rlcompleter</span>
+<span class="k">if</span> <span class="s">&#39;libedit&#39;</span> <span class="ow">in</span> <span class="n">readline</span><span class="o">.</span><span class="n">__doc__</span><span class="p">:</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&quot;bind ^I rl_complete&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&quot;tab: complete&quot;</span><span class="p">)</span>
 
-  def create_table(self, *args, **kwargs):
-      &quot;&quot;&quot;Creates a table
-      &quot;&quot;&quot;
-      query = &quot;CREATE TABLE {} &quot;.format(args[0])
-      print query
+<span class="k">def</span> <span class="nf">get_real_path</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Retuns the realpath of a file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
-  def executeQuery(self, query):
-      &quot;&quot;&quot;Executes a SQL query
-      &quot;&quot;&quot;
-      try:
-          self.cr.execute(query)
-          return self.cr
-      except Exception, e:
-          print(e)
+<span class="k">def</span> <span class="nf">get_joined_path</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns joined path of to file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
 
-      return False
+<span class="k">class</span> <span class="nc">Database</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Just an usual class</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span>
 
-  def commit(self,):
-      &quot;&quot;&quot;Commits the  last change
-      &quot;&quot;&quot;
-      try:
-          self.con.commit()
-          self.last_id()
-      except Exception, e:
-          print(e)
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cr</span> <span class="o">=</span> <span class="bp">None</span>
 
-  def last_id(self,):
-      &quot;&quot;&quot;Returns the id of the last affected row
-      &quot;&quot;&quot;
-      return self.cr.rowcount
+    <span class="nd">@abc.abstractmethod</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Connects to the db</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">None</span>
 
-class MySqlite(Database):
-  &quot;&quot;&quot;Simple SQlite3 class handler
-  &quot;&quot;&quot;
+    <span class="k">def</span> <span class="nf">create_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a table</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s">&quot;CREATE TABLE {} &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span> <span class="n">query</span>
 
-  def __init__(self, dbfile):
-      &quot;&quot;&quot;
-      &quot;&quot;&quot;
-      super(MySqlite, self).__init__()
+    <span class="k">def</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Executes a SQL query</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cr</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
-      self.dbfile = dbfile
+        <span class="k">return</span> <span class="bp">False</span>
 
-  def connect(self,):
-      &quot;&quot;&quot;Connects to the db
-      &quot;&quot;&quot;
-      try:
-          self.con = sqlite3.connect(self.dbfile)
-          self.cr = self.con.cursor()
-          return self.con
-      except Exception, e:
-          print(e)
+    <span class="k">def</span> <span class="nf">commit</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Commits the  last change</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_id</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
-      return None
+    <span class="k">def</span> <span class="nf">last_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Returns the id of the last affected row</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cr</span><span class="o">.</span><span class="n">rowcount</span>
+
+  <span class="k">class</span> <span class="nc">MySqlite</span><span class="p">(</span><span class="n">Database</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Simple SQlite3 class handler</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dbfile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MySqlite</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span> <span class="o">=</span> <span class="n">dbfile</span>
+
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,):</span>
+        <span class="sd">&quot;&quot;&quot;Connects to the db</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dbfile</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">con</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
     </div><!-- /.entry-content -->
 

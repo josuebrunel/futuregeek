@@ -15,7 +15,7 @@ Summary: All about me
             "lastname"  : "Kouka",
             "born_in"      : "1989",
             "nickname"  : "The Tiny Black Mushroom", # This is a kickass nickname, isn't it ?
-            "locations" : ['Nantes','Paris'],
+            "locations" : ['Paris'],
             "interests" : ['Free Software','Open Source','Linux/Unix','Python','C/C++','...'],
             "languages" : ['English','French'],
         }
@@ -26,7 +26,7 @@ free software and open-source enthusiast, fond of programming and thirsty of
 knowledge.
 
 This little blog is about stuff that i like, by that i mean a lot of **Linux
-and Programming** (yeah sounds like fun ^_^). I talk about personal and
+and Programming** (yeah sounds like fun ^_^). I talk about personal
 projects in which i'm involved(Not a lot right now).
 
 Articles will be either in English or in French (sometimes both when i can),

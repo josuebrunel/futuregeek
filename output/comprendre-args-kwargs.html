@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Comprendre *, **, *args, **kwargs</title>
-        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+        <link rel="stylesheet" href="http://212.83.154.157/blog/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,20 +15,20 @@
 <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
 </a>
         <header id="banner" class="body">
-                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <h1><a href="http://212.83.154.157/blog/">FutureGeek </a></h1>
                 <nav><ul>
-                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
-                    <li class="active"><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/about-me.html">About Me</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/linux.html">Linux</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/openerp.html">Openerp</a></li>
+                    <li class="active"><a href="http://212.83.154.157/blog/category/programming.html">Programming</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/projects.html">Projects</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://www.josuebrunel.org/comprendre-args-kwargs.html" rel="bookmark"
+        <a href="http://212.83.154.157/blog/comprendre-args-kwargs.html" rel="bookmark"
            title="Permalink to Comprendre *, **, *args, **kwargs">Comprendre *, **, *args, **kwargs</a></h1>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
     </header>
@@ -40,10 +40,10 @@
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://212.83.154.157/blog/author/josue-kouka.html">Josue Kouka</a>
         </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> </p>
+<p>In <a href="http://212.83.154.157/blog/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://212.83.154.157/blog/tag/python.html">python</a> </p>
 </footer><!-- /.post-info -->      <p>Hi guys !!!</p>
 <p><strong>unpackers</strong> et <strong>varargs</strong> ? It doesn't ring a bell ? oh come on (redneck accent).</p>
 <p>Je suis sure que vous avez deja vu des instructions du genre :</p>
@@ -89,10 +89,10 @@
 est tout a fait logique. On a passe une <strong>liste</strong> a une fonction qui attend 3
 paramètres.</p>
 <p>Ensuite lors de <em>Appel 2</em>, aucune erreur du shell. Seul différence avec <em>Appel
-1</em>, est le _<strong><em>_ devant notre liste </em></strong>mylist___ .</p>
+1</em>, est le <strong>*</strong> devant notre liste <strong><em>mylist</em></strong> .</p>
 <p>Le <strong><em>*</em></strong> a <strong>deballe</strong> les éléments de notre liste et les a envoyé à la
-fonction, c'est à dire que ce n'est pas **_[1,2,4]<strong><em>1,2,3</em><em> (une liste) qui a été
-envoyée mais </em>*</strong>, en gros les éléments de la liste.</p>
+fonction, c'est à dire que ce n'est pas <strong><em>[1,2,4]</em></strong> (une liste) qui a été
+envoyée mais <strong><em>1,2,3</em></strong>, en gros les éléments de la liste.</p>
 <p>On ajoute un nouvel élément à la liste puis on rappelle la function ( <em>Appel
 3</em> ), cette fois ci <strong>ERREUR</strong>. Tout simplement parce que notre fonction
 attends 3 paramètres et non 4.</p>
@@ -177,8 +177,8 @@ car les paramètres sont transformés en un <em>tuple</em> (un iterable) à caus
 somme des <strong>nombres</strong> d'un <em>iterable</em>. Or en passant <em>([1,2,3])</em>, <strong>*args</strong> =
 ([1,2,3],) qui est un tuple de liste.</p>
 <p>A la question _pourquoi le <em>args ?_ dans <strong>calculer_somme_sans_premier</strong> lors
-de l'appel de <strong>calculer_somme</strong>, la réponse est qu'il faut deballer <strong><em>(1,2,3)</em> a <em>args</em>*
-sinon on passerait </strong>calculer_somme<strong>. Dans l'appel <em>Appel 3</em> on
+de l'appel de <strong>calculer_somme</strong>, la réponse est qu'il faut deballer <strong><em>args</em>*
+sinon on passerait <em>(1,2,3)</em> a </strong>calculer_somme<strong>. Dans l'appel <em>Appel 3</em> on
 remarque bien que </strong>args<strong> est un tuple, or il faut passer des </strong>nombres<strong>,
 qui ne sont que ses </strong>éléments<strong>, d'ou le </strong>deballage</em>*.</p>
 <h3><strong>Experience 3:</strong> <strong><em>**</em></strong></h3>
@@ -233,8 +233,8 @@ est inattendue. Normal, pas definie lors de la declaration de la fonction.</p>
 
 <p>On supprime le couple <strong>'d':7</strong>, on appelle la fonction avec un seul <strong>*</strong>, et
 les différentes clés du dictionnaire apparaissent.</p>
-<p>Pour conclure, <strong><em>dictionnaire</em>. Il
-n'est utilisé que lors des appels de fonction, tout comme <em>*</em>* permet de deballer les éléments d'un </strong>***.</p>
+<p>Pour conclure, <strong><em>*</em>* permet de deballer les éléments d'un <em>dictionnaire</em>. Il
+n'est utilisé que lors des appels de fonction, tout comme </strong>***.</p>
 <h3><strong>Experience 4:</strong> <strong><em>**kwargs</em></strong></h3>
 <p>Redefinisson notre fonction <em>fun</em></p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -341,7 +341,7 @@ manipulation des enregistrements se fait grace à la méthode <strong>save()</st
 il faut appeler la méthode <strong>save()</strong> de la classe <strong>Papa</strong>. En plus,
 <strong>save()</strong> de <strong>Filston</strong> doit etre capable tous les arguments que <strong>save()</strong>
 de <strong>Papa</strong> peut recevoir et les faire passer a cette derniere. D'ou
-l'utilisation de <strong><em>args</em>_ et de </strong>_<em>kwargs<strong> dans </strong>save()<strong> de </strong>Filstion</em>*.</p>
+l'utilisation de <strong>_args__ et de ___*kwargs</strong> dans <strong>save()</strong> de <strong>Filstion</strong>.</p>
 <h4>Execution</h4>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">Filston</span><span class="p">(</span><span class="s">&#39;josue&#39;</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">foo</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -369,7 +369,7 @@ deuxieme appel de </strong>save()<strong> soit </strong><em>super(Fislton, self)
       <script type="text/javascript">
         var disqus_shortname = 'fgjosue';
         var disqus_identifier = 'comprendre-args-kwargs.html';
-        var disqus_url = 'http://www.josuebrunel.org/comprendre-args-kwargs.html';
+        var disqus_url = 'http://212.83.154.157/blog/comprendre-args-kwargs.html';
         (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//fgjosue.disqus.com/embed.js';

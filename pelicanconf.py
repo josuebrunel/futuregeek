@@ -4,11 +4,18 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Josue Kouka'
 SITENAME = u'FutureGeek'
-SITEURL = 'http://www.josuebrunel.org'
+#SITEURL = 'http://www.josuebrunel.org'
+SITEURL = 'http://212.83.154.157/blog'
 
 TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = u'fr'
+DEFAULT_DATE = 'fs'
+
+PATH = 'content/'
+
+DELETE_OUTPUT_DIRECTORY = True
+PDF_GENERATOR = True
 
 DISQUS_SITENAME ='fgjosue'
 

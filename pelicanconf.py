@@ -7,7 +7,7 @@ SITENAME = u'FutureGeek'
 SITEURL = 'http://www.josuebrunel.org'
 
 TIMEZONE = 'Europe/Paris'
-
+DEFAULT_DATE = u'fs'
 DEFAULT_LANG = u'fr'
 
 DISQUS_SITENAME ='fgjosue'

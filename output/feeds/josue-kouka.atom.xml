@@ -239,10 +239,10 @@ html2markdown --ignore-links --ignore-image &lt;span class="s2"&gt;&amp;quot;&lt
 est tout a fait logique. On a passe une &lt;strong&gt;liste&lt;/strong&gt; a une fonction qui attend 3
 paramètres.&lt;/p&gt;
 &lt;p&gt;Ensuite lors de &lt;em&gt;Appel 2&lt;/em&gt;, aucune erreur du shell. Seul différence avec &lt;em&gt;Appel
-1&lt;/em&gt;, est le _&lt;strong&gt;&lt;em&gt;_ devant notre liste &lt;/em&gt;&lt;/strong&gt;mylist___ .&lt;/p&gt;
+1&lt;/em&gt;, est le &lt;strong&gt;*&lt;/strong&gt; devant notre liste &lt;strong&gt;&lt;em&gt;mylist&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
 &lt;p&gt;Le &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;&lt;/strong&gt; a &lt;strong&gt;deballe&lt;/strong&gt; les éléments de notre liste et les a envoyé à la
-fonction, c'est à dire que ce n'est pas **_[1,2,4]&lt;strong&gt;&lt;em&gt;1,2,3&lt;/em&gt;&lt;em&gt; (une liste) qui a été
-envoyée mais &lt;/em&gt;*&lt;/strong&gt;, en gros les éléments de la liste.&lt;/p&gt;
+fonction, c'est à dire que ce n'est pas &lt;strong&gt;&lt;em&gt;[1,2,4]&lt;/em&gt;&lt;/strong&gt; (une liste) qui a été
+envoyée mais &lt;strong&gt;&lt;em&gt;1,2,3&lt;/em&gt;&lt;/strong&gt;, en gros les éléments de la liste.&lt;/p&gt;
 &lt;p&gt;On ajoute un nouvel élément à la liste puis on rappelle la function ( &lt;em&gt;Appel
 3&lt;/em&gt; ), cette fois ci &lt;strong&gt;ERREUR&lt;/strong&gt;. Tout simplement parce que notre fonction
 attends 3 paramètres et non 4.&lt;/p&gt;
@@ -327,8 +327,8 @@ car les paramètres sont transformés en un &lt;em&gt;tuple&lt;/em&gt; (un itera
 somme des &lt;strong&gt;nombres&lt;/strong&gt; d'un &lt;em&gt;iterable&lt;/em&gt;. Or en passant &lt;em&gt;([1,2,3])&lt;/em&gt;, &lt;strong&gt;*args&lt;/strong&gt; =
 ([1,2,3],) qui est un tuple de liste.&lt;/p&gt;
 &lt;p&gt;A la question _pourquoi le &lt;em&gt;args ?_ dans &lt;strong&gt;calculer_somme_sans_premier&lt;/strong&gt; lors
-de l'appel de &lt;strong&gt;calculer_somme&lt;/strong&gt;, la réponse est qu'il faut deballer &lt;strong&gt;&lt;em&gt;(1,2,3)&lt;/em&gt; a &lt;em&gt;args&lt;/em&gt;*
-sinon on passerait &lt;/strong&gt;calculer_somme&lt;strong&gt;. Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt; on
+de l'appel de &lt;strong&gt;calculer_somme&lt;/strong&gt;, la réponse est qu'il faut deballer &lt;strong&gt;&lt;em&gt;args&lt;/em&gt;*
+sinon on passerait &lt;em&gt;(1,2,3)&lt;/em&gt; a &lt;/strong&gt;calculer_somme&lt;strong&gt;. Dans l'appel &lt;em&gt;Appel 3&lt;/em&gt; on
 remarque bien que &lt;/strong&gt;args&lt;strong&gt; est un tuple, or il faut passer des &lt;/strong&gt;nombres&lt;strong&gt;,
 qui ne sont que ses &lt;/strong&gt;éléments&lt;strong&gt;, d'ou le &lt;/strong&gt;deballage&lt;/em&gt;*.&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Experience 3:&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;**&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
@@ -383,8 +383,8 @@ est inattendue. Normal, pas definie lors de la declaration de la fonction.&lt;/p
 
 &lt;p&gt;On supprime le couple &lt;strong&gt;'d':7&lt;/strong&gt;, on appelle la fonction avec un seul &lt;strong&gt;*&lt;/strong&gt;, et
 les différentes clés du dictionnaire apparaissent.&lt;/p&gt;
-&lt;p&gt;Pour conclure, &lt;strong&gt;&lt;em&gt;dictionnaire&lt;/em&gt;. Il
-n'est utilisé que lors des appels de fonction, tout comme &lt;em&gt;*&lt;/em&gt;* permet de deballer les éléments d'un &lt;/strong&gt;***.&lt;/p&gt;
+&lt;p&gt;Pour conclure, &lt;strong&gt;&lt;em&gt;*&lt;/em&gt;* permet de deballer les éléments d'un &lt;em&gt;dictionnaire&lt;/em&gt;. Il
+n'est utilisé que lors des appels de fonction, tout comme &lt;/strong&gt;***.&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Experience 4:&lt;/strong&gt; &lt;strong&gt;&lt;em&gt;**kwargs&lt;/em&gt;&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Redefinisson notre fonction &lt;em&gt;fun&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -491,7 +491,7 @@ manipulation des enregistrements se fait grace à la méthode &lt;strong&gt;save
 il faut appeler la méthode &lt;strong&gt;save()&lt;/strong&gt; de la classe &lt;strong&gt;Papa&lt;/strong&gt;. En plus,
 &lt;strong&gt;save()&lt;/strong&gt; de &lt;strong&gt;Filston&lt;/strong&gt; doit etre capable tous les arguments que &lt;strong&gt;save()&lt;/strong&gt;
 de &lt;strong&gt;Papa&lt;/strong&gt; peut recevoir et les faire passer a cette derniere. D'ou
-l'utilisation de &lt;strong&gt;&lt;em&gt;args&lt;/em&gt;_ et de &lt;/strong&gt;_&lt;em&gt;kwargs&lt;strong&gt; dans &lt;/strong&gt;save()&lt;strong&gt; de &lt;/strong&gt;Filstion&lt;/em&gt;*.&lt;/p&gt;
+l'utilisation de &lt;strong&gt;_args__ et de ___*kwargs&lt;/strong&gt; dans &lt;strong&gt;save()&lt;/strong&gt; de &lt;strong&gt;Filstion&lt;/strong&gt;.&lt;/p&gt;
 &lt;h4&gt;Execution&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Filston&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;josue&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;

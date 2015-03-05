@@ -2,9 +2,8 @@ Title: Exemple de custom Logger en shell
 Slug: shell-custom-logger
 Date: 2015-02-25 18:14:08
 Tags: shell, bash, logging, logger
-Category: Programming
+Category: Linux
 Author: Josue Kouka
-Status: draft
 Lang: fr
 Summary: Example d un logger customise en python
 

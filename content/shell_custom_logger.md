@@ -7,7 +7,7 @@ Author: Josue Kouka
 Lang: fr
 Summary: Example d un logger customise en python
 
-Hello guys !!! (Imaginez avec un tete requin en train de crier comme un fou :D)
+Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)
 
 Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
 comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.

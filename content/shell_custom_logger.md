@@ -22,7 +22,7 @@ Creer un dossier qui contiendra le module i.e:
 
 Dans votre fichier de ***profile*** (.bashrc, .profile)
 
-    :::
+    :::shell
     export MYSCRIPTS=$HOME/.scripts
     source $MYSCRIPST/
 

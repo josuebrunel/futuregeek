@@ -40,13 +40,13 @@ Dans votre fichier de ***profile*** (.bashrc, .profile)
 
         if [ -z $output ]; then
             if [ `uname -s` != "Darwin" ]; then
-| tr '[:lower:]' '[:upper:]'`]" -p "user.${level}" "${message}" 2>&1 |
+logger -s -i -t "[`date +'%Y-%m-%d %H:%M:%S'` ${HOSTNAME} ${USER}][`echo ${level} | tr '[:lower:]' '[:upper:]'`]" -p "user.${level}" "${message}" 2>&1
             else
                 logger -s -p "user.${level}" "${message}" 2>&1
             fi
         else
              if [ `uname -s` != "Darwin" ]; then
-| tr '[:lower:]' '[:upper:]'`]" -p "user.${level}" "${message}" 2>> $output |
+logger -s -i -t "[`date +'%Y-%m-%d %H:%M:%S'` ${HOSTNAME} ${USER}][`echo ${level} | tr '[:lower:]' '[:upper:]'`]" -p "user.${level}" "${message}" 2>> $output 
             else
                 logger -s -p "user.${level}" "${message}" 2>> $output
             fi

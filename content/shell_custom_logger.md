@@ -93,19 +93,21 @@ Le ***source*** permet a *bash* de charger votre script lorsque vous lancez votr
     export -f _error
     export -f _notice
 
-**HELP**
+**HELP**:
+
 * *export -f* permet d'exporter une fonction bash et la rend accessible a bash et tous les processus fils de bash. Ce qui permet 
 a ces differentes fonctions d'etre utilisées dans un script bash.
-
 
 ### Utilisation
 
 Un test rapide dans votre shell
+
     :::shell
     yosuke@loking$> _info "Hello josh"
     [2015-03-05 09:44:29 loking yosuke][INFO][24044]: Hello josh    
 
 Pour rediriger la sortie log vers un fichier 
+
     :::shell
     yosuke@loking$> LOG_OUTPUT=myfile.log
     yosuke@loking$> _debug "Hello josh"

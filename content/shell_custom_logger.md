@@ -31,7 +31,7 @@ Le ***source*** permet a *bash* de charger votre script lorsque vous lancez votr
 ### Code de votre Shell Logger
 
     :::shell
-    ## If a LOG_OUTPUT variable is define,
+    ## If a LOG_OUTPUT variable is defined,
     ## the logger will write to a file pointed to by the variable
 
     function _log(){

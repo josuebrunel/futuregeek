@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>Virtualenv avec une autre version de python</title>
+        <title>Exemple de custom Logger en shell</title>
         <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
 
         <!--[if IE]>
@@ -28,43 +28,103 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html" rel="bookmark"
-           title="Permalink to Virtualenv avec une autre version de python">Virtualenv avec une autre version de python</a></h1>
+        <a href="http://www.josuebrunel.org/drafts/shell-custom-logger.html" rel="bookmark"
+           title="Permalink to Exemple de custom Logger en shell">Exemple de custom Logger en shell</a></h1>
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2014-11-19T20:12:06+01:00">
-                Published: Wed 19 November 2014
+        <abbr class="published" title="2015-02-25T18:14:08+01:00">
+                Published: Wed 25 February 2015
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/virtualenv.html">virtualenv</a> <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/.html"></a> </p>
-</footer><!-- /.post-info -->      <p>Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un <em>environment virtual python</em> 
-utilisant une version de python differente de celle par defaut. 
-De plus, generalement plus d'une version de <em>python</em> sont installés sur nos OS. Alors pour pouvoir créer un environement virtual python avec la version de python que vous voulez, voici la commande à entrer dans votre terminal:</p>
-<div class="highlight"><pre>yosuke@loking<span class="nv">$ </span>virtualenv -p /usr/bin/python2.6 &lt;path/to/new/virtualenv/&gt;
+<p>tags: <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> <a href="http://www.josuebrunel.org/tag/bash.html">bash</a> <a href="http://www.josuebrunel.org/tag/logging.html">logging</a> <a href="http://www.josuebrunel.org/tag/logger.html">logger</a> </p>
+</footer><!-- /.post-info -->      <p>Hello guys !!! (Imaginez avec un tete requin en train de crier comme un fou :D)</p>
+<p>Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
+comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.</p>
+<h3>Structure et Installation</h3>
+<p>Creer un dossier qui contiendra le module i.e:</p>
+<div class="highlight"><pre>yosuke@loking<span class="nv">$&gt;</span> mkdir .scripts
+</pre></div>
+
+
+<p>Dans votre fichier de <strong><em>profile</em></strong> (.bashrc, .profile)</p>
+<div class="highlight"><pre><span class="x">export MYSCRIPTS=</span><span class="p">$</span><span class="nv">HOME</span><span class="x">/.scripts</span>
+<span class="x">source </span><span class="p">$</span><span class="nv">MYSCRIPST</span><span class="x">/</span>
+</pre></div>
+
+
+<h3>Code de votre Shell Logger</h3>
+<div class="highlight"><pre><span class="c">## If a LOG_OUTPUT variable is define,</span>
+<span class="c">## the logger will write to a file pointed to by the variable</span>
+
+<span class="k">function</span> _log<span class="o">(){</span>
+    <span class="nv">level</span><span class="o">=</span><span class="nv">$1</span>
+    <span class="nv">message</span><span class="o">=</span><span class="nv">$2</span>
+    <span class="nv">output</span><span class="o">=</span><span class="nv">$3</span>
+
+    <span class="k">if</span> <span class="o">[</span> -z <span class="nv">$output</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="sb">`</span>uname -s<span class="sb">`</span> !<span class="o">=</span> <span class="s2">&quot;Darwin&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</pre></div>
+
+
+<p>logger -s -i -t "[<code>date +'%Y-%m-%d %H:%M:%S'</code> ${HOSTNAME} ${USER}][<code>echo ${level} | tr '[:lower:]' '[:upper:]'</code>]" -p "user.${level}" "${message}" 2&gt;&amp;1
+            else
+                logger -s -p "user.${level}" "${message}" 2&gt;&amp;1
+            fi
+        else
+             if [ <code>uname -s</code> != "Darwin" ]; then
+logger -s -i -t "[<code>date +'%Y-%m-%d %H:%M:%S'</code> ${HOSTNAME} ${USER}][<code>echo ${level} | tr '[:lower:]' '[:upper:]'</code>]" -p "user.${level}" "${message}" 2&gt;&gt; $output 
+            else
+                logger -s -p "user.${level}" "${message}" 2&gt;&gt; $output
+            fi
+        fi
+    }</p>
+<div class="highlight"><pre>function _process(){
+    level=$1
+    message=$2
+
+    if [ ! &quot;<span class="cp">${</span><span class="n">message</span><span class="cp">}</span>&quot; == &quot;&quot; ]; then
+        _log &quot;<span class="cp">${</span><span class="n">level</span><span class="cp">}</span>&quot; &quot;<span class="cp">${</span><span class="n">message</span><span class="cp">}</span>&quot; <span class="nv">$LOG_OUTPUT</span>
+    else
+        echo -e &quot;A message must be provided i.e : _<span class="cp">${</span><span class="n">level</span><span class="cp">}</span> &#39;your message&#39;&quot;
+    fi
+}
+
+function _info(){
+    _process &quot;info&quot; &quot;$1&quot;
+}
+
+function _debug(){
+    _process &quot;debug&quot; &quot;$1&quot;
+}
+
+function _warning(){
+    _process &quot;warning&quot; &quot;$1&quot;
+}
+
+function _error(){
+    _process &quot;error&quot; &quot;$1&quot;
+}
+
+function _notice(){
+    _process &quot;notice&quot; &quot;$1&quot;
+}
+
+export -f _log
+export -f _process
+export -f _info
+export -f _debug
+export -f _warning
+export -f _error
+export -f _notice
 </pre></div>
     </div><!-- /.entry-content -->
-    <div class="comments">
-      <h2>Comments !</h2>
-      <div id="disqus_thread"></div>
-      <script type="text/javascript">
-        var disqus_shortname = 'fgjosue';
-        var disqus_identifier = 'virtualenv-avec-une-autre-version-de-python.html';
-        var disqus_url = 'http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html';
-        (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//fgjosue.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the comments.</noscript>
-    </div>
 
   </article>
 </section>

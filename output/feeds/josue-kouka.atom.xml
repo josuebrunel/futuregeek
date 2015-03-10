@@ -1,5 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://www.josuebrunel.org/" rel="alternate"></link><link href="http://www.josuebrunel.org/feeds/josue-kouka.atom.xml" rel="self"></link><id>http://www.josuebrunel.org/</id><updated>2015-01-17T15:25:31+01:00</updated><entry><title>Attacher une methode a une classe en python</title><link href="http://www.josuebrunel.org/attacher-une-methode-a-une-classe-en-python.html" rel="alternate"></link><updated>2015-01-17T15:25:31+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2015-01-17:attacher-une-methode-a-une-classe-en-python.html</id><summary type="html">&lt;p&gt;Serieusement, je ne vois pas trop dans quelle condition ceci peut etre utile, disons que c'est juste bon a savoir.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://www.josuebrunel.org/" rel="alternate"></link><link href="http://www.josuebrunel.org/feeds/josue-kouka.atom.xml" rel="self"></link><id>http://www.josuebrunel.org/</id><updated>2015-02-25T18:14:08+01:00</updated><entry><title>Exemple de custom Logger en shell</title><link href="http://www.josuebrunel.org/shell-custom-logger.html" rel="alternate"></link><updated>2015-02-25T18:14:08+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2015-02-25:shell-custom-logger.html</id><summary type="html">&lt;p&gt;Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)&lt;/p&gt;
+&lt;p&gt;Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
+comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.&lt;/p&gt;
+&lt;h3&gt;Structure et Installation&lt;/h3&gt;
+&lt;p&gt;Creer un dossier qui contiendra le module i.e:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; mkdir .scripts
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dans votre fichier de &lt;strong&gt;&lt;em&gt;profile&lt;/em&gt;&lt;/strong&gt; (.bashrc, .profile)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;MYSCRIPTS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$HOME&lt;/span&gt;/.scripts
+&lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="nv"&gt;$MYSCRIPST&lt;/span&gt;/mylogger.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Le &lt;strong&gt;&lt;em&gt;source&lt;/em&gt;&lt;/strong&gt; permet a &lt;em&gt;bash&lt;/em&gt; de charger votre script lorsque vous lancez votre shell.&lt;/p&gt;
+&lt;h3&gt;Code de votre Shell Logger&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;## If a LOG_OUTPUT variable is define,&lt;/span&gt;
+&lt;span class="c"&gt;## the logger will write to a file pointed to by the variable&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _log&lt;span class="o"&gt;(){&lt;/span&gt;
+    &lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+    &lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;
+    &lt;span class="nv"&gt;output&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$3&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; -z &lt;span class="nv"&gt;$output&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="sb"&gt;`&lt;/span&gt;uname -s&lt;span class="sb"&gt;`&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Darwin&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            logger -s -i -t &lt;span class="s2"&gt;&amp;quot;[`date +&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39;` &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;][`echo &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; | tr &amp;#39;[:lower:]&amp;#39; &amp;#39;[:upper:]&amp;#39;`]&amp;quot;&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot;user.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; 2&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;1
+        &lt;span class="k"&gt;else&lt;/span&gt;
+            logger -s -p &lt;span class="s2"&gt;&amp;quot;user.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; 2&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;1
+        &lt;span class="k"&gt;fi&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="sb"&gt;`&lt;/span&gt;uname -s&lt;span class="sb"&gt;`&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Darwin&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+            logger -s -i -t &lt;span class="s2"&gt;&amp;quot;[`date +&amp;#39;%Y-%m-%d %H:%M:%S&amp;#39;` &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOSTNAME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;USER&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;][`echo &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; | tr &amp;#39;[:lower:]&amp;#39; &amp;#39;[:upper:]&amp;#39;`]&amp;quot;&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot;user.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; 2&amp;gt;&amp;gt; &lt;span class="nv"&gt;$output&lt;/span&gt; 
+        &lt;span class="k"&gt;else&lt;/span&gt;
+            logger -s -p &lt;span class="s2"&gt;&amp;quot;user.&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; 2&amp;gt;&amp;gt; &lt;span class="nv"&gt;$output&lt;/span&gt;
+        &lt;span class="k"&gt;fi&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _process&lt;span class="o"&gt;(){&lt;/span&gt;
+    &lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+    &lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$2&lt;/span&gt;
+
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;
+        _log &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;message&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$LOG_OUTPUT&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+        &lt;span class="nb"&gt;echo&lt;/span&gt; -e &lt;span class="s2"&gt;&amp;quot;A message must be provided i.e : _&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;level&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; &amp;#39;your message&amp;#39;&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;fi&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _info&lt;span class="o"&gt;(){&lt;/span&gt;
+    _process &lt;span class="s2"&gt;&amp;quot;info&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _debug&lt;span class="o"&gt;(){&lt;/span&gt;
+    _process &lt;span class="s2"&gt;&amp;quot;debug&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _warning&lt;span class="o"&gt;(){&lt;/span&gt;
+    _process &lt;span class="s2"&gt;&amp;quot;warning&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _error&lt;span class="o"&gt;(){&lt;/span&gt;
+    _process &lt;span class="s2"&gt;&amp;quot;error&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; _notice&lt;span class="o"&gt;(){&lt;/span&gt;
+    _process &lt;span class="s2"&gt;&amp;quot;notice&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _log
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _process
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _info
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _debug
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _warning
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _error
+&lt;span class="nb"&gt;export&lt;/span&gt; -f _notice
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;HELP&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;export -f&lt;/em&gt; permet d'exporter une fonction bash et la rend accessible a bash et tous les processus fils de bash. Ce qui permet 
+a ces differentes fonctions d'etre utilisées dans un script bash.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Utilisation&lt;/h3&gt;
+&lt;p&gt;Un test rapide dans votre shell&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; _info &lt;span class="s2"&gt;&amp;quot;Hello josh&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;2015-03-05 09:44:29 loking yosuke&lt;span class="o"&gt;][&lt;/span&gt;INFO&lt;span class="o"&gt;][&lt;/span&gt;24044&lt;span class="o"&gt;]&lt;/span&gt;: Hello josh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pour rediriger la sortie log vers un fichier &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;LOG_OUTPUT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;myfile.log
+yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; _debug &lt;span class="s2"&gt;&amp;quot;Hello josh&amp;quot;&lt;/span&gt;
+yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; cat myfile.log
+&lt;span class="o"&gt;[&lt;/span&gt;2015-03-05 09:44:29 loking yosuke&lt;span class="o"&gt;][&lt;/span&gt;DEBUG&lt;span class="o"&gt;][&lt;/span&gt;24044&lt;span class="o"&gt;]&lt;/span&gt;: Hello josh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Voila !!!&lt;/p&gt;
+&lt;h3&gt;Contribution&lt;/h3&gt;
+&lt;p&gt;Si vous trouvez des ameliorations n'hesitez pas a forker ce &lt;a href="https://github.com/josuebrunel/myscripts"&gt;repo&lt;/a&gt; et a m'envoyer un pull request.&lt;/p&gt;
+&lt;p&gt;Merci&lt;/p&gt;</summary><category term="shell"></category><category term="bash"></category><category term="logging"></category><category term="logger"></category></entry><entry><title>Attacher une methode a une classe en python</title><link href="http://www.josuebrunel.org/attacher-une-methode-a-une-classe-en-python.html" rel="alternate"></link><updated>2015-01-17T15:25:31+01:00</updated><author><name>Josue Kouka</name></author><id>tag:www.josuebrunel.org,2015-01-17:attacher-une-methode-a-une-classe-en-python.html</id><summary type="html">&lt;p&gt;Serieusement, je ne vois pas trop dans quelle condition ceci peut etre utile, disons que c'est juste bon a savoir.&lt;/p&gt;
 &lt;p&gt;Soit un object &lt;em&gt;Person&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;

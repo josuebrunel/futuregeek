@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>FutureGeek - shell</title>
+        <title>Exemple de custom Logger en shell</title>
         <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
 
         <!--[if IE]>
@@ -18,16 +18,22 @@
                 <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
                 <nav><ul>
                     <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
+                    <li class="active"><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
                     <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
                     <li><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
                     <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.josuebrunel.org/shell-custom-logger.html" rel="bookmark"
+           title="Permalink to Exemple de custom Logger en shell">Exemple de custom Logger en shell</a></h1>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/shell-custom-logger.html">Exemple de custom Logger en shell</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-02-25T18:14:08+01:00">
                 Published: Wed 25 February 2015
@@ -38,7 +44,7 @@
         </address>
 <p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
 <p>tags: <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> <a href="http://www.josuebrunel.org/tag/bash.html">bash</a> <a href="http://www.josuebrunel.org/tag/logging.html">logging</a> <a href="http://www.josuebrunel.org/tag/logger.html">logger</a> </p>
-</footer><!-- /.post-info --><p>Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)</p>
+</footer><!-- /.post-info -->      <p>Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)</p>
 <p>Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
 comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.</p>
 <h3>Structure et Installation</h3>
@@ -142,61 +148,26 @@ yosuke@loking<span class="nv">$&gt;</span> cat myfile.log
 <p>Voila !!!</p>
 <h3>Contribution</h3>
 <p>Si vous trouvez des ameliorations n'hesitez pas a forker ce <a href="https://github.com/josuebrunel/myscripts">repo</a> et a m'envoyer un pull request.</p>
-<p>Merci</p><p>There are <a href="http://www.josuebrunel.org/shell-custom-logger.html#disqus_thread">comments</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Merci</p>
+    </div><!-- /.entry-content -->
+    <div class="comments">
+      <h2>Comments !</h2>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+        var disqus_shortname = 'fgjosue';
+        var disqus_identifier = 'shell-custom-logger.html';
+        var disqus_url = 'http://www.josuebrunel.org/shell-custom-logger.html';
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//fgjosue.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the comments.</noscript>
+    </div>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/html-to-markdown-.html" rel="bookmark"
-                           title="Permalink to html to markdown">html to markdown</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-07-07T08:07:14+02:00">
-                Published: Sun 07 July 2013
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/linux.html">linux</a> <a href="http://www.josuebrunel.org/tag/html.html">html</a> <a href="http://www.josuebrunel.org/tag/markdwon.html">markdwon</a> <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> </p>
-</footer><!-- /.post-info -->                <p>Get a markdown file from your html.</p>
-                <a class="readmore" href="http://www.josuebrunel.org/html-to-markdown-.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/html-to-markdown-.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://www.josuebrunel.org/environement-python.html" rel="bookmark"
-                           title="Permalink to Environement Python">Environement Python</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2012-10-07T00:00:00+02:00">
-                Published: Sun 07 October 2012
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
-        </address>
-<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/python.html">python</a> <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> </p>
-</footer><!-- /.post-info -->                
-                <a class="readmore" href="http://www.josuebrunel.org/environement-python.html">read more</a>
-<p>There are <a href="http://www.josuebrunel.org/environement-python.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-                </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>

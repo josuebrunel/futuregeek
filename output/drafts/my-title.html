@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
         <meta charset="utf-8" />
-        <title>FutureGeek - server</title>
+        <title>My Title</title>
         <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
 
         <!--[if IE]>
@@ -20,74 +20,35 @@
                     <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
                     <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
                     <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
+                    <li class="active"><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
                     <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://www.josuebrunel.org/drafts/my-title.html" rel="bookmark"
+           title="Permalink to My Title">My Title</a></h1>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="josuebrunel">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/ssh-sans-mot-de-passe.html">ssh sans mot de passe</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2012-12-20T00:00:00+01:00">
-                Published: Thu 20 December 2012
+        <abbr class="published" title="2014-11-20T18:14:08+01:00">
+                Published: Thu 20 November 2014
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
         </address>
-<p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/linux.html">linux</a> <a href="http://www.josuebrunel.org/tag/ssh.html">ssh</a> <a href="http://www.josuebrunel.org/tag/server.html">server</a> </p>
-</footer><!-- /.post-info --><p>Hi guys !!!!</p>
-<p>Vous êtes fatigué d'entrer votre mot de passe sur les differents serveurs sur lesquels vous travaillez tous les jours ?</p>
-<p>Vous êtes fatigué de rechercher vos credentials ssh dans les différentes fiches techniques afin de vous connecter ? </p>
-<p>Vous êtes fatigué de ....</p>
-<div class="highlight"><pre>loking&gt; Yo Joe!!! Stop it !!!
-loking&gt; You ain&#39;t a commercial speaker, are you ? 
-josue&gt; Nope, ain&#39;t.
-loking&gt; Then stop !!!
-loking&gt; Besides, you suck !!!!
-josue&gt; that was mean bro :(
-</pre></div>
+<p>In <a href="http://www.josuebrunel.org/category/programming.html">Programming</a>. </p>
+<p>tags: <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> <a href="http://www.josuebrunel.org/tag/bash.html">bash</a> <a href="http://www.josuebrunel.org/tag/logging.html">logging</a> <a href="http://www.josuebrunel.org/tag/logger.html">logger</a> </p>
+</footer><!-- /.post-info -->      
+    </div><!-- /.entry-content -->
 
-
-<p>Petit guide sur comment faire pour eviter d'en avoir marre.</p>
-<div class="highlight"><pre><span class="gp">huey@freeman:~$</span>ssh -t keygen rsa
-<span class="go">Generating public/private rsa key pair.</span>
-<span class="go">Enter file in which to save the key (/home/huey/.ssh/id_rsa): </span>
-<span class="go">Created directory &#39;/home/huey/.ssh&#39;.</span>
-<span class="go">Enter passphrase (empty for no passphrase): </span>
-<span class="go">Enter same passphrase again: </span>
-<span class="go">Your identification has been saved in /home/huey/.ssh/id_rsa.</span>
-<span class="go">Your public key has been saved in /home/huey/.ssh/id_rsa.pub.</span>
-<span class="go">The key fingerprint is:</span>
-<span class="go">3e:4f:05:79:3a:9f:96:7c:3b:ad:e9:58:37:bc:37:e4 huey@freeman</span>
-
-<span class="gp">huey@freeman:~$</span> ls .ssh/
-<span class="go">id_rsa  id_rsa.pub  known_hosts</span>
-</pre></div>
-
-
-<p><strong><em>NB</em></strong>: N'entrez pas de <strong><em>passphrase</em></strong> </p>
-<p>On se connecte sur le serveur <em>ruckus</em>
-On cree un repertoire <strong><em>.ssh</em></strong> s'il n'existe pas.</p>
-<div class="highlight"><pre><span class="gp">uncle@ruckus:~$</span>mkdir .ssh/
-<span class="gp">uncle@ruckus:~$</span><span class="nb">exit</span>
-</pre></div>
-
-
-<p>De retour sur huey, entrez la commande suivante et votre mot de passe <em>pour la derniere fois</em></p>
-<div class="highlight"><pre><span class="gp">huey@freeman:~$</span>cat .ssh/id_rsa.pub <span class="p">|</span> ssh uncle@ruckus <span class="s1">&#39;cat &gt;&gt; .ssh/authorized_keys&#39;</span>
-<span class="go">uncle@ruckus&#39;s password:</span>
-</pre></div>
-
-
-<p>Maintenant, huey peut se connecter avec le compte <em>uncle</em> sur <em>ruckus</em> sans mot de passe.</p>
-<p>Et moi je peux aller <a href="http://www.youtube.com/watch?v=b3F0B4hAsmI">poser ma question à Ronalda</a></p><p>There are <a href="http://www.josuebrunel.org/ssh-sans-mot-de-passe.html#disqus_thread">comments</a>.</p>                </article>
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </aside><!-- /#featured -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>

@@ -1,11 +1,11 @@
-Title: Increase input value using mousewheel in javascript
+Title: Increment input value using mousewheel in javascript
 Slug: 
 Date: 2015-01-28 18:14:08
 Tags: web, javascript, js, jquery
 Category: Programming
 Author: Josue Kouka
-Lang: fr
-Summary: Example d\'un logger customise en python
+Lang: en
+Summary: How to increment value using javascript/jqeury
 
 
 

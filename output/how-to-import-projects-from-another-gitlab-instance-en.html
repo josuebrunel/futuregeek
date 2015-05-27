@@ -62,7 +62,7 @@ john@gitlab1<span class="nv">$ </span>scp git-data.tar.gz john@gitlab2:~/
 </li>
 <li>
 <h3><em>Connect to gitlab2</em></h3>
-<div class="highlight"><pre>john@gitlab2~<span class="nv">$ </span>sudo xzvf git-data -C /var/opt/gitlab/
+<div class="highlight"><pre>john@gitlab2~<span class="nv">$ </span>sudo xzvf git-data.tar.gz -C /var/opt/gitlab/
 john@gitlab2~<span class="nv">$ </span>sudo chown -R git:git /var/opt/gitlab/git-data/
 john@gitlab2~<span class="nv">$ </span>sudo gitlab-rake gitlab:import:repos
 john@gitlab2~<span class="nv">$ </span>sudo gitlab-rake gitlab:assest:precompile

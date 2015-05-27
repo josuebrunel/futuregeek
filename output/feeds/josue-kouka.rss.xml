@@ -17,7 +17,7 @@ john@gitlab1&lt;span class="nv"&gt;$ &lt;/span&gt;scp git-data.tar.gz john@gitla
 &lt;/li&gt;
 &lt;li&gt;
 &lt;h3&gt;&lt;em&gt;Connect to gitlab2&lt;/em&gt;&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo xzvf git-data -C /var/opt/gitlab/
+&lt;div class="highlight"&gt;&lt;pre&gt;john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo xzvf git-data.tar.gz -C /var/opt/gitlab/
 john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo chown -R git:git /var/opt/gitlab/git-data/
 john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo gitlab-rake gitlab:import:repos
 john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo gitlab-rake gitlab:assest:precompile

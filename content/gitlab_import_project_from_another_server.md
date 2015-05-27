@@ -24,7 +24,7 @@ And we want to import ___gitlab1 ___ projects into ___gitlab2___ . Both ***gitla
 2. ### _Connect to gitlab2_
 
         :::shell
-        john@gitlab2~$ sudo xzvf git-data -C /var/opt/gitlab/
+        john@gitlab2~$ sudo xzvf git-data.tar.gz -C /var/opt/gitlab/
         john@gitlab2~$ sudo chown -R git:git /var/opt/gitlab/git-data/
         john@gitlab2~$ sudo gitlab-rake gitlab:import:repos
         john@gitlab2~$ sudo gitlab-rake gitlab:assest:precompile

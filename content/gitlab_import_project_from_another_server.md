@@ -17,16 +17,16 @@ And we want to import ___gitlab1 ___ projects into ___gitlab2___ . Both ***gitla
 
 1. ### _Connect to gitlab1_ 
 
-    :::shell
-    john@gitlab1$ sudo tar czvf git-data.tar.gz /var/opt/gitlab/git-data
-    john@gitlab1$ scp git-data.tar.gz john@gitlab2:~/
+        :::shell
+        john@gitlab1$ sudo tar czvf git-data.tar.gz /var/opt/gitlab/git-data
+        john@gitlab1$ scp git-data.tar.gz john@gitlab2:~/
 
 2. ### _Connect to gitlab2_
 
-    :::shell
-    john@gitlab2~$ sudo xzvf git-data -C /var/opt/gitlab/
-    john@gitlab2~$ sudo chown -R git:git /var/opt/gitlab/git-data/
-    john@gitlab2~$ sudo gitlab-rake gitlab:import:repos
-    john@gitlab2~$ sudo gitlab-rake gitlab:assest:precompile
+        :::shell
+        john@gitlab2~$ sudo xzvf git-data -C /var/opt/gitlab/
+        john@gitlab2~$ sudo chown -R git:git /var/opt/gitlab/git-data/
+        john@gitlab2~$ sudo gitlab-rake gitlab:import:repos
+        john@gitlab2~$ sudo gitlab-rake gitlab:assest:precompile
 
 3. ### _Go on your gitlab interface and you will see your **projects** there._

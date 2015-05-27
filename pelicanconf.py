@@ -4,7 +4,8 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Josue Kouka'
 SITENAME = u'FutureGeek'
-SITEURL = 'http://www.josuebrunel.org'
+#SITEURL = 'http://www.josuebrunel.org'
+SITEURL = 'http://212.83.154.157/blog'
 
 TIMEZONE = 'Europe/Paris'
 DEFAULT_DATE = u'fs'

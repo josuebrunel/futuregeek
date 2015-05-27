@@ -3,3 +3,4 @@
 *.sublime*
 .DS_Store
 Makefile
+pelicanconf.py

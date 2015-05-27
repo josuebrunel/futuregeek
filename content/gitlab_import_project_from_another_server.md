@@ -29,4 +29,4 @@ And we want to import ___gitlab1 ___ projects into ___gitlab2___ . Both ***gitla
         john@gitlab2~$ sudo gitlab-rake gitlab:import:repos
         john@gitlab2~$ sudo gitlab-rake gitlab:assest:precompile
 
-3. ### _Go on your gitlab interface and you will see your **projects** there._
+3. ### _Go on your gitlab interface and you should see your **projects** there._

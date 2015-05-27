@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FutureGeek</title><link>http://www.josuebrunel.org/</link><description></description><atom:link href="http://www.josuebrunel.org/feeds/josue-kouka.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 25 Feb 2015 18:14:08 +0100</lastBuildDate><item><title>Exemple de custom Logger en shell</title><link>http://www.josuebrunel.org/shell-custom-logger.html</link><description>&lt;p&gt;Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FutureGeek</title><link>http://212.83.154.157/blog/</link><description></description><atom:link href="http://212.83.154.157/blog/feeds/josue-kouka.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 27 May 2015 00:00:00 +0200</lastBuildDate><item><title>How to import projects from another gitlab instance</title><link>http://212.83.154.157/blog/how-to-import-projects-from-another-gitlab-instance-en.html</link><description>&lt;p&gt;Hi, 
+Given 2 gitlab servers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gitlab1&lt;/li&gt;
+&lt;li&gt;gitlab2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And we want to import &lt;strong&gt;&lt;em&gt;gitlab1 &lt;/em&gt;&lt;/strong&gt; projects into &lt;strong&gt;&lt;em&gt;gitlab2&lt;/em&gt;&lt;/strong&gt; . Both &lt;strong&gt;&lt;em&gt;gitlab&lt;/em&gt;&lt;/strong&gt; are installed with &lt;strong&gt;omnibus&lt;/strong&gt; &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;h3&gt;&lt;em&gt;Connect to gitlab1&lt;/em&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;john@gitlab1&lt;span class="nv"&gt;$ &lt;/span&gt;sudo tar czvf git-data.tar.gz /var/opt/gitlab/git-data
+john@gitlab1&lt;span class="nv"&gt;$ &lt;/span&gt;scp git-data.tar.gz john@gitlab2:~/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3&gt;&lt;em&gt;Connect to gitlab2&lt;/em&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo xzvf git-data -C /var/opt/gitlab/
+john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo chown -R git:git /var/opt/gitlab/git-data/
+john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo gitlab-rake gitlab:import:repos
+john@gitlab2~&lt;span class="nv"&gt;$ &lt;/span&gt;sudo gitlab-rake gitlab:assest:precompile
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3&gt;&lt;em&gt;Go on your gitlab interface and you should see your &lt;strong&gt;projects&lt;/strong&gt; there.&lt;/em&gt;&lt;/h3&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 27 May 2015 00:00:00 +0200</pubDate><guid>tag:212.83.154.157,2015-05-27:blog/how-to-import-projects-from-another-gitlab-instance-en.html</guid><category>shell</category><category>bash</category><category>git</category><category>gitlab</category></item><item><title>Exemple de custom Logger en shell</title><link>http://212.83.154.157/blog/shell-custom-logger.html</link><description>&lt;p&gt;Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)&lt;/p&gt;
 &lt;p&gt;Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
 comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.&lt;/p&gt;
 &lt;h3&gt;Structure et Installation&lt;/h3&gt;
@@ -16,7 +45,7 @@ comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai 
 
 &lt;p&gt;Le &lt;strong&gt;&lt;em&gt;source&lt;/em&gt;&lt;/strong&gt; permet a &lt;em&gt;bash&lt;/em&gt; de charger votre script lorsque vous lancez votre shell.&lt;/p&gt;
 &lt;h3&gt;Code de votre Shell Logger&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;## If a LOG_OUTPUT variable is define,&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;## If a LOG_OUTPUT variable is defined,&lt;/span&gt;
 &lt;span class="c"&gt;## the logger will write to a file pointed to by the variable&lt;/span&gt;
 
 &lt;span class="k"&gt;function&lt;/span&gt; _log&lt;span class="o"&gt;(){&lt;/span&gt;
@@ -103,7 +132,50 @@ yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; cat myfile.log
 &lt;p&gt;Voila !!!&lt;/p&gt;
 &lt;h3&gt;Contribution&lt;/h3&gt;
 &lt;p&gt;Si vous trouvez des ameliorations n'hesitez pas a forker ce &lt;a href="https://github.com/josuebrunel/myscripts"&gt;repo&lt;/a&gt; et a m'envoyer un pull request.&lt;/p&gt;
-&lt;p&gt;Merci&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 25 Feb 2015 18:14:08 +0100</pubDate><guid>tag:www.josuebrunel.org,2015-02-25:shell-custom-logger.html</guid><category>shell</category><category>bash</category><category>logging</category><category>logger</category></item><item><title>Attacher une methode a une classe en python</title><link>http://www.josuebrunel.org/attacher-une-methode-a-une-classe-en-python.html</link><description>&lt;p&gt;Serieusement, je ne vois pas trop dans quelle condition ceci peut etre utile, disons que c'est juste bon a savoir.&lt;/p&gt;
+&lt;p&gt;Merci&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 25 Feb 2015 18:14:08 +0100</pubDate><guid>tag:212.83.154.157,2015-02-25:blog/shell-custom-logger.html</guid><category>shell</category><category>bash</category><category>logging</category><category>logger</category></item><item><title>Increment input value using mousewheel in javascript</title><link>http://212.83.154.157/blog/increment-input-value-mousewheel-en.html</link><description>&lt;p&gt;We will create a project &lt;strong&gt;demo&lt;/strong&gt; as follow in our &lt;strong&gt;www&lt;/strong&gt; directory :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir -p demo/static/js
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;demo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Create a &lt;strong&gt;index.html&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;static/js/jquery.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;script &lt;/span&gt;&lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;static/js/demo.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;form&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;label&amp;gt;&lt;/span&gt;Number&lt;span class="nt"&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;input&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;number&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;number&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;size=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;3&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;maxlength=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;3&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;max=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;100&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;min=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;NB&lt;/em&gt; : &lt;a href="http://code.jquery.com/jquery-1.11.2.min.js"&gt;jQuery&lt;/a&gt; is required &lt;/p&gt;
+&lt;p&gt;Create a file &lt;strong&gt;static/js/demo.js&lt;/strong&gt; with the code below&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;document&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;ready&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+    &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#number&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mousewheel&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kd"&gt;function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;delta&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;delta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;originalEvent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;wheelDelta&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;self&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;parseInt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+        &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;max&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;attr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;max&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;delta&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="nx"&gt;max&lt;/span&gt; &lt;span class="p"&gt;){&lt;/span&gt;
+            &lt;span class="nx"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+           &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nx"&gt;val&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="p"&gt;){&lt;/span&gt;
+               &lt;span class="nx"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;val&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+           &lt;span class="p"&gt;}&lt;/span&gt; 
+        &lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can test &lt;a href="http://localhost/demo/"&gt;localhost&lt;/a&gt; and play with your mousewheel&lt;/p&gt;
+&lt;p&gt;Voila !!!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 28 Jan 2015 18:14:08 +0100</pubDate><guid>tag:212.83.154.157,2015-01-28:blog/increment-input-value-mousewheel-en.html</guid><category>web</category><category>javascript</category><category>js</category><category>jquery</category></item><item><title>Attacher une methode a une classe en python</title><link>http://212.83.154.157/blog/attacher-une-methode-a-une-classe-en-python.html</link><description>&lt;p&gt;Serieusement, je ne vois pas trop dans quelle condition ceci peut etre utile, disons que c'est juste bon a savoir.&lt;/p&gt;
 &lt;p&gt;Soit un object &lt;em&gt;Person&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;age&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -176,7 +248,7 @@ yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; cat myfile.log
 
 
 &lt;p&gt;Dans le code ci dessus, on voit bien que pour l'appliquer a toutes les &lt;em&gt;nouvelles instances&lt;/em&gt; il faut ajouter la &lt;strong&gt;nouvelle methode&lt;/strong&gt; a la &lt;strong&gt;classe&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Ben voila, pas sure que ce soit utile, mais plutot interressant a savoir.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sat, 17 Jan 2015 15:25:31 +0100</pubDate><guid>tag:www.josuebrunel.org,2015-01-17:attacher-une-methode-a-une-classe-en-python.html</guid><category>python</category><category>programming</category><category>poo</category><category>oop</category></item><item><title>Importer un module depuis un dossier cachee en python</title><link>http://www.josuebrunel.org/importer-un-module-depuis-un-dossier-cachee-en-python.html</link><description>&lt;p&gt;Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( &lt;em&gt;.myfolder/mymodule&lt;/em&gt;).
+&lt;p&gt;Ben voila, pas sure que ce soit utile, mais plutot interressant a savoir.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sat, 17 Jan 2015 15:25:31 +0100</pubDate><guid>tag:212.83.154.157,2015-01-17:blog/attacher-une-methode-a-une-classe-en-python.html</guid><category>python</category><category>programming</category><category>poo</category><category>oop</category></item><item><title>Importer un module depuis un dossier cachee en python</title><link>http://212.83.154.157/blog/importer-un-module-depuis-un-dossier-cachee-en-python.html</link><description>&lt;p&gt;Il arrive des cas ou pour certaines raisons, on voudrait loader un module python se trouvant dans un repertoire caché ( &lt;em&gt;.myfolder/mymodule&lt;/em&gt;).
 Dans mon cas, je devais charger un fichier &lt;em&gt;settings.py&lt;/em&gt; contenu dans le dossier de config de mon app ( &lt;em&gt;~/.monapp/settings.py&lt;/em&gt;).
 Si vous etes dans la meme situation et vous vous demandez comment le faire, ce qui suit peut vous etre utile:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;josue@LokingMac:/tmp/tests&lt;span class="nv"&gt;$tree&lt;/span&gt; -a
@@ -223,11 +295,11 @@ josue@LokingMac:/tmp/tests&lt;span class="err"&gt;$&lt;/span&gt;
 
 
 &lt;p&gt;Le module a retenir est &lt;strong&gt;&lt;em&gt;&lt;a href="https://docs.python.org/2/library/imp.html?highlight=imp#imp.load_source"&gt;imp&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt; &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;NB&lt;/em&gt;&lt;/strong&gt; : &lt;strong&gt;IL MARCHE POUR TOUT&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Mon, 12 Jan 2015 07:58:30 +0100</pubDate><guid>tag:www.josuebrunel.org,2015-01-12:importer-un-module-depuis-un-dossier-cachee-en-python.html</guid><category>Python</category><category>Programming</category></item><item><title>Virtualenv avec une autre version de python</title><link>http://www.josuebrunel.org/virtualenv-avec-une-autre-version-de-python.html</link><description>&lt;p&gt;Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un &lt;em&gt;environment virtual python&lt;/em&gt; 
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NB&lt;/em&gt;&lt;/strong&gt; : &lt;strong&gt;IL MARCHE POUR TOUT&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Mon, 12 Jan 2015 07:58:30 +0100</pubDate><guid>tag:212.83.154.157,2015-01-12:blog/importer-un-module-depuis-un-dossier-cachee-en-python.html</guid><category>Python</category><category>Programming</category></item><item><title>Virtualenv avec une autre version de python</title><link>http://212.83.154.157/blog/virtualenv-avec-une-autre-version-de-python.html</link><description>&lt;p&gt;Il arrive des moments ou pour des raisons particulieres, l'on voudrait creer un &lt;em&gt;environment virtual python&lt;/em&gt; 
 utilisant une version de python differente de celle par defaut. 
 De plus, generalement plus d'une version de &lt;em&gt;python&lt;/em&gt; sont installés sur nos OS. Alors pour pouvoir créer un environement virtual python avec la version de python que vous voulez, voici la commande à entrer dans votre terminal:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;yosuke@loking&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv -p /usr/bin/python2.6 &amp;lt;path/to/new/virtualenv/&amp;gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 19 Nov 2014 20:12:06 +0100</pubDate><guid>tag:www.josuebrunel.org,2014-11-19:virtualenv-avec-une-autre-version-de-python.html</guid><category>virtualenv</category><category>python</category><category></category></item><item><title>Stream video from Linux</title><link>http://www.josuebrunel.org/stream-video-from-linux.html</link><description>&lt;p&gt;Hey guys !!!&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 19 Nov 2014 20:12:06 +0100</pubDate><guid>tag:212.83.154.157,2014-11-19:blog/virtualenv-avec-une-autre-version-de-python.html</guid><category>virtualenv</category><category>python</category><category></category></item><item><title>Stream video from Linux</title><link>http://212.83.154.157/blog/stream-video-from-linux.html</link><description>&lt;p&gt;Hey guys !!!&lt;/p&gt;
 &lt;p&gt;As always, the story of grandpa Joe. Like a lot of people, i like watching movies and documentaries. And i used to sleep in bed with my computer because
 i was too tired to seat on the desk before sleeping. Having my laptop in my bed next to me wasn't that comfy.
 So i decided to look for an app which will stream my movies and documentary
@@ -241,7 +313,7 @@ I've tried &lt;a href="https://wiki.archlinux.org/index.php/Rygel"&gt;rygel&lt;/
 
 &lt;p&gt;The only thing which is required to set up is below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Alt ps3mediaserver" src="./images/stream_from_linux/ps3mediaserver.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Then all you need to do, is the install any &lt;strong&gt;&lt;em&gt;UPNP&lt;/em&gt;&lt;/strong&gt; client on the device on which you want to watch/listen your media. Most consoles games such as Ps3 and Xbox have already those kind of player pre-installed.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 02 Feb 2014 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2014-02-02:stream-video-from-linux.html</guid><category>linux</category><category>media</category><category>video</category><category>streaming</category></item><item><title>Backing up your wireless networks data on linux</title><link>http://www.josuebrunel.org/backing-up-your-wireless-networks-data-on-linux.html</link><description>&lt;p&gt;Hey guys.
+&lt;p&gt;Then all you need to do, is the install any &lt;strong&gt;&lt;em&gt;UPNP&lt;/em&gt;&lt;/strong&gt; client on the device on which you want to watch/listen your media. Most consoles games such as Ps3 and Xbox have already those kind of player pre-installed.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 02 Feb 2014 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2014-02-02:blog/stream-video-from-linux.html</guid><category>linux</category><category>media</category><category>video</category><category>streaming</category></item><item><title>Backing up your wireless networks data on linux</title><link>http://212.83.154.157/blog/backing-up-your-wireless-networks-data-on-linux.html</link><description>&lt;p&gt;Hey guys.
 I'm sure that almost all of us, one day, have wondered how we could backup our Wireless Networks Settings
 on Linux to be able to use it for another linux freshly installed. There's a really easy and natural way to do so.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="gp"&gt;yosuke@loking:~$&lt;/span&gt; &lt;span class="nb"&gt;cd&lt;/span&gt; /etc/NetworkManager/
@@ -269,7 +341,7 @@ on Linux to be able to use it for another linux freshly installed. There's a rea
 &lt;p&gt;You've noticed the interesting folder here is &lt;strong&gt;&lt;em&gt;system-connections&lt;/em&gt;&lt;/strong&gt; . This directory contains the description of each
 network you connected to or you've tried to connect to. You can open each one of them and see the password (if there's one) in &lt;strong&gt;plain text&lt;/strong&gt; of network.&lt;/p&gt;
 &lt;p&gt;To restore those data on a freshly installed or another computer, just untar the archive into &lt;strong&gt;&lt;em&gt;/etc/NetworkManager/&lt;/em&gt;&lt;/strong&gt; .&lt;/p&gt;
-&lt;p&gt;That's all. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 17 Oct 2013 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2013-10-17:backing-up-your-wireless-networks-data-on-linux.html</guid><category>linux</category><category>wifi</category></item><item><title>html to markdown</title><link>http://www.josuebrunel.org/html-to-markdown-.html</link><description>&lt;p&gt;Hi guys ^_^ !! .&lt;/p&gt;
+&lt;p&gt;That's all. &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 17 Oct 2013 00:00:00 +0200</pubDate><guid>tag:212.83.154.157,2013-10-17:blog/backing-up-your-wireless-networks-data-on-linux.html</guid><category>linux</category><category>wifi</category></item><item><title>html to markdown</title><link>http://212.83.154.157/blog/html-to-markdown-.html</link><description>&lt;p&gt;Hi guys ^_^ !! .&lt;/p&gt;
 &lt;p&gt;Yeah i know, ya'll happy to read me again, just like friends happy to see a friends they haven't seen in a very very long time ^_^.
 Don't worry i missed you too even though i don't KNOW you. Maybe you a creeper or something (No just kidding ). &lt;/p&gt;
 &lt;p&gt;A couple weeks ago a lost all my markdown files, by the way i write my articles using markdown. Since last week i wanted to be back on rails with the 
@@ -298,7 +370,7 @@ html2markdown --ignore-links --ignore-image &lt;span class="s2"&gt;&amp;quot;&lt
 
 
 &lt;p&gt;Tada !!! Your &lt;em&gt;html&lt;/em&gt; files are now in &lt;em&gt;markdwon&lt;/em&gt;. Check the &lt;strong&gt;help&lt;/strong&gt; to know what &lt;strong&gt;--ignore-inks&lt;/strong&gt; and &lt;strong&gt;--ignore-image&lt;/strong&gt; do .&lt;/p&gt;
-&lt;p&gt;Thanks for reading guys and have a nice day ^_^.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Jul 2013 08:07:14 +0200</pubDate><guid>tag:www.josuebrunel.org,2013-07-07:html-to-markdown-.html</guid><category>linux</category><category>html</category><category>markdwon</category><category>shell</category></item><item><title>Comprendre *, **, *args, **kwargs</title><link>http://www.josuebrunel.org/comprendre-args-kwargs.html</link><description>&lt;p&gt;Hi guys !!!&lt;/p&gt;
+&lt;p&gt;Thanks for reading guys and have a nice day ^_^.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Jul 2013 08:07:14 +0200</pubDate><guid>tag:212.83.154.157,2013-07-07:blog/html-to-markdown-.html</guid><category>linux</category><category>html</category><category>markdwon</category><category>shell</category></item><item><title>Comprendre *, **, *args, **kwargs</title><link>http://212.83.154.157/blog/comprendre-args-kwargs.html</link><description>&lt;p&gt;Hi guys !!!&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;unpackers&lt;/strong&gt; et &lt;strong&gt;varargs&lt;/strong&gt; ? It doesn't ring a bell ? oh come on (redneck accent).&lt;/p&gt;
 &lt;p&gt;Je suis sure que vous avez deja vu des instructions du genre :&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;...&lt;/span&gt;
@@ -615,7 +687,7 @@ passe &lt;strong&gt;kwargs&lt;/strong&gt; en le deballant grace a &lt;strong&gt;
 deuxieme appel de &lt;/strong&gt;save()&lt;strong&gt; soit &lt;/strong&gt;&lt;em&gt;super(Fislton, self).save(insert=True)&lt;/em&gt;**&lt;/p&gt;
 &lt;h1&gt;2, ce qui correspond a notre définition dans la classe &lt;strong&gt;Papa&lt;/strong&gt;.&lt;/h1&gt;
 &lt;p&gt;Voila, c'est fini, j'espère que vous avez une meilleur comprehension des
-&lt;strong&gt;unpackers&lt;/strong&gt; et des &lt;strong&gt;varargs&lt;/strong&gt; en python.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 26 Mar 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-03-26:comprendre-args-kwargs.html</guid><category>python</category></item><item><title>oeutils</title><link>http://www.josuebrunel.org/oeutils.html</link><description>&lt;h2&gt;OEUTILS&lt;/h2&gt;
+&lt;strong&gt;unpackers&lt;/strong&gt; et des &lt;strong&gt;varargs&lt;/strong&gt; en python.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 26 Mar 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-03-26:blog/comprendre-args-kwargs.html</guid><category>python</category></item><item><title>oeutils</title><link>http://212.83.154.157/blog/oeutils.html</link><description>&lt;h2&gt;OEUTILS&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;oeutils&lt;/strong&gt; is a small python wrapper of the xml-rpc API for OpenERP. It is useful when it comes to  manipulate your OpenERP objects.
 It is not as powerful as &lt;strong&gt;erppeek&lt;/strong&gt; yet but i hope that with your help one day it will ^_^.
 It's inspired from &lt;a href="https://github.com/florentx/erppeek"&gt;&lt;strong&gt;erpeek&lt;/strong&gt;&lt;/a&gt; and we can say thanks to Florent for that.
@@ -686,7 +758,7 @@ I'm sure that i'll be laughing in the next 2 years while seeing this.&lt;/p&gt;
 
 
 &lt;p&gt;That's all, thanks in advance for your feebacks&lt;/p&gt;
-&lt;p&gt;Please check this docstring for more informations ^_~.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sat, 23 Mar 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-03-23:oeutils.html</guid><category>openerp</category><category>python</category><category>xmlrpc</category><category>api</category></item><item><title>Introduction aux Makefiles</title><link>http://www.josuebrunel.org/introduction-aux-makefiles.html</link><description>&lt;h3&gt;Makefile&lt;/h3&gt;
+&lt;p&gt;Please check this docstring for more informations ^_~.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sat, 23 Mar 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-03-23:blog/oeutils.html</guid><category>openerp</category><category>python</category><category>xmlrpc</category><category>api</category></item><item><title>Introduction aux Makefiles</title><link>http://212.83.154.157/blog/introduction-aux-makefiles.html</link><description>&lt;h3&gt;Makefile&lt;/h3&gt;
 &lt;p&gt;Un &lt;strong&gt;makefile&lt;/strong&gt; est tout simplement un fichier de configuration (script) contenant des instructions qui sont lus et executées par un programme de type &lt;strong&gt;make&lt;/strong&gt; (gmake,...). &lt;/p&gt;
 &lt;h4&gt;A quoi sert il ?&lt;/h4&gt;
 &lt;p&gt;Il permet de construire automatiquement des &lt;strong&gt;&lt;em&gt;executable&lt;/em&gt;&lt;/strong&gt; (tres souvent) , des &lt;strong&gt;&lt;em&gt;libraries&lt;/em&gt;&lt;/strong&gt;, des &lt;strong&gt;&lt;em&gt;architectures&lt;/em&gt;&lt;/strong&gt; de dossier ou des actions &lt;strong&gt;&lt;em&gt;diverses&lt;/em&gt;&lt;/strong&gt; . En gros , enormement de choses .&lt;/p&gt;
@@ -858,7 +930,7 @@ Vous avez surement remarque le message qui indique que la regle est deja satisfa
 &lt;li&gt;&lt;strong&gt;re&lt;/strong&gt; depend de &lt;strong&gt;fclean&lt;/strong&gt; puis &lt;strong&gt;all&lt;/strong&gt; &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Je vous conseille de lire &lt;a href="http://gl.developpez.com/tutoriel/outil/makefile/"&gt;ceci&lt;/a&gt; pour vous documenter sur les regles &lt;strong&gt;d'inference&lt;/strong&gt; .&lt;/p&gt;
-&lt;p&gt;Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 05 Feb 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-02-05:introduction-aux-makefiles.html</guid><category>makefile</category><category>c</category><category>c++</category><category></category></item><item><title>Migration base de donnee Openerp production a developpement</title><link>http://www.josuebrunel.org/migration-base-de-donnee-openerp-production-a-developpement.html</link><description>&lt;p&gt;Salut !!!!
+&lt;p&gt;Voila, j'espere que ca vous aura permet d'ecrire des makefiles simplistes mais utiles.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 05 Feb 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-02-05:blog/introduction-aux-makefiles.html</guid><category>makefile</category><category>c</category><category>c++</category><category></category></item><item><title>Migration base de donnee Openerp production a developpement</title><link>http://212.83.154.157/blog/migration-base-de-donnee-openerp-production-a-developpement.html</link><description>&lt;p&gt;Salut !!!!
 Etant un petit programmeur &lt;em&gt;openerp&lt;/em&gt; , il m'arrive tres souvent de vouloir travailler avec un environement 
 de production. Chose assez simple a realiser , par rapport a openerp, car il suffit d'exporter la base de 
 donnees de &lt;strong&gt;production&lt;/strong&gt; et  l'importer en &lt;strong&gt;developpement&lt;/strong&gt; .
@@ -942,7 +1014,7 @@ Oui oui !!! je n'utilise pas d'outils GUI comme &lt;em&gt;pgAdmin&lt;/em&gt; ^_^
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Voila !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Mon, 04 Feb 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-02-04:migration-base-de-donnee-openerp-production-a-developpement.html</guid><category>postgresql</category><category>openerp</category><category>linux</category><category>database</category></item><item><title>How to install fonts on linux</title><link>http://www.josuebrunel.org/how-to-install-fonts-on-linux.html</link><description>&lt;p&gt;Hi guys !!!
+&lt;p&gt;Voila !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Mon, 04 Feb 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-02-04:blog/migration-base-de-donnee-openerp-production-a-developpement.html</guid><category>postgresql</category><category>openerp</category><category>linux</category><category>database</category></item><item><title>How to install fonts on linux</title><link>http://212.83.154.157/blog/how-to-install-fonts-on-linux.html</link><description>&lt;p&gt;Hi guys !!!
 I was using a mac lately, and i fell in love with the monaco font. That font is so cool on emacs ^_^.&lt;/p&gt;
 &lt;p&gt;So i started searching on the internet and found how to do so. Here it's:&lt;/p&gt;
 &lt;p&gt;You can get that font &lt;a href="http://jorrel.googlepages.com/Monaco_Linux.ttf"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -955,7 +1027,7 @@ I was using a mac lately, and i fell in love with the monaco font. That font is 
 
 &lt;p&gt;That's all. Now you can use &lt;strong&gt;monaco&lt;/strong&gt; font .&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Alt example" src="./static_files/font/monaco_font.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Isn't it cool !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 20 Jan 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-01-20:how-to-install-fonts-on-linux.html</guid><category>linux</category><category>font</category><category></category></item><item><title>Bowee</title><link>http://www.josuebrunel.org/bowee.html</link><description>&lt;h2&gt;What's &lt;strong&gt;BoWee&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Isn't it cool !!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 20 Jan 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-01-20:blog/how-to-install-fonts-on-linux.html</guid><category>linux</category><category>font</category><category></category></item><item><title>Bowee</title><link>http://212.83.154.157/blog/bowee.html</link><description>&lt;h2&gt;What's &lt;strong&gt;BoWee&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;BoWee&lt;/strong&gt; is a &lt;strong&gt;bottle&lt;/strong&gt; project builder. It generates an project architecture and useful files for &lt;strong&gt;bottle&lt;/strong&gt; projects.
 It was previously name &lt;em&gt;TinyCocktail&lt;/em&gt; , but it has been changed. &lt;/p&gt;
 &lt;p&gt;It uses the &lt;a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"&gt;MVC&lt;/a&gt; architecture. 
@@ -1071,7 +1143,7 @@ Actually is more &lt;strong&gt;&lt;em&gt;Model View Template&lt;/em&gt;&lt;/stro
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;templates&lt;/em&gt;&lt;/strong&gt;: Contains all template files (.tpl, .html.tpl)&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;static_files&lt;/em&gt;&lt;/strong&gt;: Contains all the static files&lt;/p&gt;
-&lt;p&gt;Now that everything is setup, i wish you a &lt;strong&gt;Happy Coding&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 15 Jan 2013 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2013-01-15:bowee.html</guid><category>python</category><category>bottle</category><category>peewee</category><category>web</category></item><item><title>ssh sans mot de passe</title><link>http://www.josuebrunel.org/ssh-sans-mot-de-passe.html</link><description>&lt;p&gt;Hi guys !!!!&lt;/p&gt;
+&lt;p&gt;Now that everything is setup, i wish you a &lt;strong&gt;Happy Coding&lt;/strong&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 15 Jan 2013 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2013-01-15:blog/bowee.html</guid><category>python</category><category>bottle</category><category>peewee</category><category>web</category></item><item><title>ssh sans mot de passe</title><link>http://212.83.154.157/blog/ssh-sans-mot-de-passe.html</link><description>&lt;p&gt;Hi guys !!!!&lt;/p&gt;
 &lt;p&gt;Vous êtes fatigué d'entrer votre mot de passe sur les differents serveurs sur lesquels vous travaillez tous les jours ?&lt;/p&gt;
 &lt;p&gt;Vous êtes fatigué de rechercher vos credentials ssh dans les différentes fiches techniques afin de vous connecter ? &lt;/p&gt;
 &lt;p&gt;Vous êtes fatigué de ....&lt;/p&gt;
@@ -1116,7 +1188,7 @@ On cree un repertoire &lt;strong&gt;&lt;em&gt;.ssh&lt;/em&gt;&lt;/strong&gt; s'i
 
 
 &lt;p&gt;Maintenant, huey peut se connecter avec le compte &lt;em&gt;uncle&lt;/em&gt; sur &lt;em&gt;ruckus&lt;/em&gt; sans mot de passe.&lt;/p&gt;
-&lt;p&gt;Et moi je peux aller &lt;a href="http://www.youtube.com/watch?v=b3F0B4hAsmI"&gt;poser ma question à Ronalda&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 20 Dec 2012 00:00:00 +0100</pubDate><guid>tag:www.josuebrunel.org,2012-12-20:ssh-sans-mot-de-passe.html</guid><category>linux</category><category>ssh</category><category>server</category></item><item><title>Environement Python</title><link>http://www.josuebrunel.org/environement-python.html</link><description>&lt;p&gt;Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
+&lt;p&gt;Et moi je peux aller &lt;a href="http://www.youtube.com/watch?v=b3F0B4hAsmI"&gt;poser ma question à Ronalda&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 20 Dec 2012 00:00:00 +0100</pubDate><guid>tag:212.83.154.157,2012-12-20:blog/ssh-sans-mot-de-passe.html</guid><category>linux</category><category>ssh</category><category>server</category></item><item><title>Environement Python</title><link>http://212.83.154.157/blog/environement-python.html</link><description>&lt;p&gt;Salut !! le but de ce post est d'aider ceux qui debutent avec python a creer un environement minimal 
 au developpement python .&lt;/p&gt;
 &lt;h3&gt;A- Autocomplention sur le shell python&lt;/h3&gt;
 &lt;p&gt;Vu que vous aurez a enormement utiliser le shell python, ce petit script permettant l'auto-completion vous sera fort utile.
@@ -1170,7 +1242,7 @@ Son utilite se fait fortement ressentir losque l'on est amene a travailler sur d
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Voila !!! Vous etes prets (enfin je pense)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-07:environement-python.html</guid><category>python</category><category>shell</category></item><item><title>Openerp Module Development : Partie I</title><link>http://www.josuebrunel.org/openerp-module-development-partie-i.html</link><description>&lt;h3&gt;&lt;strong&gt;Pre-requis&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Voila !!! Vous etes prets (enfin je pense)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Sun, 07 Oct 2012 00:00:00 +0200</pubDate><guid>tag:212.83.154.157,2012-10-07:blog/environement-python.html</guid><category>python</category><category>shell</category></item><item><title>Openerp Module Development : Partie I</title><link>http://212.83.154.157/blog/openerp-module-development-partie-i.html</link><description>&lt;h3&gt;&lt;strong&gt;Pre-requis&lt;/strong&gt;&lt;/h3&gt;
 &lt;p&gt;Connaissances en programmation &lt;a href="http://www.python.org/"&gt;python&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;&lt;strong&gt;Context&lt;/strong&gt;&lt;/h3&gt;
 &lt;ul&gt;
@@ -1414,7 +1486,7 @@ Par defaut le dossier de addons est le suivant (Voir le context en haut de page,
 &lt;p&gt;Vous devriez voir le module &lt;strong&gt;family&lt;/strong&gt; apparaitre sur le menu &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Alt family" src="./images/openerp/family.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Alt members" src="./images/openerp/members.png" /&gt;&lt;/p&gt;
-&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 04 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-04:openerp-module-development-partie-i.html</guid><category>openerp</category><category>python</category><category>xml</category></item><item><title>About Me</title><link>http://www.josuebrunel.org/about-me.html</link><description>&lt;p&gt;&lt;img alt="Alt Me" src="./images/fg.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Voila finie cette première partie , vous etes maintenant capable d'écrire un simple module openerp et de créer toutes les familles du &lt;a href="http://fr.wikipedia.org/wiki/7_familles"&gt;jeu des 7 familles&lt;/a&gt; . &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Thu, 04 Oct 2012 00:00:00 +0200</pubDate><guid>tag:212.83.154.157,2012-10-04:blog/openerp-module-development-partie-i.html</guid><category>openerp</category><category>python</category><category>xml</category></item><item><title>About Me</title><link>http://212.83.154.157/blog/about-me.html</link><description>&lt;p&gt;&lt;img alt="Alt Me" src="./images/fg.jpg" /&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;about_me&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="s"&gt;&amp;quot;firstname&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Josue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="s"&gt;&amp;quot;lastname&amp;quot;&lt;/span&gt;  &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Kouka&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -1438,4 +1510,4 @@ and to make it fun to read, i will do my best to refer to some &lt;em&gt;memes&l
 &lt;strong&gt;emacs&lt;/strong&gt; as my main text editor/IDE. You can check emacs for python out if
 you interested into programming with emacs.&lt;/p&gt;
 &lt;p&gt;I think that it's almost all you need to know about me , don't hesitate to
-contact me at &lt;a href="mailto:josuebrunel@gmail.com"&gt;josuebrunel@gmail.com&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 02 Oct 2012 00:00:00 +0200</pubDate><guid>tag:www.josuebrunel.org,2012-10-02:about-me.html</guid><category>Hello World</category></item></channel></rss>
+contact me at &lt;a href="mailto:josuebrunel@gmail.com"&gt;josuebrunel@gmail.com&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Tue, 02 Oct 2012 00:00:00 +0200</pubDate><guid>tag:212.83.154.157,2012-10-02:blog/about-me.html</guid><category>Hello World</category></item></channel></rss>

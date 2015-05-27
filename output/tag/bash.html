@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>FutureGeek - bash</title>
-        <link rel="stylesheet" href="http://www.josuebrunel.org/theme/css/main.css" />
+        <link rel="stylesheet" href="http://212.83.154.157/blog/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -15,138 +15,91 @@
 <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" />
 </a>
         <header id="banner" class="body">
-                <h1><a href="http://www.josuebrunel.org/">FutureGeek </a></h1>
+                <h1><a href="http://212.83.154.157/blog/">FutureGeek </a></h1>
                 <nav><ul>
-                    <li><a href="http://www.josuebrunel.org/category/about-me.html">About Me</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/linux.html">Linux</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/openerp.html">Openerp</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/programming.html">Programming</a></li>
-                    <li><a href="http://www.josuebrunel.org/category/projects.html">Projects</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/about-me.html">About Me</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/linux.html">Linux</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/openerp.html">Openerp</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/programming.html">Programming</a></li>
+                    <li><a href="http://212.83.154.157/blog/category/projects.html">Projects</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://www.josuebrunel.org/shell-custom-logger.html">Exemple de custom Logger en shell</a></h1>
+                    <h1 class="entry-title"><a href="http://212.83.154.157/blog/how-to-import-projects-from-another-gitlab-instance-en.html">How to import projects from another gitlab instance</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-05-27T00:00:00+02:00">
+                Published: Wed 27 May 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://212.83.154.157/blog/author/josue-kouka.html">Josue Kouka</a>
+        </address>
+<p>In <a href="http://212.83.154.157/blog/category/linux.html">Linux</a>. </p>
+<p>tags: <a href="http://212.83.154.157/blog/tag/shell.html">shell</a> <a href="http://212.83.154.157/blog/tag/bash.html">bash</a> <a href="http://212.83.154.157/blog/tag/git.html">git</a> <a href="http://212.83.154.157/blog/tag/gitlab.html">gitlab</a> </p>
+</footer><!-- /.post-info --><p>Hi, 
+Given 2 gitlab servers:</p>
+<ul>
+<li>gitlab1</li>
+<li>gitlab2</li>
+</ul>
+<p>And we want to import <strong><em>gitlab1 </em></strong> projects into <strong><em>gitlab2</em></strong> . Both <strong><em>gitlab</em></strong> are installed with <strong>omnibus</strong> </p>
+<ol>
+<li>
+<h3><em>Connect to gitlab1</em></h3>
+<div class="highlight"><pre>john@gitlab1<span class="nv">$ </span>sudo tar czvf git-data.tar.gz /var/opt/gitlab/git-data
+john@gitlab1<span class="nv">$ </span>scp git-data.tar.gz john@gitlab2:~/
+</pre></div>
+
+
+</li>
+<li>
+<h3><em>Connect to gitlab2</em></h3>
+<div class="highlight"><pre>john@gitlab2~<span class="nv">$ </span>sudo xzvf git-data -C /var/opt/gitlab/
+john@gitlab2~<span class="nv">$ </span>sudo chown -R git:git /var/opt/gitlab/git-data/
+john@gitlab2~<span class="nv">$ </span>sudo gitlab-rake gitlab:import:repos
+john@gitlab2~<span class="nv">$ </span>sudo gitlab-rake gitlab:assest:precompile
+</pre></div>
+
+
+</li>
+<li>
+<h3><em>Go on your gitlab interface and you should see your <strong>projects</strong> there.</em></h3>
+</li>
+</ol><p>There are <a href="http://212.83.154.157/blog/how-to-import-projects-from-another-gitlab-instance-en.html#disqus_thread">comments</a>.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://212.83.154.157/blog/shell-custom-logger.html" rel="bookmark"
+                           title="Permalink to Exemple de custom Logger en shell">Exemple de custom Logger en shell</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-02-25T18:14:08+01:00">
                 Published: Wed 25 February 2015
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="http://www.josuebrunel.org/author/josue-kouka.html">Josue Kouka</a>
+                By                         <a class="url fn" href="http://212.83.154.157/blog/author/josue-kouka.html">Josue Kouka</a>
         </address>
-<p>In <a href="http://www.josuebrunel.org/category/linux.html">Linux</a>. </p>
-<p>tags: <a href="http://www.josuebrunel.org/tag/shell.html">shell</a> <a href="http://www.josuebrunel.org/tag/bash.html">bash</a> <a href="http://www.josuebrunel.org/tag/logging.html">logging</a> <a href="http://www.josuebrunel.org/tag/logger.html">logger</a> </p>
-</footer><!-- /.post-info --><p>Hello guys !!! (Imaginez moi avec une tete requin en train de crier comme un fou :D)</p>
-<p>Pour un de mes scripts shell j'avais besoin d'une sorte de logger. Et me suis demandé
-comment avoir une sorte de module de logging pour mes scripts shell, et j'en ai écris un.</p>
-<h3>Structure et Installation</h3>
-<p>Creer un dossier qui contiendra le module i.e:</p>
-<div class="highlight"><pre>yosuke@loking<span class="nv">$&gt;</span> mkdir .scripts
-</pre></div>
-
-
-<p>Dans votre fichier de <strong><em>profile</em></strong> (.bashrc, .profile)</p>
-<div class="highlight"><pre><span class="nb">export </span><span class="nv">MYSCRIPTS</span><span class="o">=</span><span class="nv">$HOME</span>/.scripts
-<span class="nb">source</span> <span class="nv">$MYSCRIPST</span>/mylogger.sh
-</pre></div>
-
-
-<p>Le <strong><em>source</em></strong> permet a <em>bash</em> de charger votre script lorsque vous lancez votre shell.</p>
-<h3>Code de votre Shell Logger</h3>
-<div class="highlight"><pre><span class="c">## If a LOG_OUTPUT variable is define,</span>
-<span class="c">## the logger will write to a file pointed to by the variable</span>
-
-<span class="k">function</span> _log<span class="o">(){</span>
-    <span class="nv">level</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nv">message</span><span class="o">=</span><span class="nv">$2</span>
-    <span class="nv">output</span><span class="o">=</span><span class="nv">$3</span>
-
-    <span class="k">if</span> <span class="o">[</span> -z <span class="nv">$output</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="k">if</span> <span class="o">[</span> <span class="sb">`</span>uname -s<span class="sb">`</span> !<span class="o">=</span> <span class="s2">&quot;Darwin&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-            logger -s -i -t <span class="s2">&quot;[`date +&#39;%Y-%m-%d %H:%M:%S&#39;` </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">][`echo </span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2"> | tr &#39;[:lower:]&#39; &#39;[:upper:]&#39;`]&quot;</span> -p <span class="s2">&quot;user.</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> 2&gt;<span class="p">&amp;</span>1
-        <span class="k">else</span>
-            logger -s -p <span class="s2">&quot;user.</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> 2&gt;<span class="p">&amp;</span>1
-        <span class="k">fi</span>
-    <span class="k">else</span>
-         <span class="k">if</span> <span class="o">[</span> <span class="sb">`</span>uname -s<span class="sb">`</span> !<span class="o">=</span> <span class="s2">&quot;Darwin&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-            logger -s -i -t <span class="s2">&quot;[`date +&#39;%Y-%m-%d %H:%M:%S&#39;` </span><span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">][`echo </span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2"> | tr &#39;[:lower:]&#39; &#39;[:upper:]&#39;`]&quot;</span> -p <span class="s2">&quot;user.</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> 2&gt;&gt; <span class="nv">$output</span> 
-        <span class="k">else</span>
-            logger -s -p <span class="s2">&quot;user.</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> 2&gt;&gt; <span class="nv">$output</span>
-        <span class="k">fi</span>
-    <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _process<span class="o">(){</span>
-    <span class="nv">level</span><span class="o">=</span><span class="nv">$1</span>
-    <span class="nv">message</span><span class="o">=</span><span class="nv">$2</span>
-
-    <span class="k">if</span> <span class="o">[</span> ! <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        _log <span class="s2">&quot;</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">message</span><span class="si">}</span><span class="s2">&quot;</span> <span class="nv">$LOG_OUTPUT</span>
-    <span class="k">else</span>
-        <span class="nb">echo</span> -e <span class="s2">&quot;A message must be provided i.e : _</span><span class="si">${</span><span class="nv">level</span><span class="si">}</span><span class="s2"> &#39;your message&#39;&quot;</span>
-    <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _info<span class="o">(){</span>
-    _process <span class="s2">&quot;info&quot;</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _debug<span class="o">(){</span>
-    _process <span class="s2">&quot;debug&quot;</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _warning<span class="o">(){</span>
-    _process <span class="s2">&quot;warning&quot;</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _error<span class="o">(){</span>
-    _process <span class="s2">&quot;error&quot;</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="k">function</span> _notice<span class="o">(){</span>
-    _process <span class="s2">&quot;notice&quot;</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-<span class="o">}</span>
-
-<span class="nb">export</span> -f _log
-<span class="nb">export</span> -f _process
-<span class="nb">export</span> -f _info
-<span class="nb">export</span> -f _debug
-<span class="nb">export</span> -f _warning
-<span class="nb">export</span> -f _error
-<span class="nb">export</span> -f _notice
-</pre></div>
-
-
-<p><strong>HELP</strong>:</p>
-<ul>
-<li><em>export -f</em> permet d'exporter une fonction bash et la rend accessible a bash et tous les processus fils de bash. Ce qui permet 
-a ces differentes fonctions d'etre utilisées dans un script bash.</li>
-</ul>
-<h3>Utilisation</h3>
-<p>Un test rapide dans votre shell</p>
-<div class="highlight"><pre>yosuke@loking<span class="nv">$&gt;</span> _info <span class="s2">&quot;Hello josh&quot;</span>
-<span class="o">[</span>2015-03-05 09:44:29 loking yosuke<span class="o">][</span>INFO<span class="o">][</span>24044<span class="o">]</span>: Hello josh
-</pre></div>
-
-
-<p>Pour rediriger la sortie log vers un fichier </p>
-<div class="highlight"><pre>yosuke@loking<span class="nv">$&gt;</span> <span class="nv">LOG_OUTPUT</span><span class="o">=</span>myfile.log
-yosuke@loking<span class="nv">$&gt;</span> _debug <span class="s2">&quot;Hello josh&quot;</span>
-yosuke@loking<span class="nv">$&gt;</span> cat myfile.log
-<span class="o">[</span>2015-03-05 09:44:29 loking yosuke<span class="o">][</span>DEBUG<span class="o">][</span>24044<span class="o">]</span>: Hello josh
-</pre></div>
-
-
-<p>Voila !!!</p>
-<h3>Contribution</h3>
-<p>Si vous trouvez des ameliorations n'hesitez pas a forker ce <a href="https://github.com/josuebrunel/myscripts">repo</a> et a m'envoyer un pull request.</p>
-<p>Merci</p><p>There are <a href="http://www.josuebrunel.org/shell-custom-logger.html#disqus_thread">comments</a>.</p>                </article>
+<p>In <a href="http://212.83.154.157/blog/category/linux.html">Linux</a>. </p>
+<p>tags: <a href="http://212.83.154.157/blog/tag/shell.html">shell</a> <a href="http://212.83.154.157/blog/tag/bash.html">bash</a> <a href="http://212.83.154.157/blog/tag/logging.html">logging</a> <a href="http://212.83.154.157/blog/tag/logger.html">logger</a> </p>
+</footer><!-- /.post-info -->                <p>Example d un logger customise en python</p>
+                <a class="readmore" href="http://212.83.154.157/blog/shell-custom-logger.html">read more</a>
+<p>There are <a href="http://212.83.154.157/blog/shell-custom-logger.html#disqus_thread">comments</a>.</p>                </div><!-- /.entry-content -->
+            </article></li>
+                </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
+                </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>

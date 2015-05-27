@@ -53,6 +53,6 @@ $('document').ready(function(){
 })
 ```
 
-You can test [localhost](http://localhost/demo/) and play with your mousewheel
+You can test [localhost](http://localhost/demo/index.html) and play with your mousewheel
 
 Voila !!!!

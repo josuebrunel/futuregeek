@@ -174,7 +174,7 @@ yosuke@loking&lt;span class="nv"&gt;$&amp;gt;&lt;/span&gt; cat myfile.log
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;You can test &lt;a href="http://localhost/demo/"&gt;localhost&lt;/a&gt; and play with your mousewheel&lt;/p&gt;
+&lt;p&gt;You can test &lt;a href="http://localhost/demo/index.html"&gt;localhost&lt;/a&gt; and play with your mousewheel&lt;/p&gt;
 &lt;p&gt;Voila !!!!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Josue Kouka</dc:creator><pubDate>Wed, 28 Jan 2015 18:14:08 +0100</pubDate><guid>tag:212.83.154.157,2015-01-28:blog/increment-input-value-mousewheel-en.html</guid><category>web</category><category>javascript</category><category>js</category><category>jquery</category></item><item><title>Attacher une methode a une classe en python</title><link>http://212.83.154.157/blog/attacher-une-methode-a-une-classe-en-python.html</link><description>&lt;p&gt;Serieusement, je ne vois pas trop dans quelle condition ceci peut etre utile, disons que c'est juste bon a savoir.&lt;/p&gt;
 &lt;p&gt;Soit un object &lt;em&gt;Person&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Person&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;

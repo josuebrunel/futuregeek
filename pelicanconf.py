@@ -36,7 +36,7 @@ TWITTER_USERNAME = 'josuebrunel'
 
 DEFAULT_PAGINATION = 10
 
-THEME = 'notmyidea'
+THEME = 'static'
 
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']
 

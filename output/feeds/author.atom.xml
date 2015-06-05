@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>FutureGeek</title><link href="http://212.83.154.157/blog/" rel="alternate"></link><link href="http://212.83.154.157/blog/feeds/author.atom.xml" rel="self"></link><id>http://212.83.154.157/blog/</id><updated>2015-06-05T16:12:22+02:00</updated><entry><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</id><summary type="html">
+
+&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+    &lt;div class="container"&gt;
+
+         &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+             &lt;span class="icon-bar"&gt;&lt;/span&gt;
+             &lt;span class="icon-bar"&gt;&lt;/span&gt;
+             &lt;span class="icon-bar"&gt;&lt;/span&gt;
+         &lt;/a&gt;
+
+        &lt;a class="brand" href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;
+
+        &lt;div class="nav-collapse"&gt;
+        &lt;ul class="nav"&gt;
+        {% for title, link in MENUITEMS %}
+            &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+        {% endfor %}
+            
+        {% if DISPLAY_PAGES_ON_MENU %}
+        {% for page in PAGES %}
+            &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+        {% endfor %}
+        {% endif %}
+        &lt;/ul&gt;
+        &lt;/div&gt;
+        
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="container"&gt;
+    &lt;div class="content"&gt;
+    &lt;div class="row"&gt;
+
+        &lt;div class="span9"&gt;
+        {% block content %}{% endblock %}
+        &lt;/div&gt;
+        
+        &lt;div class="span3"&gt;
+
+            &lt;div class="well" style="padding: 8px 0; background-color: #FBFBFB;"&gt;
+            &lt;ul class="nav nav-list"&gt;
+                &lt;li class="nav-header"&gt; 
+                Site
+                &lt;/li&gt;
+            
+                &lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;Archives&lt;/a&gt;
+                &lt;li&gt;&lt;a href="{{ SITEURL }}/tags.html"&gt;Tags&lt;/a&gt;
+
+
+
+                {% if FEED_ALL_ATOM %}
+                &lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" rel="alternate"&gt;Atom feed&lt;/a&gt;&lt;/li&gt;
+                {% endif %}
+                {% if FEED_ATOM %}
+                &lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" rel="alternate"&gt;Atom feed&lt;/a&gt;&lt;/li&gt;
+                {% endif %}
+                {% if FEED_RSS %}
+                &lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" rel="alternate"&gt;RSS feed&lt;/a&gt;&lt;/li&gt;
+                {% endif %}
+                {% if FEED_ALL_RSS %}
+                &lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" rel="alternate"&gt;RSS feed&lt;/a&gt;&lt;/li&gt;
+                {% endif %}
+
+            &lt;/ul&gt;
+            &lt;/div&gt;
+
+
+            {% if categories %}
+            &lt;div class="well" style="padding: 8px 0; background-color: #FBFBFB;"&gt;
+            &lt;ul class="nav nav-list"&gt;
+                &lt;li class="nav-header"&gt; 
+                Categories
+                &lt;/li&gt;
+                
+                {% for cat, null in categories %}
+                &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+                {% endfor %}                   
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            {% endif %}
+
+
+            {% if LINKS %}
+            &lt;div class="well" style="padding: 8px 0; background-color: #FBFBFB;"&gt;
+            &lt;ul class="nav nav-list"&gt;
+                &lt;li class="nav-header"&gt; 
+                Links
+                &lt;/li&gt;
+            
+            {% for name, link in LINKS %}
+                &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+            {% endfor %}
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            {% endif %}
+
+
+            {% if SOCIAL %}
+            &lt;div class="social"&gt;
+            &lt;div class="well" style="padding: 8px 0; background-color: #FBFBFB;"&gt;
+            &lt;ul class="nav nav-list"&gt;
+                &lt;li class="nav-header"&gt; 
+                Social
+                &lt;/li&gt;
+           
+                {% for name, link in SOCIAL %}
+                &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+                {% endfor %}
+            &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            {% endif %}
+
+        &lt;/div&gt; {# End span3 #} 
+    &lt;/div&gt; {# End row #}
+    &lt;/div&gt; {# End content #}
+
+&lt;footer&gt;
+&lt;br /&gt;
+{% if articles %}
+   {% set copy_date = articles[0].date.strftime('%Y') %}
+{% else %}
+   {% set copy_date = '' %}
+{% endif %}
+&lt;p&gt;&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt; &amp;copy; {{ AUTHOR }} {{ copy_date }}&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="{{ SITEURL }}/theme/bootstrap-collapse.js"&gt;&lt;/script&gt;
+{% include "analytics.html" %}
+{% include "github.html" %} 
+</summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">
+
+&lt;div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation"&gt;
+	&lt;div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}"&gt;
+        &lt;div class="navbar-header"&gt;
+            &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"&gt;
+                &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;a href="{{ SITEURL }}/" class="navbar-brand"&gt;
+                {% if SITELOGO %}&lt;img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}" /&gt; {% endif %}
+                {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="collapse navbar-collapse navbar-ex1-collapse"&gt;
+            &lt;ul class="nav navbar-nav"&gt;
+                {% for title, link in MENUITEMS %}
+                    &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+                {% endfor %}
+                {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in PAGES %}
+                         &lt;li{% if p == page %} class="active"{% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ p.url }}"&gt;
+                             {{ p.menulabel|default(p.title) }}
+                          &lt;/a&gt;&lt;/li&gt;
+                      {% endfor %}
+                {% endif %}
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% for cat, null in categories %}
+                        &lt;li {% if cat="category" %}class="active" {% endif %}&gt;
+                            &lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat | capitalize }}&lt;/a&gt;
+                        &lt;/li&gt;
+                    {% endfor %}
+                {% endif %}
+            &lt;/ul&gt;
+            &lt;ul class="nav navbar-nav navbar-right"&gt;
+            {% if 'tipue_search' in PLUGINS %}
+              &lt;li&gt;&lt;span&gt;
+                &lt;form class="navbar-search" action="/search"&gt;
+                  &lt;input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input" required&gt;
+                &lt;/form&gt;&lt;/span&gt;
+              &lt;/li&gt;
+            {% endif %}
+              &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"&gt;&lt;i class="fa fa-th-list"&gt;&lt;/i&gt;&lt;span class="icon-label"&gt;Archives&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;!-- /.navbar-collapse --&gt;
+    &lt;/div&gt;
+&lt;/div&gt; &lt;!-- /.navbar --&gt;
+&lt;!-- Banner --&gt;
+{% if BANNER and BANNER_ALL_PAGES %}
+    {% include 'includes/banner.html' %}
+{% elif BANNER and not BANNER_ALL_PAGES %}
+    {% block banner %}{% endblock %}
+{% endif %}
+&lt;!-- End Banner --&gt;
+&lt;div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}"&gt;
+    &lt;div class="row"&gt;
+        {% if not HIDE_SIDEBAR or ABOUT_ME %}
+        &lt;div class="col-sm-9"&gt;
+        {% else %}
+        &lt;div class="col-lg-12"&gt;
+        {% endif %}
+        {% block breadcrumbs %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+        &lt;/div&gt;
+        {% if not HIDE_SIDEBAR or ABOUT_ME %}
+        &lt;div class="col-sm-3" id="sidebar"&gt;
+            &lt;aside&gt;
+            {% if ABOUT_ME %}
+                {% include 'includes/aboutme.html' %}
+            {% endif %}
+            {% if not HIDE_SIDEBAR %}
+                {% include 'includes/sidebar.html' %}
+            {% endif %}
+            &lt;/aside&gt;
+        &lt;/div&gt;
+        {% endif %}
+    &lt;/div&gt;
+&lt;/div&gt;
+{% include 'includes/footer.html' %}
+
+&lt;script src="{{ SITEURL }}/theme/js/jquery.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;
+&lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) --&gt;
+&lt;script src="{{ SITEURL }}/theme/js/respond.min.js"&gt;&lt;/script&gt;
+
+{% if BANNER %}
+    &lt;script src="{{ SITEURL }}/theme/js/bodypadding.js"&gt;&lt;/script&gt;
+{% endif %}
+{% include 'includes/github-js.html' %}
+{% include 'includes/disqus_script.html' %}
+{% include 'includes/ga.html' %}
+{% include 'includes/piwik.html' %}
+
+{% block scripts %}{% endblock %}
+</summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">
+  &lt;!-- Sidebar --&gt;
+  &lt;aside&gt;
+    &lt;p&gt;&lt;a href="{{ SITEURL }}"&gt;&lt;img id="avatar" src="{{ SITEURL }}/{{ AVATAR }}"&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;h1&gt;{{ SITENAME }}&lt;/h1&gt;
+    &lt;p&gt;{{ SIDEBAR_DIGEST }}&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h2&gt;Social&lt;/h2&gt;
+    &lt;ul class="social"&gt;
+      {% for name, link in SOCIAL %}
+      &lt;li style="list-style-image : url({{ SITEURL }}/theme/images/icons/{{ name|lower }}.png);"&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+      {% endfor %}
+      &lt;li style="list-style-image : url({{ SITEURL }}/theme/images/icons/rss.png);"&gt;&lt;a href="{{ SITEURL }}/{{ FEED_ATOM }}" rel="alternate"&gt;&lt;i class="icon-bookmark icon-large"&gt;&lt;/i&gt;Atom feed&lt;/a&gt;&lt;/li&gt;
+      {% if FEED_RSS %}
+      &lt;li style="list-style-image : url({{ SITEURL }}/theme/images/icons/rss.png);"&gt;&lt;a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate"&gt;RSS feed&lt;/a&gt;&lt;/li&gt;
+      {% endif %}
+    &lt;/ul&gt;
+    {% for title, link in MENUITEMS %}
+    &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+    {% if DISPLAY_PAGES_ON_MENU and PAGES %}
+    &lt;h2&gt;Pages&lt;/h2&gt;
+    &lt;ul class="navbar"&gt;
+      {% for p in PAGES %}
+      &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ p.url }}"&gt;{{ p.title }}&lt;/a&gt;&lt;/li&gt;
+      {% endfor %}
+    &lt;/ul&gt;
+    {% endif %}
+    {% if categories %}
+    &lt;h2&gt;Categories&lt;/h2&gt;
+    &lt;ul class="navbar"&gt;
+      {% for cat, null in categories %}
+      &lt;li{% if cat == category %} class="active"{% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+      {% endfor %}
+    &lt;/ul&gt; 
+    {% endif %}
+  &lt;/aside&gt;
+
+  &lt;!-- Content --&gt;
+  &lt;article&gt;
+    {% block content %}
+    {% endblock %}
+  &lt;/article&gt;
+
+  &lt;!-- Footer --&gt;
+  &lt;footer&gt;
+    &lt;address id="about" class="vcard body"&gt;
+      {% if FIREFOX_BANNERS %}
+      &lt;div align="center"&gt;
+        {% for id, img, alt in FIREFOX_BANNERS %}
+        &lt;a href="http://affiliates.mozilla.org/link/banner/{{ id }}" target="_blank"&gt;&lt;img src="{{ img }}" alt="{{ alt }}" /&gt;&lt;/a&gt;
+        {% endfor %}
+      &lt;/div&gt;
+      {% endif %}
+      Blog powered by &lt;a href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;, 
+      which takes great advantage of &lt;a href="http://python.org"&gt;Python&lt;/a&gt;.
+      Theme &lt;a href="https://github.com/quack1/notebook/"&gt;Notebook&lt;/a&gt; by &lt;a href="https://twitter.com/_Quack1"&gt;@Quack1&lt;/a&gt;.
+    &lt;/address&gt;
+  &lt;/footer&gt;
+
+  {% if GOOGLE_ANALYTICS %}
+  &lt;!-- Analytics --&gt;
+  &lt;script type="text/javascript"&gt;
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS }}']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  &lt;/script&gt;
+  {% endif %}
+
+</summary></entry><entry><title>{% block title %}Blog about Me and my Linux{% endblock %} | {{ SITENAME }}</title><link href="http://212.83.154.157/blog/block-title-blog-about-me-and-my-linux-endblock-sitename.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-blog-about-me-and-my-linux-endblock-sitename.html</id><summary type="html">
+    {% include 'github.html' %}
+    &lt;div class="navbar navbar-fixed-top"&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;div class="container-fluid"&gt;
+          &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a class="brand" href="{{ SITEURL }}/index.html"&gt;{{ SITENAME }} {% if SITESUBTITLE %} &lt;strong&gt;{{ SITESUBTITLE }}&lt;/strong&gt;{% endif %}&lt;/a&gt;
+          &lt;div class="nav-collapse"&gt;
+            &lt;ul class="nav"&gt;
+              {% for title, link in MENUITEMS %}
+                  &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+              {% if DISPLAY_PAGES_ON_MENU %}
+              {% for gpage in PAGES %}
+                &lt;li {% if page="gpage" %}class="active" {% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ gpage.url }}"&gt;{{ gpage.title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+                &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+              {% endif %}
+              {% for cat, null in categories %}
+                &lt;li {% if cat="category" %}class="active" {% endif %}&gt;
+                  &lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;
+						        &lt;i class="icon-folder-open icon-large"&gt;&lt;/i&gt;{{ cat }}
+					         &lt;/a&gt;
+                &lt;/li&gt;
+              {% endfor %}
+              &lt;ul class="nav pull-right"&gt;
+                    &lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;&lt;i class="icon-th-list"&gt;&lt;/i&gt;Archives&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+
+            &lt;/ul&gt;
+            &lt;!--&lt;p class="navbar-text pull-right"&gt;Logged in as &lt;a href="#"&gt;username&lt;/a&gt;&lt;/p&gt;--&gt;
+          &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="container"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="span8" id="content"&gt;
+            {% block content %}
+            {% endblock %}
+        &lt;/div&gt;&lt;!--/span--&gt;
+        &lt;div class="span3 well sidebar-nav" id="sidebar"&gt;
+            {% include 'sidebar.html' %}
+        &lt;/div&gt;&lt;!--/.well --&gt;
+
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;hr&gt;
+
+      {% include 'footer.html' %}
+    &lt;/div&gt;&lt;!--/.fluid-container--&gt;
+
+    {% include 'analytics.html' %}
+    {% include 'metryka.html' %}
+    {% include 'piwik.html' %}
+    {#% include 'disqus_script.html' %#}
+
+    &lt;!-- Le javascript --&gt;
+    &lt;!-- Placed at the end of the document so the pages load faster --&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
+  </summary><category term="{{ KEYWORDS }}"></category></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock-title.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</id><summary type="html">
+		&lt;div class="nav-banner"&gt;
+		&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;
+		&lt;/div&gt;
+		
+		&lt;div class="content"&gt;
+		{% block content %}
+		{% endblock content %}
+		&lt;/div&gt;
+		
+		&lt;div class="sidebar"&gt;
+		{% include 'sidebar.html' %}
+		&lt;/div&gt;
+		
+		&lt;footer id="contentinfo" class="body"&gt;
+                &lt;address id="about" class="vcard body"&gt;
+                Proudly powered by &lt;a href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;,
+                which takes great advantage of &lt;a href="http://python.org"&gt;Python&lt;/a&gt;,
+				Theme by &lt;a href="http://frantic1048.com/"&gt;Frantic1048&lt;/a&gt;.
+                &lt;/address&gt;&lt;!-- /#about --&gt;
+        &lt;/footer&gt;&lt;!-- /#contentinfo --&gt;
+</summary></entry><entry><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</id><summary type="html">
+		&lt;div class="off-canvas-wrap"&gt;
+			&lt;div class="inner-wrap"&gt;
+				&lt;!-- mobile top bar to activate nav --&gt;
+				&lt;nav class="tab-bar show-for-small"&gt;
+					&lt;section class="left-small"&gt;
+						&lt;a class="left-off-canvas-toggle menu-icon"&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+					&lt;/section&gt;
+
+					&lt;section class="middle tab-bar-section"&gt;
+						&lt;h1 class="title"&gt;{{ SITENAME|replace(' ', '&amp;nbsp;') }}&lt;/h1&gt;
+					&lt;/section&gt;
+				&lt;/nav&gt;
+
+				&lt;!-- mobile side bar nav --&gt;
+				&lt;aside class="left-off-canvas-menu"&gt;
+					&lt;ul class="off-canvas-list"&gt;
+						&lt;li&gt;&lt;a href="{{ SITEURL }}"&gt;Home&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;label&gt;Categories&lt;/label&gt;&lt;/li&gt;
+						{% for cat, articles in categories %}
+							&lt;li {% if cat="category" %}class="active" {% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+						{% endfor %}
+
+						&lt;li&gt;&lt;label&gt;Links&lt;/label&gt;&lt;/li&gt;
+							{% for name, link in LINKS %}
+							&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+
+						{% if FOUNDATION_TAGS_IN_MOBILE_SIDEBAR %}
+						&lt;li&gt;&lt;label&gt;Tags&lt;/label&gt;&lt;/li&gt;
+							{% for tag, articles in tags|sort %}
+							&lt;li&gt;&lt;a href="{{ SITEURL }}/{{ tag.url|replace(' ', '-') }}"&gt;{{ tag }}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+						{% endif %}
+
+						{% if MONTH_ARCHIVE_SAVE_AS %}
+						&lt;li&gt;&lt;label&gt;Monthly Archives&lt;/label&gt;&lt;/li&gt;
+							{% for year, date_year in dates|groupby( 'date.year' )|sort(reverse=True) %}
+								{% for month, articles in date_year|groupby( 'date.month' )|sort(reverse=True) %}
+									&lt;li&gt;&lt;a href="/{{ MONTH_ARCHIVE_SAVE_AS.format(date=articles[0].date) }}"&gt;{{ articles[0].date.strftime('%B') }} {{ year }} ({{ articles|count }})&lt;/a&gt;&lt;/li&gt;
+								{% endfor %}
+							{% endfor %}
+						{% endif %}
+
+						&lt;li&gt;&lt;label&gt;Social&lt;/label&gt;&lt;/li&gt;
+							{% for name, link in SOCIAL|sort %}
+							&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+					&lt;/ul&gt;	
+				&lt;/aside&gt;
+
+				&lt;!-- top bar nav --&gt;
+				&lt;nav class="top-bar hide-for-small-only" data-topbar&gt;
+					&lt;ul class="title-area"&gt;
+						&lt;li class="name"&gt;
+							&lt;h1&gt;&lt;a href="{{ SITEURL }}/"&gt;{{ SITENAME }}&lt;/a&gt;&lt;/h1&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+
+					&lt;section class="top-bar-section"&gt;
+						&lt;ul class="left"&gt;
+							{% for cat, articles in categories %}
+								&lt;li {% if cat="category" %}class="active" {% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+						&lt;/ul&gt;
+                        &lt;ul class="right"&gt;                                                                                                                                           
+                             {% for pg in PAGES | sort(attribute='index') %}                                                                                                          
+                                 {% if 'http://' in pg.url -%}                                                                                                                        
+                                     &lt;li&gt;&lt;a href="{{ pg.url }}"&gt;{{ pg.title }}&lt;/a&gt;&lt;/li&gt;                                                                                               
+                                 {% else %}····                                                                                                                                       
+                                     &lt;li{% if pg == page %} class="active"{% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ pg.url }}"&gt;{{ pg.title }}&lt;/a&gt;&lt;/li&gt;                                    
+                                 {% endif %}                                                                                                                                          
+                             {% endfor %}                                                                                                                                             
+                        &lt;/ul&gt;  
+					&lt;/section&gt;
+				&lt;/nav&gt;
+
+				&lt;!-- Main Page Content and Sidebar --&gt;
+				&lt;section class="main-section"&gt;
+					&lt;div class="row"&gt;
+						&lt;!-- Main Content --&gt;
+						&lt;div class="medium-9 small-12 columns" role="content"&gt;
+							{% if pagetitle is defined %}
+							&lt;div class="row"&gt;
+								&lt;div class="small-12 columns"&gt;
+									&lt;h2&gt;{{ pagetitle }}&lt;/h2&gt;
+								&lt;/div&gt;
+							&lt;/div&gt;
+							{% endif %}
+							{% block content %}{% endblock %}
+						&lt;/div&gt;
+						&lt;!-- End Main Content --&gt;
+						&lt;!-- Sidebar --&gt;
+						&lt;aside class="medium-3 hide-for-small-only columns"&gt;
+							&lt;div class="panel"&gt;
+								&lt;h5&gt;Links&lt;/h5&gt;
+								&lt;ul class="side-nav"&gt;
+									{% for name, link in LINKS %}
+									&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+									{% endfor %}
+								&lt;/ul&gt;
+							&lt;/div&gt;
+
+							&lt;div class="panel"&gt;
+								&lt;h5&gt;Tags&lt;/h5&gt;
+								&lt;ul class="tag-cloud"&gt;
+									{% for tag in tag_cloud %}
+									&lt;li&gt;&lt;a href="/tag/{{ tag.0|lower|replace(' ', '-') }}.html" class="tag-{{ tag.1 }}"&gt;{{ tag.0 }}&lt;/a&gt;&lt;/li&gt;
+									{% endfor %}
+								&lt;/ul&gt;
+							&lt;/div&gt;
+
+							{% if MONTH_ARCHIVE_SAVE_AS %}
+							&lt;div class="panel"&gt;
+								&lt;h5&gt;Monthly Archives&lt;/h5&gt;
+								&lt;ul class="side-nav"&gt;
+									{% for year, date_year in dates|groupby( 'date.year' )|sort(reverse=True) %}
+										{% for month, articles in date_year|groupby( 'date.month' )|sort(reverse=True) %}
+											&lt;li&gt;&lt;a href="/{{ MONTH_ARCHIVE_SAVE_AS.format(date=articles[0].date) }}"&gt;{{ articles[0].date.strftime('%B') }} {{ year }} ({{ articles|count }})&lt;/a&gt;&lt;/li&gt;
+										{% endfor %}
+									{% endfor %}
+								&lt;/ul&gt;
+							&lt;/div&gt;
+							{% endif %}
+
+							&lt;div class="panel"&gt;
+								&lt;h5&gt;Social&lt;/h5&gt;
+								&lt;ul class="side-nav"&gt;
+									{% for name, link in SOCIAL|sort %}
+									&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+									{% endfor %}
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/aside&gt;
+						&lt;!-- End Sidebar --&gt;
+					&lt;/div&gt;
+
+					&lt;!-- Footer --&gt;
+					&lt;footer class="row"&gt;
+						&lt;div class="medium-9 small-12"&gt;
+							&lt;hr /&gt;
+							{% if not FOUNDATION_FOOTER_TEXT %}
+							{% set FOUNDATION_FOOTER_TEXT = 'Powered by &lt;a href="http://getpelican.com"&gt;Pelican&lt;/a&gt; and &lt;a href="http://foundation.zurb.com/"&gt;Zurb Foundation&lt;/a&gt;. Theme by &lt;a href="http://hamaluik.com"&gt;Kenton Hamaluik&lt;/a&gt;.' %}
+							{% endif %}
+							&lt;p class="text-center"&gt;{{ FOUNDATION_FOOTER_TEXT }}&lt;/p&gt;
+						&lt;/div&gt;
+					&lt;/footer&gt;
+					&lt;!-- End Footer --&gt;
+				&lt;/section&gt;
+				&lt;a class="exit-off-canvas"&gt;&lt;/a&gt;
+			&lt;/div&gt;&lt;!--off-canvas inner--&gt;
+		&lt;/div&gt;&lt;!--off-canvas wrap--&gt;
+
+		&lt;script src="{{ SITEURL }}/theme/js/jquery.js"&gt;&lt;/script&gt;
+		&lt;script src="{{ SITEURL }}/theme/js/foundation.min.js"&gt;&lt;/script&gt;
+		&lt;script&gt;
+			$(document).foundation();
+		&lt;/script&gt;
+	</summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock-title.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</id><summary type="html">
+&lt;header class="blog-header"&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row-fluid"&gt;
+      &lt;div class="span9"&gt;
+	&lt;a href="{{ SITEURL }}" class="brand"&gt;{{SITENAME}}&lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;div class="span3" id="blog-nav"&gt;
+	&lt;ul class="nav nav-pills pull-right"&gt;
+	  {% if DISPLAY_PAGES_ON_MENU %}
+          {% for page in PAGES %}
+            &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+            {% endfor %}
+            {% endif %}
+	   {% for cat, null in categories %}
+	    &lt;li {% if cat="category" %} class="active" {% endif %}&gt;
+	      &lt;a href="{{ SITEURL }}/{{ cat.url }} "&gt;{{ cat }}&lt;/a&gt;
+	   {% endfor %}
+	&lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt; &lt;!-- End of fluid row--&gt;
+  &lt;/div&gt;   &lt;!-- End of Container--&gt;
+&lt;/header&gt;
+    
+&lt;div class="container"&gt;
+    &lt;div class="content"&gt;
+    &lt;div class="row-fluid"&gt;
+
+        &lt;div class="span10"&gt;
+        {% block content %}{% endblock %}
+        &lt;/div&gt;
+        
+        
+    &lt;/div&gt; {# End row #}
+    &lt;/div&gt; {# End content #}
+&lt;/div&gt;
+
+&lt;!--footer--&gt;
+&lt;div class="container"&gt;
+  &lt;div class="well" style="background-color: #E9EFF6"&gt;
+    &lt;div id="blog-footer"&gt;
+      &lt;div class="row-fluid"&gt;
+	{% if SOCIAL %}
+	&lt;div class="social span2" align="center" id="socialist"&gt;
+	  &lt;ul class="nav nav-list"&gt;
+	    &lt;li class="nav-header"&gt;
+	      Social
+	    &lt;/li&gt;
+	    {% for name,link in SOCIAL %}
+	    &lt;li&gt;&lt;a href="{{ link }}"&gt;&lt;i class="icon-{{ name }}" style="color: #1f334b"&gt;&lt;/i&gt;{{name}}&lt;/a&gt;&lt;/li&gt;
+	    {% endfor %}
+            {% if EMAIL%}
+            &lt;a href="mailto:{{ EMAIL}}"&gt;&lt;i class="icon-envelope" style="color: #1f334b"&gt;&lt;/i&gt; email&lt;/a&gt;
+            {% endif %}
+
+	  &lt;/ul&gt;
+	&lt;/div&gt;
+	{% endif %}
+	{% include "colophon.html" %}
+        {% if LINKS %}
+        &lt;div class="links span2" align="center"&gt;
+          &lt;ul class="nav nav-list"&gt;
+            &lt;li class="nav-header"&gt; 
+              Links
+            &lt;/li&gt;
+            
+            {% for name, link in LINKS %}
+            &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+            {% endfor %}
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        {% endif %}
+	&lt;div class="site-nav span2" align="center"&gt;
+          &lt;ul class="nav nav-list" id="site-links"&gt;
+            &lt;li class="nav-header"&gt; 
+              Site
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="{{ SITEURL }}"&gt;&lt;i class="icon-home" style="color: #1f334b"&gt;
+                &lt;/i&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;&lt;i class="icon-list" style="color: #1f334b"&gt;
+                &lt;/i&gt;Archives&lt;/a&gt;&lt;/li&gt;
+	    &lt;li&gt;&lt;a href="{{ SITEURL }}/tags.html"&gt;&lt;i class="icon-tags" style="color: #1f334b"&gt;
+                &lt;/i&gt;Tags&lt;/a&gt;&lt;/li&gt;
+	    
+	    {% if FEED_RSS %}
+	    &lt;li&gt; &lt;a href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" rel="alternate"&gt;
+                &lt;i class="icon-rss" style="color: #1f334b"&gt;&lt;/i&gt;
+                RSS Feed&lt;/a&gt;&lt;/li&gt;
+	    {% endif %}
+	    {% if FEED_ATOM %}
+	    &lt;li&gt; &lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" rel="alternate"&gt;
+                &lt;i class="icon-rss" style="color: #1f334b"&gt;&lt;/i&gt;
+                Atom Feed&lt;/a&gt;&lt;/li&gt;
+	    {% endif %}
+	  &lt;/ul&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt; &lt;!--end of fluid row--&gt;
+    &lt;/div&gt; &lt;!--end of blog-footer--&gt;
+    &lt;hr /&gt;
+    &lt;p align="center"&gt;&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;
+      &amp;copy; {{ AUTHOR }}
+    Powered by &lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt; and
+        &lt;a href="https://twitter.github.com/bootstrap"&gt;Twitter Bootstrap&lt;/a&gt;. 
+        Icons by &lt;a href="https://fortawesome.github.com/Font-Awesome"&gt;Font Awesome&lt;/a&gt; and 
+        &lt;a href="https://gregoryloucas.github.com/Font-Awesome-More"&gt;Font Awesome More&lt;/a&gt;&lt;/p&gt;
+
+  &lt;/div&gt; &lt;!--end of well --&gt;
+&lt;/div&gt; &lt;!--end of container --&gt;
+
+&lt;!--/footer--&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"&gt;&lt;/script&gt;
+
+
+{% include "analytics.html" %}
+
+</summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">
+
+    &lt;div class="navbar navbar-fixed-top"&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;div class="container-fluid"&gt;
+          &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a class="brand" href="{{ SITEURL }}/index.html"&gt;{{ SITENAME }} {% if SITESUBTITLE %} &lt;strong&gt;{{ SITESUBTITLE }}&lt;/strong&gt;{% endif %}&lt;/a&gt;
+          &lt;div class="nav-collapse"&gt;
+            &lt;ul class="nav"&gt;
+              {% for title, link in MENUITEMS %}
+                  &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+              {% if DISPLAY_PAGES_ON_MENU %}
+              {% for page in PAGES %}
+                &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+                          &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+              {% endif %}
+              {% for cat, null in categories %}
+                  &lt;li {% if cat="category" %}class="active" {% endif %}&gt;
+                    &lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;
+						&lt;i class="icon-folder-open icon-large"&gt;&lt;/i&gt;{{ cat }}
+					&lt;/a&gt;
+                  &lt;/li&gt;
+              {% endfor %}
+
+                          &lt;ul class="nav pull-right"&gt;
+                                &lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;&lt;i class="icon-th-list"&gt;&lt;/i&gt;Archives&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+
+            &lt;/ul&gt;
+            &lt;!--&lt;p class="navbar-text pull-right"&gt;Logged in as &lt;a href="#"&gt;username&lt;/a&gt;&lt;/p&gt;--&gt;
+          &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="container-fluid"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="span9" id="content"&gt;
+            {% block content %}
+            {% endblock %}
+        &lt;/div&gt;&lt;!--/span--&gt;
+
+                &lt;div class="span3 well sidebar-nav" id="sidebar"&gt;
+            {% include 'sidebar.html' %}
+        &lt;/div&gt;&lt;!--/.well --&gt;
+
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;hr&gt;
+
+      &lt;footer&gt;
+        &lt;address id="about"&gt;
+                Proudly powered by &lt;a href="http://pelican.notmyidea.org/"&gt;Pelican &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;,
+                                which takes great advantage of &lt;a href="http://python.org"&gt;Python &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;.
+        &lt;/address&gt;&lt;!-- /#about --&gt;
+
+        &lt;p&gt;The theme is from &lt;a href="http://twitter.github.com/bootstrap/"&gt;Bootstrap from Twitter &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;,
+                   and &lt;a href="http://fortawesome.github.com/Font-Awesome/"&gt;Font-Awesome &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;, thanks!&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt;&lt;!--/.fluid-container--&gt;
+
+
+    {% include 'analytics.html' %}
+    {% include 'piwik.html' %}
+    {% include 'disqus_script.html' %}
+
+    &lt;!-- Le javascript --&gt;
+    &lt;!-- Placed at the end of the document so the pages load faster --&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
+  </summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">
+
+    &lt;div class="navbar navbar-fixed-top"&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;div class="container-fluid"&gt;
+          &lt;a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+            &lt;span class="icon-bar"&gt;&lt;/span&gt;
+          &lt;/a&gt;
+          &lt;a class="brand" href="{{ SITEURL }}/index.html"&gt;{{ SITENAME }} {% if SITESUBTITLE %} &lt;strong&gt;{{ SITESUBTITLE }}&lt;/strong&gt;{% endif %}&lt;/a&gt;
+          &lt;div class="nav-collapse"&gt;
+            &lt;ul class="nav"&gt;
+              {% for title, link in MENUITEMS %}
+                  &lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+              {% if DISPLAY_PAGES_ON_MENU %}
+              {% for page in PAGES %}
+                &lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+              {% endfor %}
+                          &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+              {% endif %}
+              {% for cat, null in categories %}
+                  &lt;li {% if cat="category" %}class="active" {% endif %}&gt;
+                    &lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;
+						&lt;i class="icon-folder-open icon-large"&gt;&lt;/i&gt;{{ cat }}
+					&lt;/a&gt;
+                  &lt;/li&gt;
+              {% endfor %}
+
+                          &lt;ul class="nav pull-right"&gt;
+                                &lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;&lt;i class="icon-th-list"&gt;&lt;/i&gt;Archives&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+
+            &lt;/ul&gt;
+            &lt;!--&lt;p class="navbar-text pull-right"&gt;Logged in as &lt;a href="#"&gt;username&lt;/a&gt;&lt;/p&gt;--&gt;
+          &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="container-fluid"&gt;
+      &lt;div class="row"&gt;
+        &lt;div class="span9" id="content"&gt;
+            {% block content %}
+            {% endblock %}
+        &lt;/div&gt;&lt;!--/span--&gt;
+
+                &lt;div class="span3 well sidebar-nav" id="sidebar"&gt;
+            {% include 'sidebar.html' %}
+        &lt;/div&gt;&lt;!--/.well --&gt;
+
+      &lt;/div&gt;&lt;!--/row--&gt;
+
+      &lt;hr&gt;
+
+      &lt;footer&gt;
+        &lt;address id="about"&gt;
+                Proudly powered by &lt;a href="http://pelican.notmyidea.org/"&gt;Pelican &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;,
+                                which takes great advantage of &lt;a href="http://python.org"&gt;Python &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;.
+        &lt;/address&gt;&lt;!-- /#about --&gt;
+
+        &lt;p&gt;The theme is based on &lt;a href="http://twitter.github.com/bootstrap/"&gt;Bootstrap from Twitter &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;,
+                   and &lt;a href="http://fortawesome.github.com/Font-Awesome/"&gt;Font-Awesome &lt;i class="icon-external-link"&gt;&lt;/i&gt;&lt;/a&gt;, thanks!&lt;/p&gt;
+      &lt;/footer&gt;
+
+    &lt;/div&gt;&lt;!--/.fluid-container--&gt;
+
+
+    {% include 'analytics.html' %}
+    {% include 'piwik.html' %}
+    {% include 'disqus_script.html' %}
+
+    &lt;!-- Le javascript --&gt;
+    &lt;!-- Placed at the end of the document so the pages load faster --&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
+    &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
+  </summary></entry><entry><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</id><summary type="html">
+	{% include "facebook.html" %}
+	{% include "github.html" %}
+	&lt;div class="topbar"&gt;
+	  &lt;div class="topbar-inner"&gt;
+		&lt;div class="container-fluid"&gt;
+		  &lt;a class="brand" href="{{ SITEURL }}/"&gt;{{ SITENAME }}&lt;/a&gt;
+			&lt;ul class="nav"&gt;
+				{% for title, link in MENUITEMS %}
+					&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ title }}&lt;/a&gt;&lt;/li&gt;
+				{% endfor %}
+				{% if DISPLAY_PAGES_ON_MENU %}
+					{% for page in PAGES %}
+						&lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;{{ page.title }}&lt;/a&gt;&lt;/li&gt;
+					{% endfor %}
+				{% endif %}
+				{% for cat, null in categories %}
+					&lt;li {% if cat="category" %}class="active" {% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+				{% endfor %}
+			&lt;/ul&gt;
+			&lt;p class="pull-right"&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;[archives]&lt;/a&gt; &lt;a href="{{ SITEURL }}/tags.html"&gt;[tags]&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div class="container-fluid"&gt;
+	  &lt;div class="sidebar"&gt;
+		&lt;div class="well"&gt;
+			&lt;h3&gt;Blogroll&lt;/h3&gt;
+			&lt;ul&gt;
+				{% for name, link in LINKS %}
+				&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+				{% endfor %}
+			&lt;/ul&gt;
+			&lt;div class="social"&gt;
+			&lt;h3&gt;Social&lt;/h3&gt;
+			&lt;ul&gt;
+				{% for name, link in SOCIAL %}
+				&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+				{% endfor %}
+			&lt;/ul&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class="content"&gt;
+			{% block indextitle %}&lt;div class="page-header"&gt;&lt;h1&gt;{% block title %} {{ self.windowtitle() }} {% endblock %}&lt;/h1&gt;&lt;/div&gt;{% endblock %}
+			{% block content %}{% endblock %}
+		&lt;footer&gt;
+		  &lt;p&gt;Powered by &lt;a href="http://getpelican.com/"&gt;Pelican&lt;/a&gt;. Theme based on &lt;a href="http://twitter.github.com/bootstrap/"&gt;Twitter Bootstrap&lt;/a&gt;.&lt;/p&gt;
+		  &lt;p&gt;&amp;copy; {{ AUTHOR }}&lt;/p&gt;
+		&lt;/footer&gt;
+	  &lt;/div&gt;
+
+	&lt;/div&gt;
+</summary></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock-title.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{AUTHOR}}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</id><summary type="html">
+        &lt;div class="master-row"&gt;
+
+            &lt;div class="content-pane main-content"&gt;
+                &lt;nav class="top-bar" data-topbar role="navigation"&gt;
+                    &lt;ul class="title-area"&gt;
+                        &lt;li class="name"&gt;&lt;!-- Leave this empty --&gt;&lt;/li&gt;
+                        &lt;li class="toggle-topbar menu-icon"&gt;&lt;a href="#"&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;section class="top-bar-section"&gt;
+                        &lt;ul class="left"&gt;
+                        {% for p in pages %}
+                            &lt;li{% if p == page %} class="active"{% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ p.url }}"&gt;{{ p.title }}&lt;/a&gt;&lt;/li&gt;
+                        {% endfor %}
+                        &lt;/ul&gt;
+                        &lt;ul class="right"&gt;
+                        {% for cat, null in categories %}
+                            &lt;li{% if cat == category %} class="active"{% endif %}&gt;&lt;a href="{{ SITEURL }}/{{ cat.url }}"&gt;{{ cat }}&lt;/a&gt;&lt;/li&gt;
+                        {% endfor %}
+                        &lt;/ul&gt;
+                    &lt;/section&gt;
+                &lt;/nav&gt;
+
+                &lt;div class="row title-bar"&gt;
+                    &lt;div class="small-12 columns"&gt;
+                        &lt;h1&gt;&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;&lt;/h1&gt;&lt;h2&gt; &lt;small&gt;{{ SITESUBTITLE }}&lt;/small&gt;&lt;/h2&gt;
+                        &lt;hr&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            
+                &lt;div id="contents"&gt;
+                {% block content %}
+                    &lt;div class="row"&gt;
+                    &lt;/div&gt;
+                {% endblock content %}
+                &lt;/div&gt;
+
+                &lt;footer class="show-for-large-up"&gt;
+                    {% include 'footer.html' %}
+                &lt;/footer&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="image-pane main-content" style="background: url('{{ BACKDROP_IMAGE|replace('{filename}',SITEURL)|replace('|filename|',SITEURL) }}'); background-size:cover; background-position: right;"&gt;
+                &lt;div class="row"&gt;
+                    &lt;div class="small-12 medium-4 large-12 columns"&gt;
+                    {% if SITE_DESCRIPTION or EMAIL or SOCIAL %}
+                        &lt;h5 class="text-center"&gt;About&lt;/h5&gt;
+                        &lt;div class="about-me"&gt;
+                        {% if PROFILE_IMAGE %}
+                            &lt;div class="hide-for-medium-only small-3 columns no-buffer"&gt;
+                                &lt;a class="th" href="{{ PROFILE_IMAGE|replace('{filename}',SITEURL)|replace('|filename|',SITEURL) }}"&gt;
+                                    &lt;img src="{{ PROFILE_IMAGE|replace('{filename}',SITEURL)|replace('|filename|',SITEURL) }}"&gt;
+                                &lt;/a&gt;
+                            &lt;/div&gt;
+                        {% endif %}
+                            &lt;div class="{% if PROFILE_IMAGE %}small-9 medium-12 large-9{% else %}small-12{% endif %} columns text-justify"&gt;
+                                {{ SITE_DESCRIPTION }}
+                            &lt;/div&gt;
+                        {% if EMAIL or SOCIAL %}
+                            &lt;div class="small-12 columns"&gt;
+                                &lt;ul class="inline-center social-list"&gt;
+                                {% if EMAIL%}
+                                    &lt;li&gt;&lt;a href="mailto:{{ EMAIL}}"&gt;&lt;i class="fa fa-envelope"&gt;&lt;/i&gt;&amp;nbsp; Email&lt;/a&gt;&lt;/li&gt;
+                                {% endif %}
+                                {% for name,link in SOCIAL %}
+                                    &lt;li&gt;&lt;a href="{{ link }}"&gt;&lt;i class="fa fa-{{ name|lower }}"&gt;&lt;/i&gt;&amp;nbsp; {{ name }}&lt;/a&gt;&lt;/li&gt;
+                                {% endfor %}
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        {% endif %}
+                        &lt;/div&gt;
+                    {% endif %}
+                    &lt;/div&gt;
+
+                    &lt;div class="small-12 medium-4  large-12 columns link-list"&gt;
+                    {% if LINKS %}
+                        &lt;h5 class="text-center"&gt;Links&lt;/h5&gt;
+                        &lt;ul class="inline-center"&gt;
+                        {% for name, url in LINKS %}
+                            &lt;li&gt;&lt;a href="{{ url }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+                        {% endfor %}
+                        &lt;/ul&gt;
+                    {% endif %}
+                    &lt;/div&gt;
+
+&lt;!--
+                    &lt;div class="small-12 medium-3 large-12 columns"&gt;
+                    {% if GITHUB_ACTIVITY_FEED %}
+                        &lt;table class='transparent'&gt;
+                            &lt;thead&gt;
+                                &lt;th class='text-center'&gt;GitHub Activity&lt;/th&gt;
+                            &lt;/thead&gt;
+                            &lt;tbody&gt;
+                            {% for entry in github_activity %}
+                                &lt;tr&gt;&lt;td&gt;{{ entry[1] }}&lt;/td&gt;&lt;/tr&gt;
+                            {% endfor %}
+                            &lt;/tbody&gt;
+                        &lt;/table&gt;
+                    {% endif %}
+                    &lt;/div&gt;
+--&gt;
+               &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        
+        &lt;div class="row"&gt;
+            &lt;footer class="hide-for-large-up"&gt;
+                {% include 'footer.html' %}
+            &lt;/footer&gt;
+        &lt;/div&gt;
+        
+        
+        &lt;script src="{{ SITEURL }}/theme/js/jquery.min.js"&gt;&lt;/script&gt;
+        &lt;script src="{{ SITEURL }}/theme/js/foundation.min.js"&gt;&lt;/script&gt;
+        &lt;script src="{{ SITEURL }}/theme/js/app.js"&gt;&lt;/script&gt;
+    </summary><category term="Blog{% for keyword in BLOGKEYWORDS %} {{ keyword }}{% endfor %}"></category></entry><entry><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">
+&lt;div class="container"&gt;
+	&lt;div class="page-header"&gt;
+		&lt;h1&gt;&lt;a href="{{ SITEURL }}/"&gt;{{ SITENAME }}&lt;/a&gt;
+			&lt;br&gt;{% if SITESUBTITLE %}&lt;small&gt;{{ SITESUBTITLE }}&lt;/small&gt;&lt;/h1&gt;{% endif %}
+	&lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-md-8 col-md-offset-2"&gt;
+			{% block content %}{% endblock %}
+		&lt;/div&gt;
+	&lt;/div&gt; {# End row #}
+	&lt;!-- &lt;hr&gt; --&gt;
+&lt;/div&gt; &lt;!-- /container --&gt;
+&lt;footer class="aw-footer bg-danger"&gt;
+	&lt;div class="container"&gt; &lt;!-- footer --&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-md-10 col-md-offset-1"&gt;
+				&lt;div class="row"&gt;
+					&lt;div class="col-md-3"&gt;
+						&lt;h4&gt;Navigation&lt;/h4&gt;
+						&lt;ul class="list-unstyled my-list-style"&gt;
+							&lt;li&gt;&lt;a href="{{SITEURL}}"&gt;{{ SITENAME }}&lt;/a&gt;&lt;/li&gt;
+							{% for title, link in MENUITEMS %}
+							&lt;li&gt;&lt;a href="{{ SITEURL }}/{{ link }}"&gt;&lt;i class="fa fa-{{ title }} "&gt;&lt;/i&gt; {{title}}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+							{% if DISPLAY_PAGES_ON_MENU %}
+							{% for page in PAGES %}
+							&lt;li&gt;&lt;a href="{{ SITEURL }}/{{ page.url }}"&gt;&lt;i class="fa fa-{{ page.title }} "&gt;&lt;/i&gt; {{page.title}}&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+							{% endif %}
+							{% if FEED_ALL_ATOM %}
+							&lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml"&gt;&lt;i class="fa fa-rss "&gt;&lt;/i&gt; atom&lt;/a&gt;&lt;/li&gt;
+							{% endif %}
+							{% if FEED_ALL_RSS %}
+							&lt;li&gt;&lt;a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml"&gt;&lt;i class="fa fa-rss "&gt;&lt;/i&gt; rss&lt;/a&gt;&lt;/li&gt;
+							{% endif %}
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;div class="col-md-3"&gt;
+						&lt;h4&gt;Author&lt;/h4&gt;
+						&lt;ul class="list-unstyled my-list-style"&gt;
+						{% for name, link in SOCIAL %}
+							&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+						{% endfor %}
+						&lt;/ul&gt;
+					&lt;/div&gt;
+					&lt;div class="col-md-3"&gt;
+						&lt;h4&gt;Categories&lt;/h4&gt;
+						&lt;ul class="list-unstyled my-list-style"&gt;
+							{% for cat, art in categories %}
+							&lt;li&gt;&lt;a href="{{SITEURL}}/category/{{cat | replace(" ", "-") }}.html"&gt;{{cat}} ({{art | count}})&lt;/a&gt;&lt;/li&gt;
+							{% endfor %}
+						&lt;/ul&gt;
+					&lt;/div&gt;
+				{% if LINKS %}
+					&lt;div class="col-md-3"&gt;
+						&lt;h4&gt;Links&lt;/h4&gt;
+						&lt;ul class="list-unstyled my-list-style"&gt;
+						{% for name, link in LINKS %}
+							&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+						{% endfor %}
+						&lt;/ul&gt;
+					&lt;/div&gt;
+				{% endif %}
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/footer&gt;
+&lt;div class="container"&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-md-12 text-center center-block aw-bottom"&gt;
+			&lt;p&gt;&amp;copy; {{ AUTHOR }} 2014&lt;/p&gt;
+			&lt;p&gt;Powered by Pelican&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- JavaScript --&gt;
+&lt;script src="https://code.jquery.com/jquery-2.1.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+&lt;/script&gt;
+{% include "analytics.html" %}
+{% include "github.html" %}
+</summary></entry><entry><title>{% block title %}{{ SITENAME }}{%endblock%}</title><link href="http://212.83.154.157/blog/block-title-sitename-endblock.html" rel="alternate"></link><updated>2015-06-05T16:12:22+02:00</updated><author><name>{{ AUTHOR }}</name></author><id>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</id><summary type="html">		
+	&lt;header class="clearfix" role="banner"&gt;
+		&lt;div class="wrapper"&gt;
+			&lt;h1 class="huge"&gt;&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;&lt;/h1&gt;
+		&lt;/div&gt;
+	&lt;/header&gt;
+	
+	{% block content %}
+	{% endblock %}
+	
+		
+&lt;footer class="clearfix"&gt;
+	&lt;div class="wrapper pages"&gt;
+		&lt;ul class="nav"&gt;
+		{% for p in PAGES %}
+			&lt;li&gt;&lt;a href="{{ SITEURL }}/{{ p.url }}"&gt;{{ p.title }}&lt;/a&gt;&lt;/li&gt;
+		{% endfor %}
+			&lt;li&gt;&lt;a href="{{ SITEURL }}/archives.html"&gt;Archive&lt;/a&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	
+	&lt;div class="copy wrapper"&gt;
+		&lt;ul class="social"&gt;
+			{% for name, link in SOCIAL %}
+			&lt;li&gt;&lt;a href="{{ link }}"&gt;{{ name }}&lt;/a&gt;&lt;/li&gt;
+			{% endfor %}
+		&lt;/ul&gt;
+	
+		&lt;p role="contentinfo"&gt;© 2012 {{ AUTHOR }}&lt;br&gt;
+		Proudly powered by &lt;a href="http://alexis.notmyidea.org/pelican/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/footer&gt;
+	
+	&lt;script&gt;
+	  var _gaq=[['_setAccount','{{ GOOGLE_ANALYTICS }}'],['_trackPageview']];
+	  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	  s.parentNode.insertBefore(g,s)}(document,'script'));
+	&lt;/script&gt;
+</summary></entry></feed>

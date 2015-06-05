@@ -36,7 +36,7 @@ TWITTER_USERNAME = 'josuebrunel'
 
 DEFAULT_PAGINATION = 10
 
-THEME = 'static'
+THEME = 'blueidea'
 
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']
 

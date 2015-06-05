@@ -42,6 +42,8 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']
 
 STATIC_PATHS = ['images',]
 
+#OUTPUT_PATH = u'/htdocs'
+
 NEWEST_FIRST_ARCHIVES = True
 
 ARCHIVES_SAVE_AS = 'archives.html'

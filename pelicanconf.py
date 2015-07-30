@@ -35,7 +35,7 @@ TWITTER_USERNAME = 'josuebrunel'
 
 DEFAULT_PAGINATION = 10
 
-THEME = 'blueidea'
+THEME = 'notmyidea'
 
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives']
 

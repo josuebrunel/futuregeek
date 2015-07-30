@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FutureGeek</title><link>http://212.83.154.157/blog/</link><description></description><atom:link href="http://212.83.154.157/blog/feeds/author.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 05 Jun 2015 16:12:22 +0200</lastBuildDate><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html</link><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FutureGeek</title><link>http://www.josuebrunel.org/</link><description></description><atom:link href="http://www.josuebrunel.org/feeds/author.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 30 Jul 2015 15:24:34 +0200</lastBuildDate><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-windowtitle-sitename-endblock.html</link><description>
 
 &lt;div class="navbar"&gt;
     &lt;div class="navbar-inner"&gt;
@@ -134,7 +134,7 @@
 &lt;script src="{{ SITEURL }}/theme/bootstrap-collapse.js"&gt;&lt;/script&gt;
 {% include "analytics.html" %}
 {% include "github.html" %} 
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:24:34 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>
 
 &lt;div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation"&gt;
 	&lt;div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}"&gt;
@@ -237,7 +237,7 @@
 {% include 'includes/piwik.html' %}
 
 {% block scripts %}{% endblock %}
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:23:01 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>
   &lt;!-- Sidebar --&gt;
   &lt;aside&gt;
     &lt;p&gt;&lt;a href="{{ SITEURL }}"&gt;&lt;img id="avatar" src="{{ SITEURL }}/{{ AVATAR }}"&gt;&lt;/a&gt;&lt;/p&gt;
@@ -311,7 +311,7 @@
   &lt;/script&gt;
   {% endif %}
 
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item><item><title>{% block title %}Blog about Me and my Linux{% endblock %} | {{ SITENAME }}</title><link>http://212.83.154.157/blog/block-title-blog-about-me-and-my-linux-endblock-sitename.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:22:43 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item><item><title>{% block title %}Blog about Me and my Linux{% endblock %} | {{ SITENAME }}</title><link>http://www.josuebrunel.org/block-title-blog-about-me-and-my-linux-endblock-sitename.html</link><description>
     {% include 'github.html' %}
     &lt;div class="navbar navbar-fixed-top"&gt;
       &lt;div class="navbar-inner"&gt;
@@ -377,7 +377,7 @@
     &lt;!-- Placed at the end of the document so the pages load faster --&gt;
     &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
     &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
-  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-blog-about-me-and-my-linux-endblock-sitename.html</guid><category>{{ KEYWORDS }}</category></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock-title.html</link><description>
+  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:22:07 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-blog-about-me-and-my-linux-endblock-sitename.html</guid><category>{{ KEYWORDS }}</category></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock-title.html</link><description>
 		&lt;div class="nav-banner"&gt;
 		&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;
 		&lt;/div&gt;
@@ -398,7 +398,7 @@
 				Theme by &lt;a href="http://frantic1048.com/"&gt;Frantic1048&lt;/a&gt;.
                 &lt;/address&gt;&lt;!-- /#about --&gt;
         &lt;/footer&gt;&lt;!-- /#contentinfo --&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</guid></item><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:21:23 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock-title.html</guid></item><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-windowtitle-sitename-endblock.html</link><description>
 		&lt;div class="off-canvas-wrap"&gt;
 			&lt;div class="inner-wrap"&gt;
 				&lt;!-- mobile top bar to activate nav --&gt;
@@ -556,7 +556,7 @@
 		&lt;script&gt;
 			$(document).foundation();
 		&lt;/script&gt;
-	</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock-title.html</link><description>
+	</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:21:22 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock-title.html</link><description>
 &lt;header class="blog-header"&gt;
   &lt;div class="container"&gt;
     &lt;div class="row-fluid"&gt;
@@ -675,7 +675,7 @@
 
 {% include "analytics.html" %}
 
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:48 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock-title.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>
 
     &lt;div class="navbar navbar-fixed-top"&gt;
       &lt;div class="navbar-inner"&gt;
@@ -752,7 +752,7 @@
     &lt;!-- Placed at the end of the document so the pages load faster --&gt;
     &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
     &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
-  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>
+  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:46 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>
 
     &lt;div class="navbar navbar-fixed-top"&gt;
       &lt;div class="navbar-inner"&gt;
@@ -829,7 +829,7 @@
     &lt;!-- Placed at the end of the document so the pages load faster --&gt;
     &lt;script src="{{ SITEURL }}/theme/js/jquery-1.7.2.min.js"&gt;&lt;/script&gt;
     &lt;script src="{{ SITEURL }}/theme/js/bootstrap.min.js"&gt;&lt;/script&gt;
-  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-windowtitle-sitename-endblock.html</link><description>
+  </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:15 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item><item><title>{% block windowtitle %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-windowtitle-sitename-endblock.html</link><description>
 	{% include "facebook.html" %}
 	{% include "github.html" %}
 	&lt;div class="topbar"&gt;
@@ -883,7 +883,7 @@
 	  &lt;/div&gt;
 
 	&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock-title.html</link><description>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:10 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-windowtitle-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{% endblock title %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock-title.html</link><description>
         &lt;div class="master-row"&gt;
 
             &lt;div class="content-pane main-content"&gt;
@@ -999,7 +999,7 @@
         &lt;script src="{{ SITEURL }}/theme/js/jquery.min.js"&gt;&lt;/script&gt;
         &lt;script src="{{ SITEURL }}/theme/js/foundation.min.js"&gt;&lt;/script&gt;
         &lt;script src="{{ SITEURL }}/theme/js/app.js"&gt;&lt;/script&gt;
-    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{AUTHOR}}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock-title.html</guid><category>Blog{% for keyword in BLOGKEYWORDS %} {{ keyword }}{% endfor %}</category></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>
+    </description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{AUTHOR}}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:08 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock-title.html</guid><category>Blog{% for keyword in BLOGKEYWORDS %} {{ keyword }}{% endfor %}</category></item><item><title>{% block title %}{{ SITENAME }}{% endblock %}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>
 &lt;div class="container"&gt;
 	&lt;div class="page-header"&gt;
 		&lt;h1&gt;&lt;a href="{{ SITEURL }}/"&gt;{{ SITENAME }}&lt;/a&gt;
@@ -1094,7 +1094,7 @@ jQuery(document).ready(function($) {
 &lt;/script&gt;
 {% include "analytics.html" %}
 {% include "github.html" %}
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{%endblock%}</title><link>http://212.83.154.157/blog/block-title-sitename-endblock.html</link><description>		
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:20:06 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item><item><title>{% block title %}{{ SITENAME }}{%endblock%}</title><link>http://www.josuebrunel.org/block-title-sitename-endblock.html</link><description>		
 	&lt;header class="clearfix" role="banner"&gt;
 		&lt;div class="wrapper"&gt;
 			&lt;h1 class="huge"&gt;&lt;a href="{{ SITEURL }}"&gt;{{ SITENAME }}&lt;/a&gt;&lt;/h1&gt;
@@ -1133,4 +1133,4 @@ jQuery(document).ready(function($) {
 	  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	  s.parentNode.insertBefore(g,s)}(document,'script'));
 	&lt;/script&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Fri, 05 Jun 2015 16:12:22 +0200</pubDate><guid>tag:212.83.154.157,2015-06-05:blog/block-title-sitename-endblock.html</guid></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ AUTHOR }}</dc:creator><pubDate>Thu, 30 Jul 2015 15:19:39 +0200</pubDate><guid>tag:www.josuebrunel.org,2015-07-30:block-title-sitename-endblock.html</guid></item></channel></rss>
